@@ -1,6 +1,17 @@
-@import 'src/assets/styles/common';
+@use './node_modules/@angular/material/index' as mat;
+
+@import './node_modules/@angular/material/theming';
 @import 'src/assets/styles/variables';
+@import 'src/assets/styles/themes';
 
 * {
   font-family: $app-font-family;
+}
+
+.darkMode {
+  @include mat.all-component-colors($app-dark-theme);
+}
+
+.lightMode {
+  @include mat.all-component-colors($app-light-theme);
 }
