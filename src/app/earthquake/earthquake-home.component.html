@@ -1,1 +1,15 @@
-<p>earthquake-home works!</p>
+<mat-button-toggle-group [(ngModel)]="settings.period">
+  <mat-button-toggle
+    *ngFor="let period of periods"
+    [value]="period">
+    {{ period.translationKey | translate }}
+  </mat-button-toggle>
+</mat-button-toggle-group>
+
+<mat-button-toggle-group [(ngModel)]="settings.category">
+  <mat-button-toggle
+    *ngFor="let category of categories"
+    [value]="category">
+    {{ category.translationKey | translate }}
+  </mat-button-toggle>
+</mat-button-toggle-group>

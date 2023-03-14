@@ -7,7 +7,7 @@ import localeFr from '@angular/common/locales/fr';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {registerLocaleData} from "@angular/common";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
@@ -20,6 +20,8 @@ import { ToolbarComponent } from './shared/components/toolbar/toolbar.component'
 import { EarthquakeHomeComponent } from './earthquake/earthquake-home.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {FormsModule} from "@angular/forms";
 
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeFr, 'fr');
@@ -36,6 +38,7 @@ registerLocaleData(localeFr, 'fr');
     BrowserAnimationsModule,
     FontAwesomeModule,
     AppRoutingModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
@@ -50,7 +53,9 @@ registerLocaleData(localeFr, 'fr');
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatButtonToggleModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
