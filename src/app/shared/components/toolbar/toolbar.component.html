@@ -1,0 +1,9 @@
+<mat-toolbar class="toolbarContainer">
+  <span id="spaceFiller"></span>
+  <mat-slide-toggle
+    #themeSwitcher
+    disableRipple 
+    [checked]="toolbarSettings?.theme === darkTheme"
+    (change)="themeChange($event)"
+  ></mat-slide-toggle>
+</mat-toolbar>

@@ -8,10 +8,10 @@
   font-family: $app-font-family;
 }
 
-.darkMode {
+.dark {
   @include mat.all-component-colors($app-dark-theme);
 }
 
-.lightMode {
+.light {
   @include mat.all-component-colors($app-light-theme);
 }
