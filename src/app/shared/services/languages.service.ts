@@ -1,21 +1,21 @@
 import {Injectable} from '@angular/core';
 import {StorageService} from "./storage.service";
-import {Theme} from "../constants/theme";
 import {StorageKey} from "../enums/storage-key";
 import {DefaultValues} from "../constants/default-values";
+import {Language} from "../constants/language";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ThemesService {
+export class LanguagesService {
   constructor(private storageService: StorageService) {
   }
 
-  set currentTheme(theme: Theme) {
-    this.storageService.save(StorageKey.THEME, theme);
+  set currentLanguage(lang: Language) {
+    this.storageService.save(StorageKey.LANGUAGE, lang);
   }
   
-  get currentTheme() {
-    return this.storageService.get(StorageKey.THEME, DefaultValues.DEFAULT_THEME) as Theme;
+  get currentLanguage() {
+    return this.storageService.get(StorageKey.LANGUAGE, DefaultValues.DEFAULT_LANGUAGE) as Language;
   }
 }

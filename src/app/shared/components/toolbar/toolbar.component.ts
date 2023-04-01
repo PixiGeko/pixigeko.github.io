@@ -4,6 +4,9 @@ import {ThemesService} from "../../services/themes.service";
 import {Theme} from "../../constants/theme";
 import {MatSlideToggleChange} from "@angular/material/slide-toggle";
 import {DOCUMENT} from "@angular/common";
+import {Language} from "../../constants/language";
+import {TranslateService} from "@ngx-translate/core";
+import {LanguagesService} from "../../services/languages.service";
 
 @Component({
   selector: 'app-toolbar',
@@ -20,13 +23,21 @@ export class ToolbarComponent implements AfterViewInit, OnInit {
   
   darkTheme = Theme.DARK;
   
+  languages = Language;
   
-  constructor(private themeService: ThemesService, @Inject(DOCUMENT) private document: Document) {
+  
+  constructor(
+    private themeService: ThemesService, 
+    private translateService: TranslateService, 
+    private languageService: LanguagesService,
+    @Inject(DOCUMENT) private document: Document
+  ) {
   }
   
   ngOnInit() {
     this.toolbarSettings = {
-      theme: this.themeService.currentTheme
+      theme: this.themeService.currentTheme,
+      language: this.languageService.currentLanguage
     }
   }
 
@@ -37,7 +48,7 @@ export class ToolbarComponent implements AfterViewInit, OnInit {
     }
   }
 
-  themeChange(event: MatSlideToggleChange) {
+  changeTheme(event: MatSlideToggleChange) {
     if(event.checked) {
       this.themeService.currentTheme = Theme.DARK;
       this.document.body.classList.remove(Theme.LIGHT);
@@ -48,7 +59,14 @@ export class ToolbarComponent implements AfterViewInit, OnInit {
       this.document.body.classList.remove(Theme.DARK);
       this.document.body.classList.add(Theme.LIGHT);
     }
-
-    
+  }
+  
+  changeLang(lang: Language) {
+    this.languageService.currentLanguage = lang;
+    this.translateService.use(lang);
+  }
+  
+  isCurrentLanguage(lang: Language) {
+    return this.languageService.currentLanguage === lang;
   }
 }

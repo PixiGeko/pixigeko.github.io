@@ -1,1 +1,19 @@
-{}
+{
+  "earthquake": {
+    "periods": {
+      "title": "Période",
+      "last_hour": "Dernière heure",
+      "last_day": "Dernier jour",
+      "last_week": "Dernière semaine",
+      "last_month": "Dernier mois"
+    },
+    "categories": {
+      "title": "Catégorie",
+      "significant": "Significatifs",
+      "4_5": "Magnitude 4.5+",
+      "2_5": "Magnitude 2.5+",
+      "1_0": "Magnitude 1.0+",
+      "all": "Tout"
+    }
+  }
+}

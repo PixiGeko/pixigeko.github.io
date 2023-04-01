@@ -1,15 +1,55 @@
-<mat-button-toggle-group [(ngModel)]="settings.period">
-  <mat-button-toggle
-    *ngFor="let period of periods"
-    [value]="period">
-    {{ period.translationKey | translate }}
-  </mat-button-toggle>
-</mat-button-toggle-group>
+<div class="settingsContainer">
+  <mat-button-toggle-group [(ngModel)]="settings.period" [disabled]="settings.isLoading">
+    <mat-button-toggle
+      *ngFor="let period of periods"
+      [value]="period">
+      {{ period.translationKey | translate }}
+    </mat-button-toggle>
+  </mat-button-toggle-group>
 
-<mat-button-toggle-group [(ngModel)]="settings.category">
-  <mat-button-toggle
-    *ngFor="let category of categories"
-    [value]="category">
-    {{ category.translationKey | translate }}
-  </mat-button-toggle>
-</mat-button-toggle-group>
+  <mat-button-toggle-group [(ngModel)]="settings.category" [disabled]="settings.isLoading">
+    <mat-button-toggle
+      *ngFor="let category of categories"
+      [value]="category">
+      {{ category.translationKey | translate }}
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <button
+    mat-raised-button
+    (click)="loadEarthquakes()"
+    color="primary"
+    [disabled]="settings.isLoading"
+  >
+    {{ 'earthquake.reload' | translate }}
+  </button>
+</div>
+
+<div class="row mapAndDetailsContainer">
+  <div class="col-6">
+    <google-map
+      width="100%"
+      [zoom]="1"
+    >
+      <map-circle
+        *ngFor="let marker of markers"
+        [options]="marker.options"
+        (circleClick)="circleClicked(marker)"
+      ></map-circle>
+    </google-map>
+  </div>
+  <div class="col-auto">
+    <ng-container *ngIf="selectedMarker">
+      <table>
+        <tr *ngFor="let detail of selectedMarkerDetails | keyvalue">
+          <td class="detailLeft">{{ detail.key | translate }}</td>
+          <td class="detailRight">{{ detail.value }}</td>
+        </tr>
+      </table>
+    </ng-container>
+    
+    <ng-container *ngIf="!selectedMarker">
+      No marker selected
+    </ng-container>
+  </div>
+</div>

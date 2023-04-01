@@ -15,13 +15,21 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { MinecraftHomeComponent } from './minecraft/minecraft-home.component';
-import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
-import { EarthquakeHomeComponent } from './earthquake/earthquake-home.component';
+import {MinecraftHomeComponent} from './minecraft/minecraft-home.component';
+import {ToolbarComponent} from './shared/components/toolbar/toolbar.component';
+import {EarthquakeHomeComponent} from './earthquake/earthquake-home.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {FormsModule} from "@angular/forms";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions} from "@angular/material/core";
+import {GoogleMapsModule} from "@angular/google-maps";
+
+const globalRippleConfig: RippleGlobalOptions = {
+  disabled: true
+};
 
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeFr, 'fr');
@@ -55,9 +63,17 @@ registerLocaleData(localeFr, 'fr');
     MatIconModule,
     MatSlideToggleModule,
     MatButtonToggleModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    GoogleMapsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_RIPPLE_GLOBAL_OPTIONS,
+      useValue: globalRippleConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,9 +1,27 @@
 <mat-toolbar class="toolbarContainer">
+  <!-- LEFT -->
+  <div id="langChooser">
+    <ul>
+      <li
+        class="pointer"
+        *ngFor="let lang of languages | keyvalue"
+        (click)="changeLang(lang.value)"
+        [class.isCurrentLanguage]="isCurrentLanguage(lang.value)"
+      >
+        <img [src]="'assets/images/flags/' + lang.value + '.png'" [alt]="lang.key">
+      </li>
+    </ul>
+  </div>
+
   <span id="spaceFiller"></span>
-  <mat-slide-toggle
-    #themeSwitcher
-    disableRipple 
-    [checked]="toolbarSettings?.theme === darkTheme"
-    (change)="themeChange($event)"
-  ></mat-slide-toggle>
+
+  <!-- RIGHT -->
+  <div id="themeChooser">
+    <mat-slide-toggle
+      #themeSwitcher
+      disableRipple
+      [checked]="toolbarSettings?.theme === darkTheme"
+      (change)="changeTheme($event)"
+    ></mat-slide-toggle>
+  </div>
 </mat-toolbar>
