@@ -16,7 +16,6 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MinecraftHomeComponent} from './minecraft/minecraft-home.component';
-import {ToolbarComponent} from './shared/components/toolbar/toolbar.component';
 import {EarthquakeHomeComponent} from './earthquake/earthquake-home.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
@@ -26,6 +25,14 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions} from "@angular/material/core";
 import {GoogleMapsModule} from "@angular/google-maps";
+import { DatanalyzerComponent } from './minecraft/components/datanalyzer/datanalyzer.component';
+import { HomeComponent } from './home/home/home.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { NavbarItemComponent } from './shared/components/navbar-item/navbar-item.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -38,15 +45,15 @@ registerLocaleData(localeFr, 'fr');
   declarations: [
     AppComponent,
     MinecraftHomeComponent,
+    EarthquakeHomeComponent,
+    DatanalyzerComponent,
+    HomeComponent,
+    PageNotFoundComponent,
     ToolbarComponent,
-    EarthquakeHomeComponent
+    NavbarComponent,
+    NavbarItemComponent,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FontAwesomeModule,
-    AppRoutingModule,
-    HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
@@ -57,6 +64,11 @@ registerLocaleData(localeFr, 'fr');
         ]
       }
     }),
+    BrowserModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    AppRoutingModule,
+    HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
@@ -66,7 +78,9 @@ registerLocaleData(localeFr, 'fr');
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [
     {

@@ -7,6 +7,8 @@ import {DOCUMENT} from "@angular/common";
 import {Language} from "../../constants/language";
 import {TranslateService} from "@ngx-translate/core";
 import {LanguagesService} from "../../services/languages.service";
+import {AppRoutes} from "../../constants/routes";
+import {NavbarItem} from "../../models/navbar";
 
 @Component({
   selector: 'app-toolbar',
@@ -24,6 +26,17 @@ export class ToolbarComponent implements AfterViewInit, OnInit {
   darkTheme = Theme.DARK;
   
   languages = Language;
+  
+  routes = AppRoutes;
+  
+  navBarItems: NavbarItem[] = [
+    {
+      route: AppRoutes.HOME
+    },
+    {
+      route: AppRoutes.MINECRAFT
+    }
+  ]
   
   
   constructor(

@@ -1,0 +1,8 @@
+<button
+  class="item"
+  mat-button
+  [routerLink]="absolutePath"
+  routerLinkActive="active"
+>
+  {{ item.title || item.route.title | translate }}
+</button>

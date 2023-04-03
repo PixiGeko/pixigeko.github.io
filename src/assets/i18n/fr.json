@@ -1,19 +1,33 @@
 {
+  "common": {
+    "page_not_found": {
+      "go_home": "Retour à l'accueil"
+    }
+  },
   "earthquake": {
-    "periods": {
-      "title": "Période",
-      "last_hour": "Dernière heure",
-      "last_day": "Dernier jour",
-      "last_week": "Dernière semaine",
-      "last_month": "Dernier mois"
-    },
     "categories": {
-      "title": "Catégorie",
-      "significant": "Significatifs",
-      "4_5": "Magnitude 4.5+",
-      "2_5": "Magnitude 2.5+",
       "1_0": "Magnitude 1.0+",
-      "all": "Tout"
+      "2_5": "Magnitude 2.5+",
+      "4_5": "Magnitude 4.5+",
+      "all": "Tout",
+      "significant": "Significatifs",
+      "title": "Catégorie"
+    },
+    "periods": {
+      "last_day": "Dernier jour",
+      "last_hour": "Dernière heure",
+      "last_month": "Dernier mois",
+      "last_week": "Dernière semaine",
+      "title": "Période"
+    }
+  },
+  "navigation": {
+    "home": {
+      "title": "Accueil"
+    },
+    "minecraft": {
+      "title": "Minecraft",
+      "datanalyzer": "Datanalyzer"
     }
   }
 }
