@@ -2,9 +2,10 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MinecraftHomeComponent} from "./minecraft/minecraft-home.component";
 import {DatanalyzerComponent} from "./minecraft/components/datanalyzer/datanalyzer.component";
-import {HomeComponent} from "./home/home/home.component";
+import {HomeComponent} from "./home/home.component";
 import {PageNotFoundComponent} from "./shared/components/page-not-found/page-not-found.component";
 import {AppRoutes} from "./shared/constants/routes";
+import {CodaHomeComponent} from "./coda/coda-home.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
         component: DatanalyzerComponent
       }
     ]
+  },
+  {
+    path: AppRoutes.CODA.path, pathMatch: 'full',
+    title: AppRoutes.CODA.title,
+    component: CodaHomeComponent
   },
   {
     path: '404',

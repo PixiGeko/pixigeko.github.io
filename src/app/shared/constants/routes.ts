@@ -6,7 +6,7 @@ export class AppRoutes {
   /* --------------------------------------------- */
   static HOME: AppRoute = {
     path: 'home',
-    title: 'navigation.home.title'
+    title: 'navigation.home.home'
   }
 
   static PAGE_NOT_FOUND: AppRoute = {
@@ -19,13 +19,21 @@ export class AppRoutes {
   /* --------------------------------------------- */
   static MINECRAFT: AppRoute = {
     path: 'minecraft',
-    title: 'navigation.minecraft.title'
+    title: 'navigation.minecraft.home'
   }
   
   static MINECRAFT_DATANALYZER: AppRoute = {
     path: 'datanalyzer',
     title: 'navigation.minecraft.datanalyzer',
     parent: AppRoutes.MINECRAFT
+  }
+
+  /* --------------------------------------------- */
+  /*                    CODA                       */
+  /* --------------------------------------------- */
+  static CODA: AppRoute = {
+    path: 'coda',
+    title: 'navigation.coda.home'
   }
   
   static absolutePath(route: AppRoute) {

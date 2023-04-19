@@ -1,5 +1,6 @@
 @use './node_modules/@angular/material/index' as mat;
 
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import './node_modules/@angular/material/theming';
 @import 'src/assets/styles/variables';
 @import 'src/assets/styles/themes';
@@ -19,4 +20,12 @@ body, html {
 
 .contentContainer {
   padding: 5px;
+}
+
+// -------------------------------------- //
+//               FORM FIELDS              //
+// -------------------------------------- //
+
+mat-form-field {
+  width: 100%;
 }

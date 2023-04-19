@@ -1,5 +1,9 @@
 {
   "common": {
+    "dnd": {
+      "drop_files": "Drop folder here...",
+      "upload_button": "...or upload it!"
+    },
     "page_not_found": {
       "go_home": "Go to home"
     }
@@ -22,12 +26,15 @@
     }
   },
   "navigation": {
+    "coda": {
+      "home": "Coda"
+    },
     "home": {
-      "title": "Home"
+      "home": "Home"
     },
     "minecraft": {
-      "title": "Minecraft",
-      "datanalyzer": "Datanalyzer"
+      "datanalyzer": "Datanalyzer",
+      "home": "Minecraft"
     }
   }
 }

@@ -1,1 +1,72 @@
-<p>DATANALYZER</p>
+<app-stepper #stepper [steps]="[
+      {
+        active: this.canGoToUpload.bind(this),
+        id: 'upload',
+        template: this.fileUpload,
+        titleTK: 'datanalyzer.steps.upload'
+      },
+      {
+        active: this.canGoToAnalyzing.bind(this),
+        id: 'analyze',
+        template: this.analyzing,
+        titleTK: 'datanalyzer.steps.analyzing'
+      },
+      {
+        active: this.canGoToStats.bind(this),
+        id: 'stats',
+        template: this.stats,
+        titleTK: 'datanalyzer.steps.stats'
+      }
+    ]">
+</app-stepper>
+
+<ng-template #fileUpload id="fileUploadContainer">
+  <app-dropzone
+    (filesUploaded)="filesUploaded($event)"
+  ></app-dropzone>
+</ng-template>
+
+<ng-template #analyzing id="analyzingContainer">
+  <form>
+    <mat-form-field 
+      appearance="outline" 
+      [formGroup]="analyzeForm"
+    >
+      <mat-label>{{ 'minecraft.datanalyzer.analyze.version' | translate }}</mat-label>
+      <mat-select formControlName="version">
+        <mat-option
+          *ngFor="let version of versions"
+          [value]="version"
+        >{{version.id}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <button
+    mat-raised-button
+    class="startAnalyzeButton"
+    [disabled]="!canStartAnalyze()"
+    color="primary"
+    (click)="startAnalyze()"
+  >
+    {{ 'minecraft.datanalyzer.analyze.start' | translate }}
+  </button>
+  
+  <hr/>
+  
+  <mat-expansion-panel class="fileListExpansionPanel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ 'minecraft.datanalyzer.analyze.file_count' | translate: filesToAnalyze.length }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="fileListContainer">
+      <p *ngFor="let file of filesToAnalyze">{{ file.file.webkitRelativePath }}</p>
+    </div>
+    
+  </mat-expansion-panel>
+</ng-template>
+
+<ng-template #stats id="statsContainer">
+
+</ng-template>

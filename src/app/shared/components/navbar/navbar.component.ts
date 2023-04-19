@@ -7,5 +7,5 @@ import {NavbarItem} from "../../models/navbar";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  @Input() items!: NavbarItem[];
+  @Input() items?: NavbarItem[];
 }

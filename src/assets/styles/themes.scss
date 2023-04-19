@@ -17,8 +17,8 @@ $app-dark-theme: mat.define-dark-theme(
       ),
     )
 );
-$dark-foreground-palette: map-get($app-dark-theme, foreground);
-$dark-background-palette: map-get($app-dark-theme, background);
+$dark-foreground-palette: map-get($app-dark-theme, 'foreground');
+$dark-background-palette: map-get($app-dark-theme, 'background');
 
 $app-light-theme: mat.define-light-theme(
     (
@@ -29,5 +29,5 @@ $app-light-theme: mat.define-light-theme(
       ),
     )
 );
-$light-foreground-palette: map-get($app-light-theme, foreground);
-$light-background-palette: map-get($app-light-theme, background);
+$light-foreground-palette: map-get($app-light-theme, 'foreground');
+$light-background-palette: map-get($app-light-theme, 'background');
