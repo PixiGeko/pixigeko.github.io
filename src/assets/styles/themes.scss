@@ -5,9 +5,9 @@
 
 
 .dark {
-  @include mat.all-component-themes($app-dark-theme);
+  @include mat.all-component-colors($app-dark-theme);
 }
 
 .light {
-  @include mat.all-component-themes($app-light-theme);
+  @include mat.all-component-colors($app-light-theme);
 }
