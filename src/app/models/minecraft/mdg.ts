@@ -1,9 +1,7 @@
 export interface MGDIndex {
   latest: string;
   latest_release: string;
-  versions: {
-    [key: string]: MGDIndexVersion;
-  };
+  versions: Record<string, MGDIndexVersion>
 }
 
 export interface MGDIndexVersion {
@@ -19,9 +17,7 @@ export interface MGDIndexVersion {
 
 export interface Command {
   type: string;
-  children: {
-    [key: string]: Command;
-  };
+  children: Record<string, Command>
 }
 
 export interface MGDLanguages {

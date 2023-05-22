@@ -1,3 +1,41 @@
 <div class="datassetsContainer">
-  
+  <div class="selectContainer">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'minecraft.datassets_download.version' | translate }}</mat-label>
+      <mat-select required [(ngModel)]="status.selectedVersion" (ngModelChange)="selectedVersionChanged()">
+        <mat-optgroup *ngFor="let group of versions | keyvalue: reverse" [label]="group.key">
+          <mat-option *ngFor="let version of group.value" [value]="version">
+            {{ version.id }}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="buttonContainer">
+    <div>
+      <button mat-raised-button color="primary" [disabled]="!canDownloadAssets" (click)="download('assets')">
+        {{ 'minecraft.datassets_download.assets' | translate }}
+        <mat-icon *ngIf="status.data.isLoading">add</mat-icon>
+      </button>
+      <ng-container *ngTemplateOutlet="mcmetaDetails; context: { mcmeta: status.assets.mcmeta }"></ng-container>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" [disabled]="!canDownloadData" (click)="download('data')">
+        {{ 'minecraft.datassets_download.data' | translate }}
+        <mat-icon *ngIf="status.data.isLoading">add</mat-icon>
+      </button>
+      
+      <ng-container *ngTemplateOutlet="mcmetaDetails; context: { mcmeta: status.data.mcmeta }"></ng-container>
+    </div>
+  </div>
 </div>
+
+<ng-template #mcmetaDetails let-mcmeta="mcmeta">
+  <div *ngIf="mcmeta">
+    <p>
+      <span>{{ 'minecraft.datassets_download.mcmeta.pack_format' | translate }} </span>
+      <code>{{ mcmeta.pack.pack_format }}</code>
+    </p>
+  </div>
+</ng-template>

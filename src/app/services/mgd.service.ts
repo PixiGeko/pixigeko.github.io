@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {MGDIndex, MGDIndexVersion} from "../models/mdg";
+import {MGDIndex, MGDIndexVersion} from "../models/minecraft/mdg";
+import {MCMeta} from "../models/minecraft/mcmeta";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MGDService {
   static MGD_BASE_URL = 'https://raw.githubusercontent.com/PixiGeko/Minecraft-generated-data/master';
+  static MDA_BASE_URL = 'https://raw.githubusercontent.com/PixiGeko/Minecraft-default-assets';
+  static MDD_BASE_URL = 'https://raw.githubusercontent.com/PixiGeko/Minecraft-default-data';
 
   constructor(private http: HttpClient) {
   }
@@ -45,5 +48,17 @@ export class MGDService {
 
   loadCGVersionTxt(version: MGDIndexVersion, path: string) {
     return this.loadVersionTxt(version, `custom-generated/${path}`);
+  }
+  
+  loadAssetsMCMeta(version: MGDIndexVersion) {
+    return this.http.get<MCMeta>(`${MGDService.MDA_BASE_URL}/${this.toVersionBranch(version)}/pack.mcmeta`);
+  }
+
+  loadDataMCMeta(version: MGDIndexVersion) {
+    return this.http.get<MCMeta>(`${MGDService.MDD_BASE_URL}/${this.toVersionBranch(version)}/pack.mcmeta`);
+  }
+  
+  toVersionBranch(version: MGDIndexVersion) {
+    return version.id.split(' ').join('_').toLowerCase();
   }
 }

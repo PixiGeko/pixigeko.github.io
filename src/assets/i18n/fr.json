@@ -35,6 +35,7 @@
     },
     "minecraft": {
       "datanalyzer": "Datanalyzer",
+      "datassets_download": "",
       "home": "Minecraft"
     }
   }

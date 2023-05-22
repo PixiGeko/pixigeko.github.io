@@ -9,32 +9,24 @@
       "message": "This page doesn't exist"
     }
   },
-  "earthquake": {
-    "categories": {
-      "1_0": "Magnitude 1.0+",
-      "2_5": "Magnitude 2.5+",
-      "4_5": "Magnitude 4.5+",
-      "all": "All",
-      "significant": "Significant",
-      "title": "Category"
-    },
-    "periods": {
-      "last_day": "Last day",
-      "last_hour": "Last hour",
-      "last_month": "Last month",
-      "last_week": "Last week",
-      "title": "Period"
+  "minecraft": {
+    "datassets_download": {
+      "assets": "Download default assets",
+      "data": "Download default data",
+      "mcmeta": {
+        "description": "Description:",
+        "pack_format": "Pack format:"
+      },
+      "version": "Version"
     }
   },
   "navigation": {
-    "coda": {
-      "home": "Coda"
-    },
     "home": {
       "home": "Home"
     },
     "minecraft": {
       "datanalyzer": "Datanalyzer",
+      "datassets_download": "Default assets & data folder",
       "home": "Minecraft"
     }
   }

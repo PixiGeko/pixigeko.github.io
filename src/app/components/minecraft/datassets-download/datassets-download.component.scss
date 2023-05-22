@@ -1,5 +1,22 @@
 .datassetsContainer {
   margin-left: auto;
   margin-right: auto;
-  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    
+    div {
+      flex-grow: 1;
+
+      button {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+    }
+  }
 }

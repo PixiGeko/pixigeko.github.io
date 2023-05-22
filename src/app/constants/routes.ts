@@ -24,7 +24,7 @@ export class AppRoutes {
 
   static MINECRAFT_DOWNLOAD: AppRoute = {
     path: 'downloads',
-    title: 'navigation.minecraft.downloads',
+    title: 'navigation.minecraft.datassets_download',
     parent: AppRoutes.MINECRAFT
   }
   
