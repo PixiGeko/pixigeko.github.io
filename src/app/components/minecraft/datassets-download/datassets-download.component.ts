@@ -24,7 +24,7 @@ export class DatassetsDownloadComponent implements OnInit {
   ngOnInit() {
     this.mgdService.index().subscribe({
       next: (index) => {
-        this.versions = this.groupBy(Object.values(index.versions), v => v.version);
+        this.versions = this.groupBy(Object.values(index.versions).reverse(), v => v.version);
       }
     })
   }
@@ -34,10 +34,7 @@ export class DatassetsDownloadComponent implements OnInit {
     this.status.data = {};
     this.status.assets = {};
     
-    this.mgdService.loadAssetsMCMeta(this.status.selectedVersion).subscribe(mcmeta => {
-      this.status.assets.mcmeta = mcmeta
-      console.log(mcmeta)
-    });
+    this.mgdService.loadAssetsMCMeta(this.status.selectedVersion).subscribe(mcmeta => this.status.assets.mcmeta = mcmeta);
     this.mgdService.loadDataMCMeta(this.status.selectedVersion).subscribe(mcmeta => this.status.data.mcmeta = mcmeta);
   }
   
@@ -53,7 +50,7 @@ export class DatassetsDownloadComponent implements OnInit {
     }, {} as Record<K, T[]>)
   }
 
-  reverse = (a: KeyValue<string, MGDIndexVersion[]>, b: KeyValue<string, MGDIndexVersion[]>): number => {
+  reverse(a: KeyValue<string, MGDIndexVersion[]>, b: KeyValue<string, MGDIndexVersion[]>): number {
     if(a.key === 'special') return 1;
     return a.key > b.key ? -1 : (b.key > a.key ? 1 : 0);
   }

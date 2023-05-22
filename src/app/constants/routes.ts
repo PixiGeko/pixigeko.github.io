@@ -6,12 +6,14 @@ export class AppRoutes {
   /* --------------------------------------------- */
   static HOME: AppRoute = {
     path: 'home',
-    title: 'navigation.home.home'
+    title: 'navigation.home.home',
+    tabTitle: 'Home'
   }
 
   static PAGE_NOT_FOUND: AppRoute = {
     path: '404',
-    title: ''
+    title: '',
+    tabTitle: 'Page not found'
   }
 
   /* --------------------------------------------- */
@@ -19,13 +21,15 @@ export class AppRoutes {
   /* --------------------------------------------- */
   static MINECRAFT: AppRoute = {
     path: 'minecraft',
-    title: 'navigation.minecraft.home'
+    title: 'navigation.minecraft.home',
+    tabTitle: 'Minecraft'
   }
 
   static MINECRAFT_DOWNLOAD: AppRoute = {
-    path: 'downloads',
+    path: 'datassets_download',
     title: 'navigation.minecraft.datassets_download',
-    parent: AppRoutes.MINECRAFT
+    parent: AppRoutes.MINECRAFT,
+    tabTitle: 'Datassets download'
   }
   
   /* --------------------------------------------- */

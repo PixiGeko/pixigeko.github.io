@@ -5,6 +5,9 @@ import {HomeComponent} from "./components/home/home.component";
 import {PageNotFoundComponent} from "./components/shared/page-not-found/page-not-found.component";
 import {AppRoutes} from "./constants/routes";
 import {DatassetsDownloadComponent} from "./components/minecraft/datassets-download/datassets-download.component";
+import {AppRoute} from "./models/route";
+
+const routeTitle = (route: AppRoute) => route.tabTitle ?? route.title;
 
 const routes: Routes = [
   {
@@ -13,17 +16,17 @@ const routes: Routes = [
   },
   {
     path: AppRoutes.HOME.path, pathMatch: 'full',
-    title: AppRoutes.HOME.title,
+    title: routeTitle(AppRoutes.HOME),
     component: HomeComponent
   },
   {
     path: AppRoutes.MINECRAFT.path,
-    title: AppRoutes.MINECRAFT.title,
+    title: routeTitle(AppRoutes.MINECRAFT),
     component: MinecraftHomeComponent,
     children: [
       {
         path: AppRoutes.MINECRAFT_DOWNLOAD.path,
-        title: AppRoutes.MINECRAFT_DOWNLOAD.title,
+        title: routeTitle(AppRoutes.MINECRAFT_DOWNLOAD),
         component: DatassetsDownloadComponent
       }
     ]
@@ -31,12 +34,12 @@ const routes: Routes = [
   {
     path: '404',
     component: PageNotFoundComponent,
-    title: AppRoutes.PAGE_NOT_FOUND.title
+    title: routeTitle(AppRoutes.PAGE_NOT_FOUND)
   },
   {
     path: '**',
     component: PageNotFoundComponent,
-    title: AppRoutes.PAGE_NOT_FOUND.title
+    title: routeTitle(AppRoutes.PAGE_NOT_FOUND)
   }
 ];
 
