@@ -1,6 +1,6 @@
 <div class="datassetsContainer">
   <div class="selectContainer">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="hideHintWrapper">
       <mat-label>{{ 'minecraft.datassets_download.version' | translate }}</mat-label>
       <mat-select required [(ngModel)]="status.selectedVersion" (ngModelChange)="selectedVersionChanged()">
         <mat-optgroup *ngFor="let group of versions | keyvalue: reverse" [label]="group.key">
