@@ -1,0 +1,11 @@
+<button
+  *ngIf="!item.hide"
+  class="item"
+  [class.text-uppercase]="uppercase"
+  mat-button
+  [routerLink]="absolutePath"
+  routerLinkActive="active"
+  [disabled]="item.disabled"
+>
+  <span>{{ (item.title || item.route.title) | translate }}</span>
+</button>

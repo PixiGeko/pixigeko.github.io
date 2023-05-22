@@ -19,13 +19,19 @@
     "target": "esnext",
     "module": "esnext",
     "useDefineForClassFields": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "lib": [
       "esnext",
       "dom"
     ]
   },
-  "files": ["src/main.ts"],
-  "include": ["src/**/*.d.ts"],
+  "files": [
+    "src/main.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

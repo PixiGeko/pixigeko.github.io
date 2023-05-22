@@ -1,11 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MinecraftHomeComponent} from "./minecraft/minecraft-home.component";
-import {DatanalyzerComponent} from "./minecraft/components/datanalyzer/datanalyzer.component";
-import {HomeComponent} from "./home/home.component";
-import {PageNotFoundComponent} from "./shared/components/page-not-found/page-not-found.component";
-import {AppRoutes} from "./shared/constants/routes";
-import {CodaHomeComponent} from "./coda/coda-home.component";
+import {MinecraftHomeComponent} from "./components/minecraft/minecraft-home.component";
+import {HomeComponent} from "./components/home/home.component";
+import {PageNotFoundComponent} from "./components/shared/page-not-found/page-not-found.component";
+import {AppRoutes} from "./constants/routes";
+import {DatassetsDownloadComponent} from "./components/minecraft/datassets-download/datassets-download.component";
 
 const routes: Routes = [
   {
@@ -13,7 +12,7 @@ const routes: Routes = [
     redirectTo: AppRoutes.HOME.path
   },
   {
-    path: AppRoutes.HOME.path, pathMatch: 'full', 
+    path: AppRoutes.HOME.path, pathMatch: 'full',
     title: AppRoutes.HOME.title,
     component: HomeComponent
   },
@@ -23,16 +22,11 @@ const routes: Routes = [
     component: MinecraftHomeComponent,
     children: [
       {
-        path: AppRoutes.MINECRAFT_DATANALYZER.path,
-        title: AppRoutes.MINECRAFT_DATANALYZER.title,
-        component: DatanalyzerComponent
+        path: AppRoutes.MINECRAFT_DOWNLOAD.path,
+        title: AppRoutes.MINECRAFT_DOWNLOAD.title,
+        component: DatassetsDownloadComponent
       }
     ]
-  },
-  {
-    path: AppRoutes.CODA.path, pathMatch: 'full',
-    title: AppRoutes.CODA.title,
-    component: CodaHomeComponent
   },
   {
     path: '404',

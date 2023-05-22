@@ -1,0 +1,17 @@
+.whereAmIContainer {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+
+  img {
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  button {
+    margin-top: 5px;
+  }
+}

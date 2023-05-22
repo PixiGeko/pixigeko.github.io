@@ -14,12 +14,8 @@ body, html {
   font-family: $app-font-family;
 }
 
-.dark {
-  @include mat.all-component-colors($app-dark-theme);
-}
-
 .contentContainer {
-  padding: 5px;
+  padding: 15px 10px
 }
 
 // -------------------------------------- //

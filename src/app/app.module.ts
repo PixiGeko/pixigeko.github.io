@@ -15,8 +15,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MinecraftHomeComponent} from './minecraft/minecraft-home.component';
-import {EarthquakeHomeComponent} from './earthquake/earthquake-home.component';
+import {MinecraftHomeComponent} from './components/minecraft/minecraft-home.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
@@ -25,26 +24,26 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions} from "@angular/material/core";
 import {GoogleMapsModule} from "@angular/google-maps";
-import { DatanalyzerComponent } from './minecraft/components/datanalyzer/datanalyzer.component';
-import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import {HomeComponent} from './components/home/home.component';
+import {PageNotFoundComponent} from './components/shared/page-not-found/page-not-found.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
-import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { NavbarItemComponent } from './shared/components/navbar-item/navbar-item.component';
-import { CodaHomeComponent } from './coda/coda-home.component';
+import {ToolbarComponent} from './components/shared/toolbar/toolbar.component';
+import {NavbarComponent} from './components/shared/navbar/navbar.component';
+import {NavbarItemComponent} from './components/shared/navbar-item/navbar-item.component';
 import {MatStepperModule} from "@angular/material/stepper";
-import { PreviousNextComponent } from './shared/components/previous-next/previous-next.component';
-import { DropzoneComponent } from './shared/components/dropzone/dropzone.component';
+import {PreviousNextComponent} from './components/shared/previous-next/previous-next.component';
+import {DropzoneComponent} from './components/shared/dropzone/dropzone.component';
 import {CdkDropList} from "@angular/cdk/drag-drop";
-import { DragAndDropDirective } from './shared/directives/drag-and-drop.directive';
-import { StepperComponent } from './shared/components/stepper/stepper.component';
+import {DragAndDropDirective} from './directives/drag-and-drop.directive';
+import {StepperComponent} from './components/shared/stepper/stepper.component';
 import {MatSortModule} from "@angular/material/sort";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatCardModule} from "@angular/material/card";
+import { DatassetsDownloadComponent } from './components/minecraft/datassets-download/datassets-download.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -57,18 +56,16 @@ registerLocaleData(localeFr, 'fr');
   declarations: [
     AppComponent,
     MinecraftHomeComponent,
-    EarthquakeHomeComponent,
-    DatanalyzerComponent,
     HomeComponent,
     PageNotFoundComponent,
     ToolbarComponent,
     NavbarComponent,
     NavbarItemComponent,
-    CodaHomeComponent,
     PreviousNextComponent,
     DropzoneComponent,
     DragAndDropDirective,
     StepperComponent,
+    DatassetsDownloadComponent,
   ],
   imports: [
     TranslateModule.forRoot({
@@ -105,7 +102,8 @@ registerLocaleData(localeFr, 'fr');
     MatSelectModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule
   ],
   providers: [
     {
@@ -118,6 +116,7 @@ registerLocaleData(localeFr, 'fr');
 
 export class AppModule {
   static injector: Injector;
+
   constructor(private injector: Injector) {
     AppModule.injector = injector;
   }

@@ -5,7 +5,8 @@
       "upload_button": "...or upload it!"
     },
     "page_not_found": {
-      "go_home": "Go to home"
+      "go_home": "Go to home",
+      "message": "This page doesn't exist"
     }
   },
   "earthquake": {

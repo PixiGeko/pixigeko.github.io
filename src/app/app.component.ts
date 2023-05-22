@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, Inject} from '@angular/core';
-import {ThemesService} from "./shared/services/themes.service";
+import {ThemesService} from "./services/themes.service";
 import {DOCUMENT} from "@angular/common";
 import {TranslateService} from "@ngx-translate/core";
-import {LanguagesService} from "./shared/services/languages.service";
+import {LanguagesService} from "./services/languages.service";
 
 @Component({
   selector: 'app-root',

@@ -1,0 +1,19 @@
+.dropzoneContainer {
+  display: flex;
+  justify-content: center;
+
+  .dropzone {
+    width: fit-content;
+    padding: 50px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px dashed lightgray;
+    border-radius: 25px;
+    gap: 15px;
+  }
+
+  .dropzone.over {
+    border-width: 2px;
+  }
+}
