@@ -28,6 +28,10 @@ const routes: Routes = [
         path: AppRoutes.MINECRAFT_DOWNLOAD.path,
         title: routeTitle(AppRoutes.MINECRAFT_DOWNLOAD),
         component: DatassetsDownloadComponent
+      },
+      {
+        path: '', pathMatch: 'full',
+        redirectTo: AppRoutes.MINECRAFT_DOWNLOAD.path
       }
     ]
   },
