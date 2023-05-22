@@ -44,6 +44,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatCardModule} from "@angular/material/card";
 import { DatassetsDownloadComponent } from './components/minecraft/datassets-download/datassets-download.component';
+import { PageUnderConstructComponent } from './components/shared/page-under-construct/page-under-construct.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -66,6 +67,7 @@ registerLocaleData(localeFr, 'fr');
     DragAndDropDirective,
     StepperComponent,
     DatassetsDownloadComponent,
+    PageUnderConstructComponent,
   ],
   imports: [
     TranslateModule.forRoot({
