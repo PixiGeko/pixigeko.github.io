@@ -1,0 +1,14 @@
+<div class="contentContainer">
+  <div class="twitterAccountsContainer">
+    <div
+      *ngFor="let project of twitterAccounts"
+      class="twitterAccountContainer cardBackground mat-elevation-z8 hoverEffect pointer"
+      (click)="openTwitterAccount(project)"
+    >
+      <img class="image" [src]="project.image" [alt]="project.id"/>
+      <h2 class="id text-center">@{{ project.id }}</h2>
+      <p class="description text-center">{{ project.descriptionTK | translate }}</p>
+    </div>
+  </div>
+</div>
+

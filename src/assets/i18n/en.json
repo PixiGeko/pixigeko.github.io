@@ -29,10 +29,22 @@
       "datassets_download": "Default assets & data folder",
       "home": "Minecraft"
     },
-    "projects": {
-      "home": "Projects",
-      "twitter": "Twitter",
-      "coda": "Coda.io"
+    "contacts": {
+      "home": "Contacts",
+      "twitter": "Twitter"
+    }
+  },
+  "contacts": {
+    "twitter": {
+      "pixigeko": {
+        "description": "My personnal account.\nIf you want to contact me, please use this account."
+      },
+      "pixiexe": {
+        "description": "A (dead) side account for my projects"
+      },
+      "mcrelease": {
+        "description": "Sends a tweet everytime a new Minecraft version is released"
+      }
     }
   }
 }

@@ -45,9 +45,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatCardModule} from "@angular/material/card";
 import { DatassetsDownloadComponent } from './components/minecraft/datassets-download/datassets-download.component';
 import { PageUnderConstructComponent } from './components/shared/page-under-construct/page-under-construct.component';
-import { ProjetsHomeComponent } from './components/projects/projets-home.component';
-import { TwitterProjectsComponent } from './components/projects/twitter-projects/twitter-projects.component';
-import { CodaProjectsComponent } from './components/projects/coda-projects/coda-projects.component';
+import { ContactsHomeComponent } from './components/contacts/contacts-home.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -71,9 +69,7 @@ registerLocaleData(localeFr, 'fr');
     StepperComponent,
     DatassetsDownloadComponent,
     PageUnderConstructComponent,
-    ProjetsHomeComponent,
-    TwitterProjectsComponent,
-    CodaProjectsComponent,
+    ContactsHomeComponent,
   ],
   imports: [
     TranslateModule.forRoot({

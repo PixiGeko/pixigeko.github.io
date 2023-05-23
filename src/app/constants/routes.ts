@@ -35,24 +35,17 @@ export class AppRoutes {
   /* --------------------------------------------- */
   /*                 PROJECTS                      */
   /* --------------------------------------------- */
-  static PROJECTS: AppRoute = {
-    path: 'projects',
-    title: 'navigation.projects.home',
-    tabTitle: 'Projects'
+  static CONTACTS: AppRoute = {
+    path: 'contacts',
+    title: 'navigation.contacts.home',
+    tabTitle: 'Contacts'
   }
 
-  static PROJECTS_TWITTER: AppRoute = {
+  static CONTACTS_TWITTER: AppRoute = {
     path: 'twitter',
-    title: 'navigation.projects.twitter',
-    parent: AppRoutes.PROJECTS,
+    title: 'navigation.contacts.twitter',
+    parent: AppRoutes.CONTACTS,
     tabTitle: 'Twitter'
-  }
-
-  static PROJECTS_CODA: AppRoute = {
-    path: 'coda',
-    title: 'navigation.projects.coda',
-    parent: AppRoutes.PROJECTS,
-    tabTitle: 'Coda'
   }
   
   /* --------------------------------------------- */

@@ -1,0 +1,36 @@
+.twitterAccountsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+
+  .twitterAccountContainer {
+    $image-size: 150px;
+    $spacing: 10px;
+
+    width: calc($image-size + $spacing * 4);
+    border-radius: 10px;
+    padding: $spacing;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .image {
+      border-radius: calc($image-size / 3);
+      width: $image-size;
+      height: $image-size;
+      margin-bottom: $spacing;
+    }
+    
+    .id {
+      margin-bottom: 5px;
+    }
+
+    .description {
+      overflow-wrap: break-word;
+      margin: 0;
+      white-space: pre-wrap;
+    }
+  }
+}
