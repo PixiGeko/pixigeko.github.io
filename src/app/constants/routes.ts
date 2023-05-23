@@ -31,6 +31,29 @@ export class AppRoutes {
     parent: AppRoutes.MINECRAFT,
     tabTitle: 'Datassets download'
   }
+
+  /* --------------------------------------------- */
+  /*                 PROJECTS                      */
+  /* --------------------------------------------- */
+  static PROJECTS: AppRoute = {
+    path: 'projects',
+    title: 'navigation.projects.home',
+    tabTitle: 'Projects'
+  }
+
+  static PROJECTS_TWITTER: AppRoute = {
+    path: 'twitter',
+    title: 'navigation.projects.twitter',
+    parent: AppRoutes.PROJECTS,
+    tabTitle: 'Twitter'
+  }
+
+  static PROJECTS_CODA: AppRoute = {
+    path: 'coda',
+    title: 'navigation.projects.coda',
+    parent: AppRoutes.PROJECTS,
+    tabTitle: 'Coda'
+  }
   
   /* --------------------------------------------- */
 

@@ -28,6 +28,11 @@
       "datanalyzer": "Datanalyzer",
       "datassets_download": "Default assets & data folder",
       "home": "Minecraft"
+    },
+    "projects": {
+      "home": "Projects",
+      "twitter": "Twitter",
+      "coda": "Coda.io"
     }
   }
 }

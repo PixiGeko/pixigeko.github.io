@@ -33,6 +33,9 @@ export class ToolbarComponent implements AfterViewInit, OnInit {
     },
     {
       route: AppRoutes.MINECRAFT
+    },
+    {
+      route: AppRoutes.PROJECTS
     }
   ]
 

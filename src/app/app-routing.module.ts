@@ -6,6 +6,9 @@ import {PageNotFoundComponent} from "./components/shared/page-not-found/page-not
 import {AppRoutes} from "./constants/routes";
 import {DatassetsDownloadComponent} from "./components/minecraft/datassets-download/datassets-download.component";
 import {AppRoute} from "./models/route";
+import {TwitterProjectsComponent} from "./components/projects/twitter-projects/twitter-projects.component";
+import {CodaProjectsComponent} from "./components/projects/coda-projects/coda-projects.component";
+import {ProjetsHomeComponent} from "./components/projects/projets-home.component";
 
 const routeTitle = (route: AppRoute) => route.tabTitle ?? route.title;
 
@@ -32,6 +35,27 @@ const routes: Routes = [
       {
         path: '', pathMatch: 'full',
         redirectTo: AppRoutes.MINECRAFT_DOWNLOAD.path
+      }
+    ]
+  },
+  {
+    path: AppRoutes.PROJECTS.path,
+    title: routeTitle(AppRoutes.PROJECTS),
+    component: ProjetsHomeComponent,
+    children: [
+      {
+        path: AppRoutes.PROJECTS_TWITTER.path,
+        title: routeTitle(AppRoutes.PROJECTS_TWITTER),
+        component: TwitterProjectsComponent
+      },
+      {
+        path: AppRoutes.PROJECTS_CODA.path,
+        title: routeTitle(AppRoutes.PROJECTS_CODA),
+        component: CodaProjectsComponent
+      },
+      {
+        path: '', pathMatch: 'full',
+        redirectTo: AppRoutes.PROJECTS_TWITTER.path
       }
     ]
   },
