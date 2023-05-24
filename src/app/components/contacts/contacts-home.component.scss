@@ -35,10 +35,11 @@
   flex-wrap: wrap;
 
   .cardContainer {
-    $image-size: 150px;
+    $contact-image-size: 150px;
+    $category-image-size: 40px;
     $spacing: 10px;
 
-    width: calc($image-size + $spacing * 4);
+    width: calc($contact-image-size + $spacing * 4);
     border-radius: 10px;
     padding: $spacing;
 
@@ -46,10 +47,10 @@
     flex-direction: column;
     align-items: center;
 
-    .image {
-      border-radius: calc($image-size / 3);
-      width: $image-size;
-      height: $image-size;
+    .contactImage {
+      border-radius: calc($contact-image-size / 3);
+      width: $contact-image-size;
+      height: $contact-image-size;
       margin-bottom: $spacing;
     }
 
@@ -59,8 +60,16 @@
 
     .description {
       overflow-wrap: break-word;
-      margin: 0;
+      margin-bottom: $spacing;
       white-space: pre-wrap;
+    }
+    
+    .spacer {
+      flex-grow: 1;
+    }
+
+    .categoryImage {
+      height: $category-image-size;
     }
   }
 }
