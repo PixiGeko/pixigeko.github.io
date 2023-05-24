@@ -25,22 +25,20 @@
       "home": "Home"
     },
     "minecraft": {
-      "datanalyzer": "Datanalyzer",
-      "datassets_download": "Default assets & data folder",
-      "home": "Minecraft"
+      "home": "Minecraft",
+      "datassets_download": "Default assets & data folder"
     },
     "contacts": {
-      "home": "Contacts",
-      "twitter": "Twitter"
+      "home": "Contacts"
     }
   },
   "contacts": {
     "twitter": {
       "pixigeko": {
-        "description": "My personnal account.\nIf you want to contact me, please use this account."
+        "description": "My personnal account.\nIf you want to send me a message on twitter, please use this account."
       },
       "pixiexe": {
-        "description": "A (dead) side account for my projects"
+        "description": "A (dead) side account for my projects."
       },
       "mcrelease": {
         "description": "Sends a tweet everytime a new Minecraft version is released"
