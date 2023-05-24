@@ -1,14 +1,50 @@
 <div class="contentContainer">
-  <div class="twitterAccountsContainer">
-    <div
-      *ngFor="let project of twitterAccounts"
-      class="twitterAccountContainer cardBackground mat-elevation-z8 hoverEffect pointer"
-      (click)="openTwitterAccount(project)"
-    >
-      <img class="image" [src]="project.image" [alt]="project.id"/>
-      <h2 class="id text-center">@{{ project.id }}</h2>
-      <p class="description text-center">{{ project.descriptionTK | translate }}</p>
+  <div *ngIf="twitterAccounts.length">
+    <ng-container
+      *ngTemplateOutlet="title; context: {
+      image: 'twitter.png',
+      alt: 'twitter logo',
+      tk: 'contacts.twitter.title'
+    }"
+    ></ng-container>
+    <div class="cardsContainer">
+      <div
+        *ngFor="let twitterAccount of twitterAccounts"
+        class="cardContainer cardBackground mat-elevation-z8 hoverEffect pointer"
+        (click)="openTwitterAccount(twitterAccount)"
+      >
+        <img class="image" [src]="twitterAccount.image" [alt]="twitterAccount.id"/>
+        <h2 class="id text-center noSelect">@{{ twitterAccount.id }}</h2>
+        <p class="description text-center noSelect">{{ twitterAccount.descriptionTK | translate }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="discordAccounts.length">
+    <ng-container
+      *ngTemplateOutlet="title; context: {
+      image: 'discord.png',
+      alt: 'discord logo',
+      tk: 'contacts.discord.title'
+    }"
+    ></ng-container>
+    <div class="cardsContainer">
+      <div
+        *ngFor="let discordAccount of discordAccounts"
+        class="cardContainer cardBackground mat-elevation-z8 hoverEffect"
+      >
+        <img class="image" [src]="discordAccount.image" [alt]="discordAccount.tag"/>
+        <h2 class="id text-center noSelect">{{ discordAccount.tag }}</h2>
+        <p class="description text-center noSelect">{{ discordAccount.descriptionTK | translate }}</p>
+      </div>
     </div>
   </div>
 </div>
 
+<ng-template #title let-image="image" let-alt="alt" let-tk="tk">
+  <div class="titleContainer">
+    <img class="socialImage" [src]="'assets/images/social/' + image" [alt]="alt">
+    <h1 class="title noSelect">{{ tk | translate }}</h1>
+    <img class="socialImage" [src]="'assets/images/social/' + image" [alt]="alt">
+  </div>
+</ng-template>

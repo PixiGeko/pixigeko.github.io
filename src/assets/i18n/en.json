@@ -34,14 +34,21 @@
   },
   "contacts": {
     "twitter": {
+      "title": "Twitter",
       "pixigeko": {
-        "description": "My personnal account.\nIf you want to send me a message on twitter, please use this account."
+        "description": "My main account.\nIf you want to send me a message on twitter, please use this account."
       },
       "pixiexe": {
         "description": "A (dead) side account for my projects."
       },
       "mcrelease": {
-        "description": "Sends a tweet everytime a new Minecraft version is released."
+        "description": "This account sends a tweet everytime a new Minecraft version is released."
+      }
+    },
+    "discord": {
+      "title": "Discord",
+      "pixigeko": {
+        "description": "My personal account.\nThat's it."
       }
     }
   }
