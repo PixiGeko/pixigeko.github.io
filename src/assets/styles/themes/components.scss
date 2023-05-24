@@ -4,15 +4,19 @@
 
 @mixin components-theme($theme) {
   $color-config: mat.get-color-config($theme);
-  $primary-palette: map-get($color-config, 'primary');
-  $accent-palette: map-get($color-config, 'accent');
-  $warn-palette: map-get($color-config, 'accent');
-  $background-palette: map-get($theme, 'background');
-  $foreground-palette: map-get($theme, 'foreground');
+  $primary-palette: map-get($color-config, primary);
+  $accent-palette: map-get($color-config, accent);
+  $warn-palette: map-get($color-config, warn);
+  $background-palette: map-get($theme, background);
+  $foreground-palette: map-get($theme, foreground);
 
   @include generatePaletteClass($primary-palette, 'primary');
   @include generatePaletteClass($accent-palette, 'accent');
   @include generatePaletteClass($warn-palette, 'warn');
+  
+  .mat-toolbar {
+    background-color: darken(map-get($background-palette, background), 4%);
+  }
   
   .hoverBackground {
     background-color: mat.get-color-from-palette($background-palette, hover);
