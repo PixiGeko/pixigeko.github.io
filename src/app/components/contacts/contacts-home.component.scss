@@ -8,18 +8,18 @@
 
 .titleContainer {
   $size: 35px;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
   gap: calc($size * 0.66);
   margin-bottom: 10px;
-  
+
   .socialImage {
     height: $size;
   }
-  
+
   .title {
     font-size: $size;
     text-align: center;
@@ -41,7 +41,7 @@
 
     width: calc($contact-image-size + $spacing * 4);
     border-radius: 10px;
-    padding: $spacing;
+    padding: calc($spacing * 2) $spacing;
 
     display: flex;
     flex-direction: column;
@@ -57,19 +57,19 @@
     .name {
       margin: 0;
     }
-    
+
     .descriptionContainer {
       flex-grow: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      
+
     }
 
     .description {
       overflow-wrap: break-word;
       white-space: pre-wrap;
-      margin: $spacing 0;
+      margin: calc($spacing / 2) 0;
       vertical-align: middle;
     }
 
