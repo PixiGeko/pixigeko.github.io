@@ -41,7 +41,7 @@
         "description": "A (dead) side account for my projects."
       },
       "mcrelease": {
-        "description": "Sends a tweet everytime a new Minecraft version is released"
+        "description": "Sends a tweet everytime a new Minecraft version is released."
       }
     }
   }
