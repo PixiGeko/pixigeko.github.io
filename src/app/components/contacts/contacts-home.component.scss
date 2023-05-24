@@ -46,26 +46,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: $spacing;
 
     .contactImage {
       border-radius: calc($contact-image-size / 3);
       width: $contact-image-size;
       height: $contact-image-size;
-      margin-bottom: $spacing;
     }
 
-    .id {
-      margin-bottom: 5px;
+    .name {
+      margin: 0;
+    }
+    
+    .descriptionContainer {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
     }
 
     .description {
       overflow-wrap: break-word;
-      margin-bottom: $spacing;
       white-space: pre-wrap;
-    }
-    
-    .spacer {
-      flex-grow: 1;
+      margin: 0;
+      vertical-align: middle;
     }
 
     .categoryImage {

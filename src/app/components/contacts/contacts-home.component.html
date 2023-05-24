@@ -7,11 +7,12 @@
         [class.pointer]="contact.url"
         (click)="contact.url ? openURL(contact) : null"
       >
-        <img class="contactImage" [src]="contact.image" [alt]="contact.name"/>
-        <h2 class="id text-center noSelect">{{ contact.name }}</h2>
-        <p class="description text-center noSelect">{{ contact.descriptionTK | translate }}</p>
-        <div class="spacer"></div>
-        <img class="categoryImage" [src]="'assets/images/' + contact.category" [alt]="contact.name"/>
+        <img class="contactImage noSelect" [src]="contact.image" [alt]="contact.name"/>
+        <h2 class="name text-center noSelect">{{ contact.name }}</h2>
+        <div class="descriptionContainer">
+          <p class="description text-center noSelect">{{ contact.descriptionTK | translate }}</p>
+        </div>
+        <img class="categoryImage noSelect" [src]="'assets/images/' + contact.category" [alt]="contact.name"/>
       </div>
     </div>
   </div>

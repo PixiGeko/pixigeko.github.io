@@ -10,6 +10,12 @@ import {DiscordAccount} from "../../models/contacts/discord";
 export class ContactsHomeComponent {
   contacts: Contact[] = [
     {
+      name: 'PixiGeko#9645',
+      descriptionTK: 'contacts.discord.pixigeko.description',
+      image: 'https://cdn.discordapp.com/avatars/207198022319341569/6e7aedc9c268a54a4ff693036ce2a1e2.webp?size=160',
+      category: ContactCategory.DISCORD
+    },
+    {
       name: '@PixiGeko',
       descriptionTK: 'contacts.twitter.pixigeko.description',
       image: 'https://pbs.twimg.com/profile_images/1643724327357956097/QmJpRJv1_400x400.jpg',
@@ -30,12 +36,6 @@ export class ContactsHomeComponent {
       category: ContactCategory.TWITTER,
       url: this.twitterURL('MCRelease')
     },
-    {
-      name: 'PixiGeko#9645',
-      descriptionTK: 'contacts.discord.pixigeko.description',
-      image: 'https://cdn.discordapp.com/avatars/207198022319341569/6e7aedc9c268a54a4ff693036ce2a1e2.webp?size=160',
-      category: ContactCategory.DISCORD
-    }
   ];
 
   openURL(account: Contact) {
