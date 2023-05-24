@@ -22,6 +22,30 @@ app-root {
   padding: 15px 10px;
 }
 
+.languages {
+  :not(.isCurrentLanguage) > img {
+    opacity: 0.45;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    li:not(:last-child) {
+      padding-right: 15px;
+    }
+  }
+}
+
 // -------------------------------------- //
 //               FORM FIELDS              //
 // -------------------------------------- //
@@ -34,4 +58,18 @@ mat-form-field {
       display: none;
     }
   }
+}
+
+// -------------------------------------- //
+//                 EVENTS                 //
+// -------------------------------------- //
+#eventBanner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.prideMonth {
+  @import "assets/styles/events/pride_month";
 }

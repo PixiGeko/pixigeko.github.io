@@ -7,6 +7,7 @@ import {AppRoutes} from "./constants/routes";
 import {DatassetsDownloadComponent} from "./components/minecraft/datassets-download/datassets-download.component";
 import {AppRoute} from "./models/route";
 import {ContactsHomeComponent} from "./components/contacts/contacts-home.component";
+import {SettingsComponent} from "./components/settings/settings.component";
 
 const routeTitle = (route: AppRoute) => route.tabTitle ?? route.title;
 
@@ -40,6 +41,11 @@ const routes: Routes = [
     path: AppRoutes.CONTACTS.path,
     title: routeTitle(AppRoutes.CONTACTS),
     component: ContactsHomeComponent
+  },
+  {
+    path: AppRoutes.SETTINGS.path,
+    title: routeTitle(AppRoutes.SETTINGS),
+    component: SettingsComponent
   },
   {
     path: '404',

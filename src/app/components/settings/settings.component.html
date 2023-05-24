@@ -1,0 +1,50 @@
+<div class="contentContainer settingsContainer">
+  <!-- THEME -->
+  <div class="setting">
+    <h1 class="noSelect">{{ 'settings.theme' | translate }}</h1>
+    <mat-slide-toggle
+      id="themeSwitcher"
+      #themeSwitcher
+      disableRipple
+      [checked]="settings.theme === themes.DARK"
+      (change)="changeTheme($event)"
+    ></mat-slide-toggle>
+  </div>
+
+  <!-- LANGUAGE -->
+  <div class="setting">
+    <h1 class="noSelect">{{ 'settings.language' | translate }}</h1>
+    <div class="languages">
+      <ul>
+        <li
+          class="pointer"
+          *ngFor="let lang of languages | keyvalue"
+          (click)="changeLang(lang.value)"
+          [class.isCurrentLanguage]="settings.language === lang.value"
+        >
+          <img [src]="'assets/images/flags/' + lang.value + '.png'" [alt]="lang.key">
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SHOW EVENT TEXT COLOR -->
+  <div class="setting" *ngIf="hasActiveEvent">
+    <h1 class="noSelect">{{ 'settings.events.use_text_color' | translate }}</h1>
+    <mat-slide-toggle
+      disableRipple
+      [checked]="settings.events.use_text_color"
+      (change)="changeEventUseTextColor($event)"
+    ></mat-slide-toggle>
+  </div>
+
+  <!-- SHOW EVENT BANNER -->
+  <div class="setting" *ngIf="hasActiveEvent">
+    <h1 class="noSelect">{{ 'settings.events.show_banner' | translate }}</h1>
+    <mat-slide-toggle
+      disableRipple
+      [checked]="settings.events.show_event_banner"
+      (change)="changeEventShowBanner($event)"
+    ></mat-slide-toggle>
+  </div>
+</div>

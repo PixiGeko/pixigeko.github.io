@@ -40,6 +40,15 @@ export class AppRoutes {
     title: 'navigation.contacts.home',
     tabTitle: 'Contacts'
   }
+
+  /* --------------------------------------------- */
+  /*                 SETTINGS                      */
+  /* --------------------------------------------- */
+  static SETTINGS: AppRoute = {
+    path: 'settings',
+    title: 'navigation.settings.home',
+    tabTitle: 'Settings'
+  }
   
   /* --------------------------------------------- */
 

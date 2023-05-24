@@ -14,7 +14,7 @@
   @include generatePaletteClass($accent-palette, 'accent');
   @include generatePaletteClass($warn-palette, 'warn');
   
-  .mat-toolbar {
+  .darkerBackground {
     background-color: darken(map-get($background-palette, background), 4%);
   }
   

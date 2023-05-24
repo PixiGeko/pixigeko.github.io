@@ -30,6 +30,9 @@
     },
     "contacts": {
       "home": "Contacts"
+    },
+    "settings": {
+      "home": "Settings"
     }
   },
   "contacts": {
@@ -50,6 +53,14 @@
       "pixigeko": {
         "description": "My personal account.\nYou can send me a DM if needed."
       }
+    }
+  },
+  "settings": {
+    "theme": "Theme",
+    "language": "Language",
+    "events": {
+      "use_text_color": "Use event text color",
+      "show_banner": "Show event banner"
     }
   }
 }

@@ -1,25 +1,28 @@
-import {AfterViewInit, Component, Inject} from '@angular/core';
-import {ThemesService} from "./services/themes.service";
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
 import {TranslateService} from "@ngx-translate/core";
-import {LanguagesService} from "./services/languages.service";
+import {EventsService} from "./services/events.service";
+import {SettingsService} from "./services/settings.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   constructor(
-    private themeService: ThemesService,
-    private languageService: LanguagesService,
+    private settingsService: SettingsService,
     private translateService: TranslateService,
+    private eventsService: EventsService,
     @Inject(DOCUMENT) private document: Document
   ) {
   }
+  
+  ngOnInit() {
+    this.document.body.classList.add(...this.eventsService.getActivesEvents());
+  }
 
   ngAfterViewInit() {
-    this.document.body.classList.add(this.themeService.currentTheme);
-    this.translateService.use(this.languageService.currentLanguage);
+    this.settingsService.initSettings();
   }
 }

@@ -1,6 +1,6 @@
-<mat-toolbar class="toolbarContainer">
+<div class="toolbarContainer darkerBackground">
   <!-- LEFT -->
-  <div id="langChooser">
+  <div class="languages">
     <ul>
       <li
         class="pointer"
@@ -22,12 +22,13 @@
   </div>
 
   <!-- RIGHT -->
-  <div id="themeChooser">
+  <div id="right">
     <mat-slide-toggle
+      id="themeSwitcher"
       #themeSwitcher
       disableRipple
-      [checked]="toolbarSettings?.theme === darkTheme"
+      [checked]="isDarkTheme"
       (change)="changeTheme($event)"
     ></mat-slide-toggle>
   </div>
-</mat-toolbar>
+</div>

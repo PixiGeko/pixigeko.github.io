@@ -46,6 +46,7 @@ import {MatCardModule} from "@angular/material/card";
 import { DatassetsDownloadComponent } from './components/minecraft/datassets-download/datassets-download.component';
 import { PageUnderConstructComponent } from './components/shared/page-under-construct/page-under-construct.component';
 import { ContactsHomeComponent } from './components/contacts/contacts-home.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -70,6 +71,7 @@ registerLocaleData(localeFr, 'fr');
     DatassetsDownloadComponent,
     PageUnderConstructComponent,
     ContactsHomeComponent,
+    SettingsComponent,
   ],
   imports: [
     TranslateModule.forRoot({

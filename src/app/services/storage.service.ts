@@ -12,8 +12,8 @@ export class StorageService {
     localStorage.setItem(key, value);
   }
 
-  public get(key: StorageKey, defaultValue?: string) {
-    return localStorage.getItem(key) ?? defaultValue;
+  public get<T>(key: StorageKey, defaultValue?: T) {
+    return (localStorage.getItem(key) ?? defaultValue) as T;
   }
 
   public remove(key: StorageKey) {

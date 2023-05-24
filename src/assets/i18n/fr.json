@@ -30,6 +30,9 @@
     },
     "contacts": {
       "home": "Contacts"
+    },
+    "settings": {
+      "home": "Paramètres"
     }
   },
   "contacts": {
