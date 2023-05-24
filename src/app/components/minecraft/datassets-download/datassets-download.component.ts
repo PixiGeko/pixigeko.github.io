@@ -13,6 +13,7 @@ import {ArrayUtils} from "../../../utils/ArrayUtils";
 })
 export class DatassetsDownloadComponent implements OnInit {
   status: Status = {
+    isLoading: true,
     assets: {},
     data: {}
   }
@@ -24,6 +25,7 @@ export class DatassetsDownloadComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.status.isLoading = true;
     this.mgdService.index().subscribe({
       next: (index) => {
         const indexVersion = Object.values(index.versions).reverse();
@@ -43,6 +45,7 @@ export class DatassetsDownloadComponent implements OnInit {
           }
 
           this.selectedVersionChanged();
+          this.status.isLoading = false;
         })
       }
     })
@@ -90,6 +93,7 @@ export class DatassetsDownloadComponent implements OnInit {
 
 interface Status {
   selectedVersion?: MGDIndexVersion;
+  isLoading: boolean;
   assets: DownloadStatus;
   data: DownloadStatus;
 }
