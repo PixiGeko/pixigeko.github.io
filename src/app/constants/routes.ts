@@ -33,19 +33,12 @@ export class AppRoutes {
   }
 
   /* --------------------------------------------- */
-  /*                 PROJECTS                      */
+  /*                 CONTACTS                      */
   /* --------------------------------------------- */
   static CONTACTS: AppRoute = {
     path: 'contacts',
     title: 'navigation.contacts.home',
     tabTitle: 'Contacts'
-  }
-
-  static CONTACTS_TWITTER: AppRoute = {
-    path: 'twitter',
-    title: 'navigation.contacts.twitter',
-    parent: AppRoutes.CONTACTS,
-    tabTitle: 'Twitter'
   }
   
   /* --------------------------------------------- */
