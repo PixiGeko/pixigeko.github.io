@@ -1,1 +1,55 @@
-{}
+{
+  "common": {
+    "dnd": {
+      "drop_files": "Drop folder here...",
+      "upload_button": "...or upload it!"
+    },
+    "page_not_found": {
+      "go_home": "Retourner à l'accueil",
+      "message": "Cette page n'existe pas"
+    }
+  },
+  "minecraft": {
+    "datassets_download": {
+      "assets": "Télécharger les assets par défaut",
+      "data": "Télécharger les data par défaut",
+      "mcmeta": {
+        "description": "Description:",
+        "pack_format": "Pack format:"
+      },
+      "version": "Version"
+    }
+  },
+  "navigation": {
+    "home": {
+      "home": "Accueil"
+    },
+    "minecraft": {
+      "home": "Minecraft",
+      "datassets_download": "Assets & data par défaut"
+    },
+    "contacts": {
+      "home": "Contacts"
+    }
+  },
+  "contacts": {
+    "twitter": {
+      "title": "Twitter",
+      "pixigeko": {
+        "description": "Mon compte principal.\nSi vous voulez m'envoyer un message, merci de le faire sur ce compte."
+      },
+      "pixiexe": {
+        "description": "Un compte secondaire (mort) pour mes projets."
+      },
+      "mcrelease": {
+        "description": "Ce compte envoie un tweet à chaque fois qu'une nouvelle version de Minecraft sort."
+      }
+    },
+    "discord": {
+      "title": "Discord",
+      "pixigeko": {
+        "description": "Mon compte perso.\nVous pouvez m'envoyer un message au besoin."
+      }
+    }
+  }
+}
