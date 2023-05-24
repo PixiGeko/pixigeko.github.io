@@ -63,7 +63,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
     }
 
     .description {
@@ -76,5 +75,18 @@
     .categoryImage {
       height: $category-image-size;
     }
+    
+    &:hover .categoryImage {
+      animation: categoryImageAnimation 1s;
+    }
+  }
+}
+
+@keyframes categoryImageAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
