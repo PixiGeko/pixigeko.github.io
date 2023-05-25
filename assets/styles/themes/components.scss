@@ -1,0 +1,55 @@
+@use './node_modules/@angular/material/index' as mat;
+
+@import './node_modules/@angular/material/theming';
+
+@mixin components-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map-get($color-config, primary);
+  $accent-palette: map-get($color-config, accent);
+  $warn-palette: map-get($color-config, warn);
+  $background-palette: map-get($theme, background);
+  $foreground-palette: map-get($theme, foreground);
+
+  @include generatePaletteClass($primary-palette, 'primary');
+  @include generatePaletteClass($accent-palette, 'accent');
+  @include generatePaletteClass($warn-palette, 'warn');
+  
+  .darkerBackground {
+    background-color: darken(map-get($background-palette, background), 4%);
+  }
+  
+  .hoverBackground {
+    background-color: mat.get-color-from-palette($background-palette, hover);
+  }
+
+  .hoverEffect:hover {
+    background-color: mat.get-color-from-palette($background-palette, hover);
+  }
+  
+  .cardBackground {
+    background-color: map-get($background-palette, card);
+  }
+}
+
+@mixin generatePaletteClass($palette, $name) {
+  @include paletteValues($palette, $name);
+
+  $contrast-palette: map-get($palette, 'contrast');
+  @include paletteValues($contrast-palette, #{$name}Contrast);
+}
+
+@mixin paletteValues($palette, $name) {
+  $palette-values: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700;
+
+  @each $palette-value in $palette-values {
+    $color: mat.get-color-from-palette($palette, $palette-value);
+
+    .#{$name}Background-#{$palette-value} {
+      background-color: mat.get-color-from-palette($palette, $palette-value);
+    }
+
+    .#{$name}Color-#{$palette-value} {
+      color: mat.get-color-from-palette($palette, $palette-value);
+    }
+  }
+}
