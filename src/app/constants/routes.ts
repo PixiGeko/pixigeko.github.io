@@ -32,6 +32,13 @@ export class AppRoutes {
     tabTitle: 'Datassets download'
   }
 
+  static MINECRAFT_PROJECTS: AppRoute = {
+    path: 'projects',
+    title: 'navigation.minecraft.projects',
+    parent: AppRoutes.MINECRAFT,
+    tabTitle: 'Projects'
+  }
+
   /* --------------------------------------------- */
   /*                 CONTACTS                      */
   /* --------------------------------------------- */

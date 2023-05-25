@@ -11,6 +11,9 @@ export class MinecraftHomeComponent {
   navBarItems: NavbarItem[] = [
     {
       route: AppRoutes.MINECRAFT_DOWNLOAD
+    },
+    {
+      route: AppRoutes.MINECRAFT_PROJECTS
     }
   ]
 }

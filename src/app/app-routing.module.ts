@@ -8,6 +8,7 @@ import {DatassetsDownloadComponent} from "./components/minecraft/datassets-downl
 import {AppRoute} from "./models/route";
 import {ContactsHomeComponent} from "./components/contacts/contacts-home.component";
 import {SettingsComponent} from "./components/settings/settings.component";
+import {MgdRepositoriesComponent} from "./components/minecraft/mgd-repositories/mgd-repositories.component";
 
 const routeTitle = (route: AppRoute) => route.tabTitle ?? route.title;
 
@@ -30,6 +31,11 @@ const routes: Routes = [
         path: AppRoutes.MINECRAFT_DOWNLOAD.path,
         title: routeTitle(AppRoutes.MINECRAFT_DOWNLOAD),
         component: DatassetsDownloadComponent
+      },
+      {
+        path: AppRoutes.MINECRAFT_PROJECTS.path,
+        title: routeTitle(AppRoutes.MINECRAFT_PROJECTS),
+        component: MgdRepositoriesComponent
       },
       {
         path: '', pathMatch: 'full',

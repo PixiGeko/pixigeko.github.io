@@ -47,6 +47,7 @@ import { DatassetsDownloadComponent } from './components/minecraft/datassets-dow
 import { PageUnderConstructComponent } from './components/shared/page-under-construct/page-under-construct.component';
 import { ContactsHomeComponent } from './components/contacts/contacts-home.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { MgdRepositoriesComponent } from './components/minecraft/mgd-repositories/mgd-repositories.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -72,6 +73,7 @@ registerLocaleData(localeFr, 'fr');
     PageUnderConstructComponent,
     ContactsHomeComponent,
     SettingsComponent,
+    MgdRepositoriesComponent,
   ],
   imports: [
     TranslateModule.forRoot({

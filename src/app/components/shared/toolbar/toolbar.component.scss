@@ -6,6 +6,12 @@
   align-items: center;
 }
 
+#navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 #right {
   display: flex;
   align-items: center;

@@ -1,9 +1,8 @@
 import {Logo} from "../logo";
 
-export interface Contact {
+export interface MinecraftProject {
   name: string;
   descriptionTK: string;
-  image: string;
+  url: string;
   category: Logo;
-  url?: string;
 }

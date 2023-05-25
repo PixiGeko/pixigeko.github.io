@@ -1,0 +1,18 @@
+<div class="contentContainer">
+  <div *ngIf="projects.length">
+    <div class="cardsContainer">
+      <div
+        *ngFor="let project of projects"
+        class="cardContainer cardBackground mat-elevation-z8 hoverEffect"
+        [class.pointer]="project.url"
+        (click)="project.url ? openURL(project) : null"
+      >
+        <h2 class="name text-center noSelect">{{ project.name }}</h2>
+        <div class="descriptionContainer">
+          <p class="description text-center noSelect">{{ project.descriptionTK | translate }}</p>
+        </div>
+        <img class="categoryImage noSelect" [src]="'assets/images/' + project.category" [alt]="project.name"/>
+      </div>
+    </div>
+  </div>
+</div>
