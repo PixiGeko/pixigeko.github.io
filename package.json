@@ -5,6 +5,7 @@
   "scripts": {
     "build": "ng build",
     "deploy": "ng deploy",
+    "bad": "npm run build && npm run deploy",
     "ng": "ng",
     "start": "ng serve"
   },
