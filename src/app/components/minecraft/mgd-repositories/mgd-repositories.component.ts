@@ -18,7 +18,7 @@ export class MgdRepositoriesComponent {
     {
       name: 'Minecraft-generated-data',
       descriptionTK: 'minecraft.projects.mgd.description',
-      url: 'https://github.com/PixiGeko/Minecraft-generated-assets',
+      url: 'https://github.com/PixiGeko/Minecraft-generated-data',
       category: Logo.GITHUB
     },
     {
