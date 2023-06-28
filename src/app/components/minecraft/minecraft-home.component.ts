@@ -13,6 +13,9 @@ export class MinecraftHomeComponent {
       route: AppRoutes.MINECRAFT_DOWNLOAD
     },
     {
+      route: AppRoutes.MINECRAFT_WORLD_ANALYZER
+    },
+    {
       route: AppRoutes.MINECRAFT_PROJECTS
     }
   ]

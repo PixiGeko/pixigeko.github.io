@@ -32,6 +32,13 @@ export class AppRoutes {
     tabTitle: 'Datassets download'
   }
 
+  static MINECRAFT_WORLD_ANALYZER: AppRoute = {
+    path: 'world-analyzer',
+    title: 'navigation.minecraft.world_analyzer',
+    parent: AppRoutes.MINECRAFT,
+    tabTitle: 'World Analyzer'
+  }
+
   static MINECRAFT_PROJECTS: AppRoute = {
     path: 'projects',
     title: 'navigation.minecraft.projects',

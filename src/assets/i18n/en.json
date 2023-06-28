@@ -16,6 +16,7 @@
     "minecraft": {
       "home": "Minecraft",
       "datassets_download": "Default assets & data folder",
+      "world_analyzer": "World Analyzer",
       "projects": "Projects"
     },
     "contacts": {
