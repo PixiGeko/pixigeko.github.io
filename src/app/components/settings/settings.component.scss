@@ -1,14 +1,14 @@
 .settingsContainer {
   .setting {
+    padding: 2px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     
     h1 {
-      
+      font-size: 20px;
+      margin: 0;
     }
-    
-    
   }
 }
