@@ -2,6 +2,8 @@ import {Theme} from "./theme";
 import {Language} from "./language";
 
 export class DefaultValues {
-  static DEFAULT_LANGUAGE = Language.ENGLISH;
-  static DEFAULT_THEME = Theme.DARK;
+  static LANGUAGE = Language.ENGLISH;
+  static THEME = Theme.DARK;
+  static USE_TEXT_COLOR = true;
+  static SHOW_EVENT_BANNER = true;
 }

@@ -4,6 +4,7 @@ import {Theme} from "../constants/theme";
 import {Language} from "../constants/language";
 import {TranslateService} from "@ngx-translate/core";
 import {DOCUMENT} from "@angular/common";
+import {DefaultValues} from "../constants/default-values";
 
 @Injectable({
   providedIn: 'root'
@@ -49,11 +50,11 @@ export class SettingsService {
 
   private get defaultSettings() : Settings {
     return {
-      theme: Theme.DARK,
-      language: Language.ENGLISH,
+      theme: DefaultValues.THEME,
+      language: DefaultValues.LANGUAGE,
       events: {
-        use_text_color: true,
-        show_event_banner: true
+        use_text_color: DefaultValues.USE_TEXT_COLOR,
+        show_event_banner: DefaultValues.SHOW_EVENT_BANNER
       }
     }
   }
