@@ -1,0 +1,28 @@
+.navBarContainer {
+  padding: 5px 10px;
+  
+  .section {
+    .sectionTitle {
+      word-break: keep-all;
+      font-size: 20px;
+      margin-bottom: 0;
+    }
+    
+    .sectionElements {
+      list-style: none;
+      padding-left: 0 !important;
+      
+      .sectionElement {
+        
+        button {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+        &:not(.isActive) {
+          opacity: 0.75;
+        }
+      } 
+    }
+  }
+}

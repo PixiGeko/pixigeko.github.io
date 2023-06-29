@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AppRoute} from "../models/route";
 import {AppRoutes} from "../constants/routes";
 
@@ -10,13 +10,14 @@ export class RoutesService {
   constructor(private router: Router) {
   }
 
-  navigate(route: AppRoute, queryParams?: any) {
+  navigate(route: AppRoute, relativeTo?: ActivatedRoute, queryParams?: any) {
     return this.router.navigate(
       [
         AppRoutes.absolutePath(route)
       ],
       {
-        queryParams: queryParams
+        queryParams: queryParams,
+        relativeTo: relativeTo
       }
     )
   }

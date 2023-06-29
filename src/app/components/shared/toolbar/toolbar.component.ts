@@ -24,21 +24,6 @@ export class ToolbarComponent implements AfterViewInit {
 
   languages = Language;
 
-  navBarItems: NavbarItem[] = [
-    {
-      route: AppRoutes.HOME
-    },
-    {
-      route: AppRoutes.MINECRAFT
-    },
-    {
-      route: AppRoutes.CONTACTS
-    },
-    {
-      route: AppRoutes.SETTINGS
-    }
-  ]
-
   constructor(
     private translateService: TranslateService,
     private routesService: RoutesService,

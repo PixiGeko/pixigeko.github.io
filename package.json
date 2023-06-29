@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "homepage": "https://pixigeko.github.io",
   "scripts": {
-    "build": "ng build",
+    "build": "ng build --base-href",
     "deploy": "ng deploy",
     "bad": "npm run build && npm run deploy",
     "ng": "ng",
@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.0.3",
+    "@angular/animations": "^15.0.0",
     "@angular/common": "^15.0.0",
     "@angular/compiler": "^15.0.0",
     "@angular/core": "^15.0.0",

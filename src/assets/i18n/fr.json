@@ -9,21 +9,21 @@
       "message": "Cette page n'existe pas"
     }
   },
-  "navigation": {
-    "home": {
-      "home": "Accueil"
+  "contacts": {
+    "discord": {
+      "pixigeko": {
+        "description": "Mon compte personnel.\nVous pouvez m'envoyer un message au besoin."
+      },
+      "title": "Discord"
     },
-    "minecraft": {
-      "home": "Minecraft",
-      "datassets_download": "Dossiers assets & data par défaut",
-      "world_analyzer": "Analyseur de monde",
-      "projects": "Projets"
-    },
-    "contacts": {
-      "home": "Contacts"
-    },
-    "settings": {
-      "home": "Paramètres"
+    "twitter": {
+      "pixiexe": {
+        "description": "Un compte secondaire (mort) pour mes projets."
+      },
+      "pixigeko": {
+        "description": "Mon compte principal.\nSi vous voulez m'envoyer un message, utilisez ce compte."
+      },
+      "title": "Twitter"
     }
   },
   "minecraft": {
@@ -40,40 +40,36 @@
       "mcrelease": {
         "description": "Ce compte envoie un tweet à chaque fois qu'une nouvelle version de Minecraft sort."
       },
-      "mgd": {
-        "description": "Ce répertoire contient des données techniques de chaque version de Minecraft."
-      },
       "mda": {
         "description": "Ce répertoire contient le dossier assets (pack de ressources) par défaut de chaque version de Minecraft."
       },
       "mdd": {
         "description": "Ce répertoire contient le dossier data (pack de données) par défaut de chaque version de Minecraft."
+      },
+      "mgd": {
+        "description": "Ce répertoire contient des données techniques de chaque version de Minecraft."
       }
     }
   },
-  "contacts": {
-    "twitter": {
-      "title": "Twitter",
-      "pixigeko": {
-        "description": "Mon compte principal.\nSi vous voulez m'envoyer un message, utilisez ce compte."
-      },
-      "pixiexe": {
-        "description": "Un compte secondaire (mort) pour mes projets."
-      }
+  "navigation": {
+    "minecraft": {
+      "datassets_download": "Télécharger les assets & data par défaut",
+      "projects": "Projets",
+      "title": "Minecraft",
+      "world_analyzer": "Analyseur de monde"
     },
-    "discord": {
-      "title": "Discord",
-      "pixigeko": {
-        "description": "Mon compte personnel.\nVous pouvez m'envoyer un message au besoin."
-      }
+    "others": {
+      "contacts": "Contacts",
+      "settings": "Paramètres",
+      "title": "Autres"
     }
   },
   "settings": {
-    "theme": "Thème",
-    "language": "Langue",
     "events": {
-      "use_text_color": "Utiliser les couleurs de texte spéciales lors d'évènement",
-      "show_banner": "Afficher la bannière d'évènement"
-    }
+      "show_banner": "Afficher la bannière d'évènement",
+      "use_text_color": "Utiliser les couleurs de texte spéciales lors d'évènement"
+    },
+    "language": "Langue",
+    "theme": "Thème"
   }
 }

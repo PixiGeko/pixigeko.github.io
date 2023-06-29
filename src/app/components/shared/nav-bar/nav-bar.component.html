@@ -1,0 +1,12 @@
+<div class="navBarContainer">
+  <div *ngFor="let section of sections" class="section">
+    <h1 class="sectionTitle eventTextColor">{{ section.name | translate }}</h1>
+    <ul class="sectionElements">
+      <li *ngFor="let element of section.elements" class="sectionElement" [routerLink]="getRoute(element)" routerLinkActive="isActive">
+        <button mat-button>
+          <span class="eventTextColor">{{ element.title | translate }}</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,11 +1,29 @@
-.appContainer .navigationContainer {
-  height: 100%;
-}
+#mainContainer {
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+  #topContainer {
+    
+  }
+  
+  #middleContainer {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    flex-wrap: nowrap;
 
-.appContainer {
-  padding: 6px;
-}
+    #navbarContainer {
+      background-color: red;
+      flex-shrink: 0;
+    }
 
-.navigationContainer {
-  background-color: red;
+    #contentContainer {
+      width: 100%;
+    }
+  }
+  
+  #bottomContainer {
+  }
 }

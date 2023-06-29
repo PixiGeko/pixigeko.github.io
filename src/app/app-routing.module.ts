@@ -15,10 +15,6 @@ const routeTitle = (route: AppRoute) => route.tabTitle ?? route.title;
 
 const routes: Routes = [
   {
-    path: '', pathMatch: 'full',
-    redirectTo: AppRoutes.HOME.path
-  },
-  {
     path: AppRoutes.HOME.path, pathMatch: 'full',
     title: routeTitle(AppRoutes.HOME),
     component: HomeComponent
@@ -42,10 +38,6 @@ const routes: Routes = [
         path: AppRoutes.MINECRAFT_PROJECTS.path,
         title: routeTitle(AppRoutes.MINECRAFT_PROJECTS),
         component: MgdRepositoriesComponent
-      },
-      {
-        path: '', pathMatch: 'full',
-        redirectTo: AppRoutes.MINECRAFT_DOWNLOAD.path
       }
     ]
   },
@@ -72,8 +64,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true,})],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule {
 }

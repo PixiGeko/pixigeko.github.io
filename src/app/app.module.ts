@@ -9,7 +9,7 @@ import {AppComponent} from './app.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import {registerLocaleData} from "@angular/common";
+import {LocationStrategy, PathLocationStrategy, registerLocaleData} from "@angular/common";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
@@ -29,7 +29,6 @@ import {PageNotFoundComponent} from './components/shared/page-not-found/page-not
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {ToolbarComponent} from './components/shared/toolbar/toolbar.component';
-import {NavbarComponent} from './components/shared/navbar/navbar.component';
 import {NavbarItemComponent} from './components/shared/navbar-item/navbar-item.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {PreviousNextComponent} from './components/shared/previous-next/previous-next.component';
@@ -43,12 +42,13 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatCardModule} from "@angular/material/card";
-import { DatassetsDownloadComponent } from './components/minecraft/datassets-download/datassets-download.component';
-import { PageUnderConstructComponent } from './components/shared/page-under-construct/page-under-construct.component';
-import { ContactsHomeComponent } from './components/contacts/contacts-home.component';
-import { SettingsComponent } from './components/settings/settings.component';
-import { MgdRepositoriesComponent } from './components/minecraft/mgd-repositories/mgd-repositories.component';
-import { WorldAnalyzerComponent } from './components/minecraft/world-analyzer/world-analyzer.component';
+import {DatassetsDownloadComponent} from './components/minecraft/datassets-download/datassets-download.component';
+import {PageUnderConstructComponent} from './components/shared/page-under-construct/page-under-construct.component';
+import {ContactsHomeComponent} from './components/contacts/contacts-home.component';
+import {SettingsComponent} from './components/settings/settings.component';
+import {MgdRepositoriesComponent} from './components/minecraft/mgd-repositories/mgd-repositories.component';
+import {WorldAnalyzerComponent} from './components/minecraft/world-analyzer/world-analyzer.component';
+import {NavBarComponent} from './components/shared/nav-bar/nav-bar.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -64,7 +64,6 @@ registerLocaleData(localeFr, 'fr');
     HomeComponent,
     PageNotFoundComponent,
     ToolbarComponent,
-    NavbarComponent,
     NavbarItemComponent,
     PreviousNextComponent,
     DropzoneComponent,
@@ -76,6 +75,7 @@ registerLocaleData(localeFr, 'fr');
     SettingsComponent,
     MgdRepositoriesComponent,
     WorldAnalyzerComponent,
+    NavBarComponent,
   ],
   imports: [
     TranslateModule.forRoot({

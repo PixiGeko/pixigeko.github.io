@@ -1,3 +1,17 @@
-<app-toolbar></app-toolbar>
-<router-outlet></router-outlet>
-<div id="eventBanner"></div>
+<div id="mainContainer">
+  <div id="topContainer">
+    <app-toolbar></app-toolbar>
+    <mat-divider></mat-divider>
+  </div>
+  <div id="middleContainer">
+    <div id="navbarContainer" class="darkerBackground">
+      <app-nav-bar></app-nav-bar>
+    </div>
+    <div id="contentContainer">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div id="bottomContainer">
+    <div id="eventBanner"></div>
+  </div>
+</div>

@@ -5,13 +5,13 @@
 @import 'src/assets/styles/variables';
 @import 'src/assets/styles/themes';
 
-body, html, app-root {
-  width: 100%;
+html, body {
   height: 100%;
 }
 
 app-root {
   display: block;
+  height: 100%;
 }
 
 * {
@@ -108,7 +108,6 @@ app-root {
     }
   }
 }
-
 
 // -------------------------------------- //
 //               FORM FIELDS              //

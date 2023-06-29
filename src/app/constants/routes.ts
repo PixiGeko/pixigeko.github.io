@@ -5,7 +5,7 @@ export class AppRoutes {
   /*                    MISC                       */
   /* --------------------------------------------- */
   static HOME: AppRoute = {
-    path: 'home',
+    path: '',
     title: 'navigation.home.home',
     tabTitle: 'Home'
   }
@@ -21,7 +21,7 @@ export class AppRoutes {
   /* --------------------------------------------- */
   static MINECRAFT: AppRoute = {
     path: 'minecraft',
-    title: 'navigation.minecraft.home',
+    title: 'navigation.minecraft.title',
     tabTitle: 'Minecraft'
   }
 
@@ -51,7 +51,7 @@ export class AppRoutes {
   /* --------------------------------------------- */
   static CONTACTS: AppRoute = {
     path: 'contacts',
-    title: 'navigation.contacts.home',
+    title: 'navigation.others.contacts',
     tabTitle: 'Contacts'
   }
 
@@ -60,13 +60,17 @@ export class AppRoutes {
   /* --------------------------------------------- */
   static SETTINGS: AppRoute = {
     path: 'settings',
-    title: 'navigation.settings.home',
+    title: 'navigation.others.settings',
     tabTitle: 'Settings'
   }
   
   /* --------------------------------------------- */
 
   static absolutePath(route: AppRoute) {
+    return this.routeArray(route).join('/');
+  }
+  
+  static routeArray(route: AppRoute) {
     const paths: string[] = [
       route.path
     ];
@@ -76,6 +80,6 @@ export class AppRoutes {
       paths.push(route.path);
     }
 
-    return paths.reverse().join('/');
+    return paths.reverse();
   }
 }
