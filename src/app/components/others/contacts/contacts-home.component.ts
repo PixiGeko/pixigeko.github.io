@@ -10,7 +10,7 @@ import {Logo} from "../../../models/logo";
 export class ContactsHomeComponent {
   contacts: Contact[] = [
     {
-      name: 'PixiGeko#9645',
+      name: '@pixigeko',
       descriptionTK: 'contacts.discord.pixigeko.description',
       image: 'https://cdn.discordapp.com/avatars/207198022319341569/6e7aedc9c268a54a4ff693036ce2a1e2.webp?size=160',
       category: Logo.DISCORD

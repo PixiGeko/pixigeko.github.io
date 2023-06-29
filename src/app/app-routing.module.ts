@@ -8,7 +8,7 @@ import {DatassetsDownloadComponent} from "./components/minecraft/datassets-downl
 import {AppRoute} from "./models/route";
 import {ContactsHomeComponent} from "./components/others/contacts/contacts-home.component";
 import {SettingsComponent} from "./components/others/settings/settings.component";
-import {MgdRepositoriesComponent} from "./components/minecraft/mgd-repositories/mgd-repositories.component";
+import {McProjects} from "./components/minecraft/mgd-repositories/mc-projects";
 import {WorldAnalyzerComponent} from "./components/minecraft/world-analyzer/world-analyzer.component";
 
 const routeTitle = (route: AppRoute) => route.tabTitle ?? route.title;
@@ -37,7 +37,7 @@ const routes: Routes = [
       {
         path: AppRoutes.MINECRAFT_PROJECTS.path,
         title: routeTitle(AppRoutes.MINECRAFT_PROJECTS),
-        component: MgdRepositoriesComponent
+        component: McProjects
       }
     ]
   },

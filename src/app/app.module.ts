@@ -46,7 +46,7 @@ import {DatassetsDownloadComponent} from './components/minecraft/datassets-downl
 import {PageUnderConstructComponent} from './components/shared/page-under-construct/page-under-construct.component';
 import {ContactsHomeComponent} from './components/others/contacts/contacts-home.component';
 import {SettingsComponent} from './components/others/settings/settings.component';
-import {MgdRepositoriesComponent} from './components/minecraft/mgd-repositories/mgd-repositories.component';
+import {McProjects} from './components/minecraft/mgd-repositories/mc-projects';
 import {WorldAnalyzerComponent} from './components/minecraft/world-analyzer/world-analyzer.component';
 import {NavBarComponent} from './components/shared/nav-bar/nav-bar.component';
 
@@ -73,7 +73,7 @@ registerLocaleData(localeFr, 'fr');
     PageUnderConstructComponent,
     ContactsHomeComponent,
     SettingsComponent,
-    MgdRepositoriesComponent,
+    McProjects,
     WorldAnalyzerComponent,
     NavBarComponent,
   ],

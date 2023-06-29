@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MgdRepositoriesComponent } from './mgd-repositories.component';
+import { McProjects } from './mc-projects';
 
 describe('MgdRepositoriesComponent', () => {
-  let component: MgdRepositoriesComponent;
-  let fixture: ComponentFixture<MgdRepositoriesComponent>;
+  let component: McProjects;
+  let fixture: ComponentFixture<McProjects>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MgdRepositoriesComponent ]
+      declarations: [ McProjects ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MgdRepositoriesComponent);
+    fixture = TestBed.createComponent(McProjects);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

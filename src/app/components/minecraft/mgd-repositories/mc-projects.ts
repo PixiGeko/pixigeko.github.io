@@ -4,10 +4,10 @@ import {Logo} from "../../../models/logo";
 
 @Component({
   selector: 'app-mgd-repositories',
-  templateUrl: './mgd-repositories.component.html',
-  styleUrls: ['./mgd-repositories.component.scss']
+  templateUrl: './mc-projects.html',
+  styleUrls: ['./mc-projects.scss']
 })
-export class MgdRepositoriesComponent {
+export class McProjects {
   projects: MinecraftProject[] = [
     {
       name: '@MCRelease',
