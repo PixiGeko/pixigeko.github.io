@@ -1,13 +1,13 @@
 import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
-import {SettingsService} from "../../services/settings.service";
-import {Theme} from "../../constants/theme";
+import {SettingsService} from "../../../services/settings.service";
+import {Theme} from "../../../constants/theme";
 import {MatSlideToggleChange} from "@angular/material/slide-toggle";
-import {Language} from "../../constants/language";
+import {Language} from "../../../constants/language";
 import {DOCUMENT} from "@angular/common";
 import {TranslateService} from "@ngx-translate/core";
-import {ToolbarComponent} from "../shared/toolbar/toolbar.component";
-import {SettingsClasses} from "../../models/settings";
-import {EventsService} from "../../services/events.service";
+import {ToolbarComponent} from "../../shared/toolbar/toolbar.component";
+import {SettingsClasses} from "../../../models/settings";
+import {EventsService} from "../../../services/events.service";
 
 @Component({
   selector: 'app-settings',

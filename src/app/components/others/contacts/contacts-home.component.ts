@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {Contact} from "../../models/contacts/contact";
-import {Logo} from "../../models/logo";
+import {Contact} from "../../../models/contacts/contact";
+import {Logo} from "../../../models/logo";
 
 @Component({
   selector: 'app-logo-home',

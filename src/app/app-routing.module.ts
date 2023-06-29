@@ -6,8 +6,8 @@ import {PageNotFoundComponent} from "./components/shared/page-not-found/page-not
 import {AppRoutes} from "./constants/routes";
 import {DatassetsDownloadComponent} from "./components/minecraft/datassets-download/datassets-download.component";
 import {AppRoute} from "./models/route";
-import {ContactsHomeComponent} from "./components/contacts/contacts-home.component";
-import {SettingsComponent} from "./components/settings/settings.component";
+import {ContactsHomeComponent} from "./components/others/contacts/contacts-home.component";
+import {SettingsComponent} from "./components/others/settings/settings.component";
 import {MgdRepositoriesComponent} from "./components/minecraft/mgd-repositories/mgd-repositories.component";
 import {WorldAnalyzerComponent} from "./components/minecraft/world-analyzer/world-analyzer.component";
 
