@@ -27,6 +27,7 @@ export class CompoundTagConverter extends TagConverter<TagCompound> {
 
             const result = convertTag(buffer, position + offset + prefixSize, type);
             size += prefixSize + result.size;
+            // @ts-ignore
             values[name] = result.tag;
 
             offset += prefixSize + result.size;

@@ -7,7 +7,7 @@ export abstract class TagConverter<T extends Tag<any>> {
 }
 
 export class TagConverterResult<T extends Tag<any>>  implements ToJSON {
-    constructor(public tag: T, public size: number) {
+    constructor(public tag: T | null, public size: number) {
     }
 
     toJSON() {

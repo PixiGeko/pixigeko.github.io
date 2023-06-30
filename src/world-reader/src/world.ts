@@ -13,7 +13,7 @@ export const SECTOR_SIZE = 4096;
 export const TIMESTAMP_BASE_OFFSET = 4096;
 
 export class WorldRegion implements ToJSON {
-    public chunks: WorldChunk[] = [];
+    public chunks: (WorldChunk | null)[] = [];
 
     constructor(private regionBuffer: Buffer) {
         this.initChunks();
@@ -41,6 +41,9 @@ export class WorldRegion implements ToJSON {
         if(index < 0 || index > this.chunks.length) throw new Error('Index out of bound');
 
         const chunk = this.chunks[index];
+        
+        if(!chunk) return null;
+        
         if(!chunk.isLoaded) chunk.initData();
         return this.chunks[index];
     }
@@ -62,10 +65,10 @@ export class WorldRegion implements ToJSON {
 }
 
 export class WorldChunk implements ToJSON {
-    public remainingChunkData: number;
-    public compressionType: CompressionType;
-    public chunkData: Buffer;
-    public chunkTag: TagConverterResult<TagCompound>;
+    public remainingChunkData!: number;
+    public compressionType!: CompressionType;
+    public chunkData!: Buffer;
+    public chunkTag!: TagConverterResult<TagCompound>;
 
     private _isLoaded: boolean = false;
 
