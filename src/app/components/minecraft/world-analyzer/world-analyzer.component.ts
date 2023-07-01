@@ -60,12 +60,12 @@ export class WorldAnalyzerComponent {
         }
       });
 
-      for (let chunk of this.chunks) {
-        if (!chunk.chunk) continue;
-        chunk.chunk.initData();
+      for (let worldChunk of this.chunks) {
+        if (!worldChunk.chunk) continue;
+        await worldChunk.chunk.initData();
         new Promise(resolve => setTimeout(resolve, 10));
         
-        chunk.analyzed = true;
+        worldChunk.analyzed = true;
       }
     }
 
