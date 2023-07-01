@@ -49,6 +49,15 @@
       "mgd": {
         "description": "Ce répertoire contient des données techniques de chaque version de Minecraft."
       }
+    },
+    "world_analyzer": {
+      "chunk_empty": "Vide",
+      "end": "Analyser l'End ({{count}} regions)",
+      "nether": "Analyser le Nether ({{count}} regions)",
+      "overworld": "Analyser l'Overworld ({{count}} regions)",
+      "start": "Commencer l'analyse",
+      "upload_world": "Uploader le dossier du monde",
+      "world_name": "Nom du monde"
     }
   },
   "navigation": {

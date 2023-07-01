@@ -49,6 +49,15 @@
       "mgd": {
         "description": "This repository contains a lot of data about each version of the game."
       }
+    },
+    "world_analyzer": {
+      "chunk_empty": "Empty",
+      "end": "Analyze End ({{count}} regions)",
+      "nether": "Analyze Nether ({{count}} regions)",
+      "overworld": "Analyze Overworld ({{count}} regions)",
+      "start": "Start analyze",
+      "upload_world": "Upload world folder",
+      "world_name": "World name"
     }
   },
   "navigation": {

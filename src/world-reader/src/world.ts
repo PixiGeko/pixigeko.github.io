@@ -1,5 +1,4 @@
 import {CompressionType} from "./nbt/compression_type";
-import * as zlib from 'zlib';
 import {TagCompound} from "./nbt/tag";
 import {TagType} from "./nbt/tag_type";
 import {convertTag} from "./index";
@@ -8,6 +7,8 @@ import {ToJSON} from "./utils/toJSON";
 import {worldJsonReplacer} from "./utils/json_replacer";
 import {Region} from "./models/region";
 import {Chunk} from "./models/chunk";
+import { Buffer } from 'buffer';
+import * as zlib from "zlib";
 
 export const SECTOR_SIZE = 4096;
 export const TIMESTAMP_BASE_OFFSET = 4096;
@@ -76,7 +77,7 @@ export class WorldChunk implements ToJSON {
 
     }
 
-    public initData() {
+    public async initData() {
         if(this.isLoaded) return;
         this.remainingChunkData = this.chunkBuffer.readInt32BE(0);
         this.compressionType = this.chunkBuffer.readInt8(4);
@@ -85,8 +86,11 @@ export class WorldChunk implements ToJSON {
         if (![CompressionType.ZLIB, CompressionType.UNCOMPRESSED].includes(this.compressionType)) {
             throw new Error(`Compression type ${this.compressionType} is unknown`)
         }
+        
+        if (this.compressionType === CompressionType.ZLIB) {
+          this.chunkBuffer = zlib.unzipSync(this.chunkData);
+        }
 
-        if (this.compressionType === CompressionType.ZLIB) this.chunkBuffer = zlib.unzipSync(this.chunkData);
 
         this.chunkTag = convertTag(this.chunkBuffer, 0, TagType.COMPOUND);
         this._isLoaded = true;

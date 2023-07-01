@@ -1,1 +1,65 @@
-<p>world-analyzer works!</p>
+<div id="buttonsContainer">
+  <div>
+    <button
+      mat-raised-button
+      (click)="uploadInput.click()"
+      [disabled]="!canUploadFiles"
+      class="w-100"
+      color="primary"
+    >{{ 'minecraft.world_analyzer.upload_world' | translate }}</button>
+    <input
+      #uploadInput
+      hidden
+      type="file"
+      webkitdirectory
+      multiple
+      (change)="filesSelected($event)"
+    />
+  </div>
+  <div>
+    <button
+      mat-raised-button
+      (click)="startAnalyze()"
+      [disabled]="!canStartAnalyze"
+      class="w-100"
+      color="primary"
+    >{{ 'minecraft.world_analyzer.start' | translate }}</button>
+  </div>
+</div>
+
+<mat-divider class="divider"></mat-divider>
+
+<div id="infoContainer" *ngIf="status.files.length && !status.isAnalyzing && !status.isAnalyzed">
+  <h1 id="worldName">{{ status.worldName }}</h1>
+  <mat-radio-group [(ngModel)]="selectedFolder" id="folderRadioButtonGroup">
+    <mat-radio-button 
+      [value]="OVERWORLD_FOLDER"
+      [disabled]="status.overworldFiles.length === 0"
+    >{{ 'minecraft.world_analyzer.overworld' | translate: {count: status.overworldFiles.length} }}</mat-radio-button>
+    <mat-radio-button 
+      [value]="NETHER_FOLDER"
+      [disabled]="status.netherFiles.length === 0"
+    >{{ 'minecraft.world_analyzer.nether' | translate: {count: status.netherFiles.length} }}</mat-radio-button>
+    <mat-radio-button 
+      [value]="END_FOLDER"
+      [disabled]="status.endFiles.length === 0"
+    >{{ 'minecraft.world_analyzer.end' | translate: {count: status.endFiles.length} }}</mat-radio-button>
+  </mat-radio-group>
+</div>
+
+
+<div id="analyzeStatusContainer" *ngIf="status.isAnalyzing">
+  <div id="analyzeSquare">
+    <div
+      *ngFor="let chunk of chunks" 
+      class="chunk" 
+      [class.empty]="!chunk.chunk"
+      [class.analyzed]="chunk.analyzed"
+      [class.skipped]="chunk.skipped"
+    ></div>
+  </div>
+</div>
+
+<div id="analyzeResults" *ngIf="status.isAnalyzed">
+  TODO
+</div>

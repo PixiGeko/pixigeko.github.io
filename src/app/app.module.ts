@@ -49,6 +49,10 @@ import {SettingsComponent} from './components/others/settings/settings.component
 import {McProjects} from './components/minecraft/mgd-repositories/mc-projects';
 import {WorldAnalyzerComponent} from './components/minecraft/world-analyzer/world-analyzer.component';
 import {NavBarComponent} from './components/shared/nav-bar/nav-bar.component';
+import { BaseControlComponent } from './components/shared/form-controls/base-control/base-control.component';
+import { KeyValueComponent } from './components/shared/key-value/key-value.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatRadioModule} from "@angular/material/radio";
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -76,6 +80,8 @@ registerLocaleData(localeFr, 'fr');
     McProjects,
     WorldAnalyzerComponent,
     NavBarComponent,
+    BaseControlComponent,
+    KeyValueComponent,
   ],
   imports: [
     TranslateModule.forRoot({
@@ -113,7 +119,9 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     MatInputModule,
     MatExpansionModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule,
+    MatRadioModule
   ],
   providers: [
     {

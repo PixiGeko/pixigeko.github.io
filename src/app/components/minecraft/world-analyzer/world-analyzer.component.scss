@@ -1,0 +1,57 @@
+#buttonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  
+  > * {
+    flex: 1 1 0;
+    min-width: fit-content;
+  }
+}
+
+.divider {
+  margin: 10px 0;
+}
+
+#infoContainer {
+  margin-top: 10px;
+  
+  #worldName {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  #folderRadioButtonGroup {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+}
+
+#analyzeSquare {
+  $size: 10px;
+  
+  display: grid;
+  grid-template-columns: repeat(32, $size);
+  grid-template-rows: repeat(32, $size);
+  grid-gap: 2px;
+  border: 1px solid black;
+  
+  .chunk {
+    width: $size;
+    height: $size;
+    
+    &.empty {
+      background-color: gray;
+    }
+    
+    &.skipped {
+      background-color: darkorange;
+    }
+    
+    &.analyzed {
+      background-color: yellowgreen;
+    }
+  }
+}
