@@ -71,8 +71,9 @@ export class WorldAnalyzerComponent {
         }
         
         await worldChunk.chunk.initData();
-        
         await new Promise(resolve => setTimeout(resolve, 10));
+        
+        console.log(worldChunk.chunk.asObject())
         
         worldChunk.analyzed = true;
       }

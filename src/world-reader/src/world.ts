@@ -7,7 +7,7 @@ import {ToJSON} from "./utils/toJSON";
 import {worldJsonReplacer} from "./utils/json_replacer";
 import {Region} from "./models/region";
 import {Chunk} from "./models/chunk";
-import { Buffer } from 'buffer';
+import {Buffer} from 'buffer';
 import * as fflate from 'fflate';
 
 export const SECTOR_SIZE = 4096;
@@ -86,13 +86,18 @@ export class WorldChunk implements ToJSON {
         if (![CompressionType.ZLIB, CompressionType.UNCOMPRESSED].includes(this.compressionType)) {
             throw new Error(`Compression type ${this.compressionType} is unknown`)
         }
-        
-        if (this.compressionType === CompressionType.ZLIB) {
-          const raw = fflate.decompressSync(this.chunkData);
-          this.chunkBuffer = Buffer.from(raw);
-        }
 
-        this.chunkTag = convertTag(this.chunkBuffer, 0, TagType.COMPOUND);
+      switch (this.compressionType) {
+        case CompressionType.ZLIB:
+          const decompressedData = fflate.decompressSync(this.chunkBuffer.slice(5));
+          this.chunkData = Buffer.from(decompressedData);
+          break;
+        case CompressionType.UNCOMPRESSED:
+          this.chunkData = this.chunkBuffer.slice(5);
+          break;
+      }
+
+      this.chunkTag = convertTag(this.chunkData, 0, TagType.COMPOUND);
 
         this._isLoaded = true;
     }
