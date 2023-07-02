@@ -1,4 +1,4 @@
-import {WorldChunk} from "../../../world-reader/src/world";
+import {WorldChunk} from '../../../world-reader/src/world';
 
 export interface WorldAnalyzerChunk {
   chunk: WorldChunk | null;

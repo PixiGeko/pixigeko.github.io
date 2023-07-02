@@ -1,5 +1,5 @@
-import {Theme} from "../constants/theme";
-import {Language} from "../constants/language";
+import {Theme} from '../constants/theme';
+import {Language} from '../constants/language';
 
 export interface Settings {
   theme: Theme;

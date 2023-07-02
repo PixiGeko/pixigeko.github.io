@@ -1,18 +1,18 @@
-import {TagConverter} from "./nbt/converters/converter";
-import {TagType} from "./nbt/tag_type";
-import {EndTagConverter} from "./nbt/converters/end_converter";
-import {ByteTagConverter} from "./nbt/converters/byte_converter";
-import {ShortTagConverter} from "./nbt/converters/short_converter";
-import {IntTagConverter} from "./nbt/converters/int_converter";
-import {LongTagConverter} from "./nbt/converters/long_converter";
-import {FloatTagConverter} from "./nbt/converters/float_converter";
-import {DoubleTagConverter} from "./nbt/converters/double_converter";
-import {ByteArrayTagConverter} from "./nbt/converters/byte_array_converter";
-import {StringTagConverter} from "./nbt/converters/string_converter";
-import {ListTagConverter} from "./nbt/converters/list_converter";
-import {CompoundTagConverter} from "./nbt/converters/compound_converter";
-import {IntArrayTagConverter} from "./nbt/converters/int_array_converter";
-import {LongArrayTagConverter} from "./nbt/converters/long_array_converter";
+import {TagConverter} from './nbt/converters/converter';
+import {TagType} from './nbt/tag_type';
+import {EndTagConverter} from './nbt/converters/end_converter';
+import {ByteTagConverter} from './nbt/converters/byte_converter';
+import {ShortTagConverter} from './nbt/converters/short_converter';
+import {IntTagConverter} from './nbt/converters/int_converter';
+import {LongTagConverter} from './nbt/converters/long_converter';
+import {FloatTagConverter} from './nbt/converters/float_converter';
+import {DoubleTagConverter} from './nbt/converters/double_converter';
+import {ByteArrayTagConverter} from './nbt/converters/byte_array_converter';
+import {StringTagConverter} from './nbt/converters/string_converter';
+import {ListTagConverter} from './nbt/converters/list_converter';
+import {CompoundTagConverter} from './nbt/converters/compound_converter';
+import {IntArrayTagConverter} from './nbt/converters/int_array_converter';
+import {LongArrayTagConverter} from './nbt/converters/long_array_converter';
 
 export const CONVERTERS = new Map<TagType, TagConverter<any>>;
 CONVERTERS.set(TagType.END, new EndTagConverter());
@@ -30,9 +30,9 @@ CONVERTERS.set(TagType.INT_ARRAY, new IntArrayTagConverter());
 CONVERTERS.set(TagType.LONG_ARRAY, new LongArrayTagConverter());
 
 export function convertTag(buffer: Buffer, position: number, type: TagType) {
-    const converter = CONVERTERS.get(type);
+  const converter = CONVERTERS.get(type);
 
-    if(!converter) throw new Error(`Tag type not supported (type ${type})`);
+  if (!converter) throw new Error(`Tag type not supported (type ${type})`);
 
-    return converter.convert(buffer, position);
+  return converter.convert(buffer, position);
 }

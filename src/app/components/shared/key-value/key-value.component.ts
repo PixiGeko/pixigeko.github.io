@@ -8,5 +8,5 @@ import {Component, Input} from '@angular/core';
 export class KeyValueComponent {
   @Input() key!: string;
   @Input() value!: string;
-  @Input() size: number = 16;
+  @Input() size = 16;
 }

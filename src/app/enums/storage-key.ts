@@ -1,4 +1,4 @@
 export enum StorageKey {
-  LANGUAGE = "language",
-  THEME = "theme"
+  LANGUAGE = 'language',
+  THEME = 'theme'
 }

@@ -3,11 +3,11 @@
   max-height: 100vh;
   display: flex;
   flex-direction: column;
-  
+
   #topContainer {
-    
+
   }
-  
+
   #middleContainer {
     display: flex;
     flex-grow: 1;
@@ -23,7 +23,7 @@
       width: 100%;
     }
   }
-  
+
   #bottomContainer {
   }
 }

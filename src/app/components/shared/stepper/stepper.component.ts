@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {StepperStep} from "../../../models/stepper";
+import {StepperStep} from '../../../models/stepper';
 
 @Component({
   selector: 'app-stepper[steps]',

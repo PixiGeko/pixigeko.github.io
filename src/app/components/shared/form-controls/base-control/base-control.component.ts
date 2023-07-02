@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-base-control',
@@ -8,46 +8,46 @@ import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/form
 })
 export class BaseControlComponent implements OnInit, OnChanges {
   @Input() control!: FormControl<any> | FormGroup;
-  @Input() isDisabled: boolean = false;
+  @Input() isDisabled = false;
   @Input() label!: string;
   @Input() placeholder!: string;
   @Input() error!: string;
   @Input() hint!: string;
-  @Input() required: boolean = false;
-  
+  @Input() required = false;
+
   @Output() valueChange = new EventEmitter<any>();
-  
+
   requiredValidator = Validators.required;
-  
+
   ngOnInit() {
     this.abstractControl.valueChanges.subscribe((value) => {
       this.valueChange.emit(value);
     });
-    
-    if(this.required) {
+
+    if (this.required) {
       this.formControl.addValidators(this.requiredValidator);
     }
   }
-  
+
   ngOnChanges(changes: SimpleChanges) {
-    if(this.abstractControl) {
-      if(changes['isDisabled']) {
+    if (this.abstractControl) {
+      if (changes['isDisabled']) {
         const isDisabled = changes['isDisabled'].currentValue as boolean;
-        
-        if(isDisabled) this.abstractControl.disable();
+
+        if (isDisabled) this.abstractControl.disable();
         else this.abstractControl.enable();
       }
 
-      if(changes['required']) {
+      if (changes['required']) {
         const isDisabled = changes['required'].currentValue as boolean;
 
-        if(!isDisabled) {
-          if(!this.abstractControl.hasValidator(this.requiredValidator)) this.abstractControl.addValidators(this.requiredValidator);
+        if (!isDisabled) {
+          if (!this.abstractControl.hasValidator(this.requiredValidator)) this.abstractControl.addValidators(this.requiredValidator);
         } else {
           this.abstractControl.removeValidators(this.requiredValidator);
         }
       }
-      
+
       this.abstractControl.updateValueAndValidity();
     }
   }
@@ -55,7 +55,7 @@ export class BaseControlComponent implements OnInit, OnChanges {
   get abstractControl() {
     return this.control as AbstractControl;
   }
-  
+
   get formControl() {
     return this.control as FormControl;
   }

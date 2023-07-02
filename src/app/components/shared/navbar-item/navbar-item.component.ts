@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {AppRoutes} from "../../../constants/routes";
-import {NavbarItem} from "../../../models/navbar";
+import {AppRoutes} from '../../../constants/routes';
+import {NavbarItem} from '../../../models/navbar';
 
 @Component({
   selector: 'app-navbar-item[item]',
@@ -9,7 +9,7 @@ import {NavbarItem} from "../../../models/navbar";
 })
 export class NavbarItemComponent {
   @Input() item!: NavbarItem;
-  @Input() uppercase: boolean = true;
+  @Input() uppercase = true;
 
   constructor() {
   }

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import {AppRoutes} from "../../../constants/routes";
-import {AppRoute} from "../../../models/route";
+import {Component} from '@angular/core';
+import {AppRoutes} from '../../../constants/routes';
+import {AppRoute} from '../../../models/route';
 
 @Component({
   selector: 'app-nav-bar',
@@ -24,8 +24,8 @@ export class NavBarComponent {
         AppRoutes.SETTINGS
       ]
     }
-  ]
-  
+  ];
+
   getRoute(route: AppRoute) {
     return AppRoutes.routeArray(route);
   }

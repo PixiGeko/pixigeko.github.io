@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AppRoute} from "../models/route";
-import {AppRoutes} from "../constants/routes";
+import {Injectable} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AppRoute} from '../models/route';
+import {AppRoutes} from '../constants/routes';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,6 @@ export class RoutesService {
         queryParams: queryParams,
         relativeTo: relativeTo
       }
-    )
+    );
   }
 }

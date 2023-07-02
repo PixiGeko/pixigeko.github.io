@@ -32,15 +32,15 @@
 <div id="infoContainer" *ngIf="status.files.length && !status.isAnalyzing && !status.isAnalyzed">
   <h1 id="worldName">{{ status.worldName }}</h1>
   <mat-radio-group [(ngModel)]="selectedFolder" id="folderRadioButtonGroup">
-    <mat-radio-button 
+    <mat-radio-button
       [value]="OVERWORLD_FOLDER"
       [disabled]="status.overworldFiles.length === 0"
     >{{ 'minecraft.world_analyzer.overworld' | translate: {count: status.overworldFiles.length} }}</mat-radio-button>
-    <mat-radio-button 
+    <mat-radio-button
       [value]="NETHER_FOLDER"
       [disabled]="status.netherFiles.length === 0"
     >{{ 'minecraft.world_analyzer.nether' | translate: {count: status.netherFiles.length} }}</mat-radio-button>
-    <mat-radio-button 
+    <mat-radio-button
       [value]="END_FOLDER"
       [disabled]="status.endFiles.length === 0"
     >{{ 'minecraft.world_analyzer.end' | translate: {count: status.endFiles.length} }}</mat-radio-button>
@@ -52,8 +52,8 @@
 <div id="analyzeStatusContainer" *ngIf="status.isAnalyzing">
   <div id="analyzeSquare">
     <div
-      *ngFor="let chunk of currentRegionChunks" 
-      class="chunk" 
+      *ngFor="let chunk of currentRegionChunks"
+      class="chunk"
       [class.empty]="!chunk.chunk"
       [class.analyzed]="chunk.analyzed"
       [class.skipped]="chunk.skipped"

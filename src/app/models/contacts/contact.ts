@@ -1,4 +1,4 @@
-import {Logo} from "../logo";
+import {Logo} from '../logo';
 
 export interface Contact {
   name: string;

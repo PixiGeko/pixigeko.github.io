@@ -1,3 +1,3 @@
 export interface ToJSON {
-    toJSON: () => any;
+  toJSON: () => any;
 }

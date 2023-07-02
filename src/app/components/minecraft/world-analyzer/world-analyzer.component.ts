@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {FileUtils} from "../../../utils/FileUtils";
-import {WorldRegion} from "../../../../world-reader/src/world";
-import {WorldAnalyzerChunk} from "../../../models/minecraft/world-analyzer";
-import {firstValueFrom} from "rxjs";
+import {FileUtils} from '../../../utils/FileUtils';
+import {WorldRegion} from '../../../../world-reader/src/world';
+import {WorldAnalyzerChunk} from '../../../models/minecraft/world-analyzer';
+import {firstValueFrom} from 'rxjs';
 
 @Component({
   selector: 'app-world-analyzer',
@@ -10,9 +10,9 @@ import {firstValueFrom} from "rxjs";
   styleUrls: ['./world-analyzer.component.scss']
 })
 export class WorldAnalyzerComponent {
-  OVERWORLD_FOLDER = "region";
-  END_FOLDER = "DIM1/region";
-  NETHER_FOLDER = "DIM-1/region";
+  OVERWORLD_FOLDER = 'region';
+  END_FOLDER = 'DIM1/region';
+  NETHER_FOLDER = 'DIM-1/region';
 
   selectedFolder: string = this.OVERWORLD_FOLDER;
 
@@ -48,33 +48,33 @@ export class WorldAnalyzerComponent {
   async startAnalyze() {
     this.status.isAnalyzing = true;
 
-    for (let r of this.status.overworldFiles) {
+    for (const r of this.status.overworldFiles) {
       this.currentRegion = r;
-      if(r.name !== 'r.0.0.mca') continue;
-      
+      if (r.name !== 'r.0.0.mca') continue;
+
       const buffer = await firstValueFrom(FileUtils.readFileAsBuffer(r));
       if (buffer.length === 0) continue;
-      
+
       const region = new WorldRegion(buffer);
       this.currentRegionChunks = region.chunks.map(c => {
         return {
           chunk: c,
           skipped: false,
           analyzed: false
-        }
+        };
       });
 
-      for (let worldChunk of this.currentRegionChunks) {
+      for (const worldChunk of this.currentRegionChunks) {
         if (!worldChunk.chunk) {
           worldChunk.skipped = true;
           continue;
         }
-        
+
         await worldChunk.chunk.initData();
         await new Promise(resolve => setTimeout(resolve, 10));
-        
-        console.log(worldChunk.chunk.asObject())
-        
+
+        console.log(worldChunk.chunk.asObject());
+
         worldChunk.analyzed = true;
       }
     }

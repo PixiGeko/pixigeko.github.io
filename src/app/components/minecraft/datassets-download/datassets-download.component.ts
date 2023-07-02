@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {MGDService} from "../../../services/mgd.service";
-import {MGDIndexVersion} from "../../../models/minecraft/mdg";
-import {KeyValue} from "@angular/common";
-import {MCMeta} from "../../../models/minecraft/mcmeta";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ArrayUtils} from "../../../utils/ArrayUtils";
+import {MGDService} from '../../../services/mgd.service';
+import {MGDIndexVersion} from '../../../models/minecraft/mdg';
+import {KeyValue} from '@angular/common';
+import {MCMeta} from '../../../models/minecraft/mcmeta';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ArrayUtils} from '../../../utils/ArrayUtils';
 
 @Component({
   selector: 'app-datassets-download',
@@ -16,7 +16,7 @@ export class DatassetsDownloadComponent implements OnInit {
     isLoading: true,
     assets: {},
     data: {}
-  }
+  };
 
   versions?: Record<string, MGDIndexVersion[]>;
 
@@ -46,9 +46,9 @@ export class DatassetsDownloadComponent implements OnInit {
 
           this.selectedVersionChanged();
           this.status.isLoading = false;
-        })
+        });
       }
-    })
+    });
   }
 
   selectedVersionChanged() {
@@ -74,7 +74,7 @@ export class DatassetsDownloadComponent implements OnInit {
 
   download(type: string) {
     if (!this.status.selectedVersion) return;
-    window.open(`https://github.com/PixiGeko/Minecraft-default-${type}/archive/refs/heads/${this.mgdService.toVersionBranch(this.status.selectedVersion)}.zip`, '_blank')
+    window.open(`https://github.com/PixiGeko/Minecraft-default-${type}/archive/refs/heads/${this.mgdService.toVersionBranch(this.status.selectedVersion)}.zip`, '_blank');
   }
 
   reverse(a: KeyValue<string, MGDIndexVersion[]>, b: KeyValue<string, MGDIndexVersion[]>): number {

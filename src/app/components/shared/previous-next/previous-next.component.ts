@@ -6,11 +6,11 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrls: ['./previous-next.component.scss']
 })
 export class PreviousNextComponent {
-  @Input() previousDisabled: boolean = false;
-  @Input() nextDisabled: boolean = false;
+  @Input() previousDisabled = false;
+  @Input() nextDisabled = false;
 
-  @Input() previousLabel: string = 'common.previous';
-  @Input() nextLabel: string = 'common.next';
+  @Input() previousLabel = 'common.previous';
+  @Input() nextLabel = 'common.next';
 
   @Output() previousClicked = new EventEmitter<void>();
   @Output() nextClicked = new EventEmitter<void>();

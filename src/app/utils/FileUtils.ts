@@ -1,5 +1,5 @@
-import {Observable} from "rxjs";
-import { Buffer } from 'buffer';
+import {Observable} from 'rxjs';
+import {Buffer} from 'buffer';
 
 export class FileUtils {
   static readFileAsBuffer(file: File) {
@@ -8,9 +8,9 @@ export class FileUtils {
 
       fileReader.onload = (e) => {
         observer.next(Buffer.from(fileReader.result as ArrayBuffer));
-      }
+      };
 
       fileReader.readAsArrayBuffer(file);
-    })
+    });
   }
 }

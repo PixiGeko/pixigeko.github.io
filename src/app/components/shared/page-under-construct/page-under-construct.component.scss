@@ -3,13 +3,13 @@
   width: 100%;
   display: inline-block;
   text-align: center;
-  
-  &::before{
-    content:'';
-    display:inline-block;
-    height:100%;
-    vertical-align:middle;
-    width:0;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 0;
   }
 
   img {

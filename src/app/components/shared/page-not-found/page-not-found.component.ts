@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {RoutesService} from "../../../services/routes.service";
-import {AppRoutes} from "../../../constants/routes";
+import {RoutesService} from '../../../services/routes.service';
+import {AppRoutes} from '../../../constants/routes';
 
 @Component({
   selector: 'app-page-not-found',
@@ -12,6 +12,6 @@ export class PageNotFoundComponent {
   }
 
   navigateToHome() {
-    this.routesService.navigate(AppRoutes.HOME)
+    this.routesService.navigate(AppRoutes.HOME);
   }
 }

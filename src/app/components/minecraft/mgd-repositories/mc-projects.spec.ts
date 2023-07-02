@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { McProjects } from './mc-projects';
+import {McProjects} from './mc-projects';
 
 describe('MgdRepositoriesComponent', () => {
   let component: McProjects;
@@ -8,9 +8,9 @@ describe('MgdRepositoriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ McProjects ]
+      declarations: [McProjects]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(McProjects);
     component = fixture.componentInstance;

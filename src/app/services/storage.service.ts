@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {StorageKey} from "../enums/storage-key";
+import {StorageKey} from '../enums/storage-key';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import {MinecraftProject} from "../../../models/minecraft/project";
-import {Logo} from "../../../models/logo";
+import {Component} from '@angular/core';
+import {MinecraftProject} from '../../../models/minecraft/project';
+import {Logo} from '../../../models/logo';
 
 @Component({
   selector: 'app-mgd-repositories',

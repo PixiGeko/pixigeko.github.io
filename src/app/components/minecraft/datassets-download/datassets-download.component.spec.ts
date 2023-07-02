@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DatassetsDownloadComponent } from './datassets-download.component';
+import {DatassetsDownloadComponent} from './datassets-download.component';
 
 describe('DatassetsDownloadComponent', () => {
   let component: DatassetsDownloadComponent;
@@ -8,9 +8,9 @@ describe('DatassetsDownloadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DatassetsDownloadComponent ]
+      declarations: [DatassetsDownloadComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DatassetsDownloadComponent);
     component = fixture.componentInstance;

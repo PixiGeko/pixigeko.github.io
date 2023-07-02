@@ -16,7 +16,7 @@ export class DropzoneComponent {
     const files: File[] = [];
     for (let i = 0; i < items.length; i++) {
       const file = items[i]?.getAsFile();
-      console.log(file)
+      console.log(file);
       if (file) files.push(file);
     }
 

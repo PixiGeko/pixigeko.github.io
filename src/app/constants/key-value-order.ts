@@ -1,4 +1,4 @@
-import {KeyValue} from "@angular/common";
+import {KeyValue} from '@angular/common';
 
 // Preserve original property order
 export function originalOrder(a: KeyValue<string, any>, b: KeyValue<string, any>): number {

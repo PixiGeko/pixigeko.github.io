@@ -2,7 +2,8 @@
   <div class="selectContainer">
     <mat-form-field appearance="outline" class="hideHintWrapper">
       <mat-label>{{ 'minecraft.datassets_download.version' | translate }}</mat-label>
-      <mat-select required [disabled]="status.isLoading" [(ngModel)]="status.selectedVersion" (ngModelChange)="selectedVersionChanged()">
+      <mat-select required [disabled]="status.isLoading" [(ngModel)]="status.selectedVersion"
+                  (ngModelChange)="selectedVersionChanged()">
         <mat-optgroup *ngFor="let group of versions | keyvalue: reverse" [label]="group.key">
           <mat-option *ngFor="let version of group.value" [value]="version">
             {{ version.id }}
@@ -25,7 +26,7 @@
         {{ 'minecraft.datassets_download.data' | translate }}
         <mat-icon *ngIf="status.data.isLoading">add</mat-icon>
       </button>
-      
+
       <ng-container *ngTemplateOutlet="mcmetaDetails; context: { mcmeta: status.data.mcmeta }"></ng-container>
     </div>
   </div>

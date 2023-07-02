@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
-import {DOCUMENT} from "@angular/common";
-import {TranslateService} from "@ngx-translate/core";
-import {EventsService} from "./services/events.service";
-import {SettingsService} from "./services/settings.service";
+import {DOCUMENT} from '@angular/common';
+import {TranslateService} from '@ngx-translate/core';
+import {EventsService} from './services/events.service';
+import {SettingsService} from './services/settings.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     @Inject(DOCUMENT) private document: Document
   ) {
   }
-  
+
   ngOnInit() {
     this.document.body.classList.add(...this.eventsService.getActivesEvents());
   }

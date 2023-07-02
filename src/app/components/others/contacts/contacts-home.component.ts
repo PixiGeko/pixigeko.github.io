@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {Contact} from "../../../models/contacts/contact";
-import {Logo} from "../../../models/logo";
+import {Contact} from '../../../models/contacts/contact';
+import {Logo} from '../../../models/logo';
 
 @Component({
   selector: 'app-logo-home',
@@ -34,7 +34,7 @@ export class ContactsHomeComponent {
   openURL(account: Contact) {
     window.open(account.url, '_blank');
   }
-  
+
   private twitterURL(name: string) {
     return `https://twitter.com/${name}`;
   }

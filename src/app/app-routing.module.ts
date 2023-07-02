@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MinecraftHomeComponent} from "./components/minecraft/minecraft-home.component";
-import {HomeComponent} from "./components/home/home.component";
-import {PageNotFoundComponent} from "./components/shared/page-not-found/page-not-found.component";
-import {AppRoutes} from "./constants/routes";
-import {DatassetsDownloadComponent} from "./components/minecraft/datassets-download/datassets-download.component";
-import {AppRoute} from "./models/route";
-import {ContactsHomeComponent} from "./components/others/contacts/contacts-home.component";
-import {SettingsComponent} from "./components/others/settings/settings.component";
-import {McProjects} from "./components/minecraft/mgd-repositories/mc-projects";
-import {WorldAnalyzerComponent} from "./components/minecraft/world-analyzer/world-analyzer.component";
+import {MinecraftHomeComponent} from './components/minecraft/minecraft-home.component';
+import {HomeComponent} from './components/home/home.component';
+import {PageNotFoundComponent} from './components/shared/page-not-found/page-not-found.component';
+import {AppRoutes} from './constants/routes';
+import {DatassetsDownloadComponent} from './components/minecraft/datassets-download/datassets-download.component';
+import {AppRoute} from './models/route';
+import {ContactsHomeComponent} from './components/others/contacts/contacts-home.component';
+import {SettingsComponent} from './components/others/settings/settings.component';
+import {McProjects} from './components/minecraft/mgd-repositories/mc-projects';
+import {WorldAnalyzerComponent} from './components/minecraft/world-analyzer/world-analyzer.component';
 
 const routeTitle = (route: AppRoute) => route.tabTitle ?? route.title;
 

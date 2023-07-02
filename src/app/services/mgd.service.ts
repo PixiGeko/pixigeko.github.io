@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {MGDIndex, MGDIndexVersion} from "../models/minecraft/mdg";
-import {MCMeta} from "../models/minecraft/mcmeta";
+import {HttpClient} from '@angular/common/http';
+import {MGDIndex, MGDIndexVersion} from '../models/minecraft/mdg';
+import {MCMeta} from '../models/minecraft/mcmeta';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +49,7 @@ export class MGDService {
   loadCGVersionTxt(version: MGDIndexVersion, path: string) {
     return this.loadVersionTxt(version, `custom-generated/${path}`);
   }
-  
+
   loadAssetsMCMeta(version: MGDIndexVersion) {
     return this.http.get<MCMeta>(`${MGDService.MDA_BASE_URL}/${this.toVersionBranch(version)}/pack.mcmeta`);
   }
@@ -57,7 +57,7 @@ export class MGDService {
   loadDataMCMeta(version: MGDIndexVersion) {
     return this.http.get<MCMeta>(`${MGDService.MDD_BASE_URL}/${this.toVersionBranch(version)}/pack.mcmeta`);
   }
-  
+
   toVersionBranch(version: MGDIndexVersion) {
     return version.id.split(' ').join('_').toLowerCase();
   }

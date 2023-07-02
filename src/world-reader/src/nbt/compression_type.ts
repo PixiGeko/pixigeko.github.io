@@ -1,5 +1,5 @@
 export enum CompressionType {
-    GZIP = 1,
-    ZLIB = 2,
-    UNCOMPRESSED = 3
+  GZIP = 1,
+  ZLIB = 2,
+  UNCOMPRESSED = 3
 }

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { KeyValueComponent } from './key-value.component';
+import {KeyValueComponent} from './key-value.component';
 
 describe('KeyValueComponent', () => {
   let component: KeyValueComponent;
@@ -8,9 +8,9 @@ describe('KeyValueComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KeyValueComponent ]
+      declarations: [KeyValueComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(KeyValueComponent);
     component = fixture.componentInstance;

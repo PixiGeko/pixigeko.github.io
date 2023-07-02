@@ -1,5 +1,5 @@
-import {Theme} from "./theme";
-import {Language} from "./language";
+import {Theme} from './theme';
+import {Language} from './language';
 
 export class DefaultValues {
   static LANGUAGE = Language.ENGLISH;
