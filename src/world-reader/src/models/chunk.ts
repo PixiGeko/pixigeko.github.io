@@ -7,14 +7,16 @@ export interface Chunk {
 }
 
 export interface ChunkData {
-    DataVersion: number;
-    xPos: number;
-    zPos: number;
-    yPos: number;
-    Status: ChunkStatus;
-    LastUpdate: number;
-    sections: ChunkSection[];
-    block_entities: any[];
+    Level: {
+      DataVersion: number;
+      xPos: number;
+      zPos: number;
+      yPos: number;
+      Status: ChunkStatus;
+      LastUpdate: number;
+      sections: ChunkSection[];
+      block_entities: any[];
+    }
 }
 
 export interface ChunkSection {

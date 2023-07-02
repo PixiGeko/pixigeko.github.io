@@ -48,10 +48,11 @@
 </div>
 
 
+<h1>{{ currentRegion?.name }}</h1>
 <div id="analyzeStatusContainer" *ngIf="status.isAnalyzing">
   <div id="analyzeSquare">
     <div
-      *ngFor="let chunk of chunks" 
+      *ngFor="let chunk of currentRegionChunks" 
       class="chunk" 
       [class.empty]="!chunk.chunk"
       [class.analyzed]="chunk.analyzed"

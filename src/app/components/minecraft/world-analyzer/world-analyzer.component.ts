@@ -27,7 +27,8 @@ export class WorldAnalyzerComponent {
     endFiles: []
   };
 
-  chunks: WorldAnalyzerChunk[] = [];
+  currentRegion!: File;
+  currentRegionChunks: WorldAnalyzerChunk[] = [];
 
   filesSelected($event: Event) {
     const input = $event.target as HTMLInputElement;
@@ -47,12 +48,15 @@ export class WorldAnalyzerComponent {
   async startAnalyze() {
     this.status.isAnalyzing = true;
 
-    for (let r of this.status.overworldFiles.slice(0, 1)) {
-      console.log(r);
+    for (let r of this.status.overworldFiles) {
+      this.currentRegion = r;
+      if(r.name !== 'r.0.0.mca') continue;
+      
       const buffer = await firstValueFrom(FileUtils.readFileAsBuffer(r));
       if (buffer.length === 0) continue;
+      
       const region = new WorldRegion(buffer);
-      this.chunks = region.chunks.map(c => {
+      this.currentRegionChunks = region.chunks.map(c => {
         return {
           chunk: c,
           skipped: false,
@@ -60,10 +64,15 @@ export class WorldAnalyzerComponent {
         }
       });
 
-      for (let worldChunk of this.chunks) {
-        if (!worldChunk.chunk) continue;
+      for (let worldChunk of this.currentRegionChunks) {
+        if (!worldChunk.chunk) {
+          worldChunk.skipped = true;
+          continue;
+        }
+        
         await worldChunk.chunk.initData();
-        new Promise(resolve => setTimeout(resolve, 10));
+        
+        await new Promise(resolve => setTimeout(resolve, 10));
         
         worldChunk.analyzed = true;
       }

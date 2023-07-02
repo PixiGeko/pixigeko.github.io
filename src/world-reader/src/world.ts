@@ -8,7 +8,7 @@ import {worldJsonReplacer} from "./utils/json_replacer";
 import {Region} from "./models/region";
 import {Chunk} from "./models/chunk";
 import { Buffer } from 'buffer';
-import * as zlib from "zlib";
+import * as fflate from 'fflate';
 
 export const SECTOR_SIZE = 4096;
 export const TIMESTAMP_BASE_OFFSET = 4096;
@@ -88,11 +88,12 @@ export class WorldChunk implements ToJSON {
         }
         
         if (this.compressionType === CompressionType.ZLIB) {
-          this.chunkBuffer = zlib.unzipSync(this.chunkData);
+          const raw = fflate.decompressSync(this.chunkData);
+          this.chunkBuffer = Buffer.from(raw);
         }
 
-
         this.chunkTag = convertTag(this.chunkBuffer, 0, TagType.COMPOUND);
+
         this._isLoaded = true;
     }
 
