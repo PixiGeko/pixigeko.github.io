@@ -21,32 +21,27 @@ export class WorldRegion implements ToJSON {
   }
 
   private initChunks() {
-    for (let i = 0; i < 4096; i += 4) {
+    for (let i = 0; i < 1024; i++) {
+      const xInRegion = Math.floor((i - 1) / 32);
+      const zInRegion = (i - 1) % 32;
+      
+      const offset = i * 4;
       const header: ChunkHeader = {
-        sectorOffset: (this.regionBuffer.readUInt8(i) << 16) + (this.regionBuffer.readUInt8(i + 1) << 8) + this.regionBuffer.readUInt8(i + 2),
-        sectorCount: this.regionBuffer.readUInt8(i + 3),
-        timestamp: this.regionBuffer.readUInt32BE(i + TIMESTAMP_BASE_OFFSET)
+        sectorOffset: (this.regionBuffer.readUInt8(offset) << 16) + (this.regionBuffer.readUInt8(offset + 1) << 8) + this.regionBuffer.readUInt8(offset + 2),
+        size: this.regionBuffer.readUInt8(offset + 3),
+        timestamp: this.regionBuffer.readUInt32BE(offset + TIMESTAMP_BASE_OFFSET),
+        x: xInRegion,
+        z: zInRegion
       };
 
       const start = header.sectorOffset * SECTOR_SIZE;
-      const end = (header.sectorOffset + header.sectorCount) * SECTOR_SIZE;
+      const end = (header.sectorOffset + header.size) * SECTOR_SIZE;
 
       const chunkBuffer = this.regionBuffer.slice(start, end);
 
       if (chunkBuffer.length === 0) this.chunks.push(null); // ignore empty chunks
       else this.chunks.push(new WorldChunk(header, chunkBuffer));
     }
-  }
-
-  public chunkAtIndex(index: number) {
-    if (index < 0 || index > this.chunks.length) throw new Error('Index out of bound');
-
-    const chunk = this.chunks[index];
-
-    if (!chunk) return null;
-
-    if (!chunk.isLoaded) chunk.initData();
-    return this.chunks[index];
   }
 
   public chunkAtCoordinates(x: number, z: number) {
@@ -110,6 +105,7 @@ export class WorldChunk implements ToJSON {
     return {
       compressionType: this.compressionType,
       remainingData: this.remainingChunkData,
+      header: this.header,
       data: this.chunkTag?.tag?.value['']
     };
   }
@@ -121,6 +117,8 @@ export class WorldChunk implements ToJSON {
 
 export interface ChunkHeader {
   sectorOffset: number;
-  sectorCount: number;
+  size: number;
   timestamp: number;
+  x: number;
+  z: number;
 }

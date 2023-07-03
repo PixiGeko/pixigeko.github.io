@@ -13,7 +13,6 @@ export class FileService {
       const fileReader = new FileReader();
       fileReader.onload = (e) => {
         resolve(String(fileReader.result));
-        console.log(fileReader.result);
       };
       fileReader.readAsText(file);
     });

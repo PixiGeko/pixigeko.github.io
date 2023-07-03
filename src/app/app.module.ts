@@ -53,6 +53,7 @@ import {BaseControlComponent} from './components/shared/form-controls/base-contr
 import {KeyValueComponent} from './components/shared/key-value/key-value.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatRadioModule} from '@angular/material/radio';
+import { ChunkDetailsComponent } from './components/minecraft/world-analyzer/chunk-details/chunk-details.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -82,6 +83,7 @@ registerLocaleData(localeFr, 'fr');
     NavBarComponent,
     BaseControlComponent,
     KeyValueComponent,
+    ChunkDetailsComponent,
   ],
   imports: [
     TranslateModule.forRoot({

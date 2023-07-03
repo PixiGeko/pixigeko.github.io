@@ -31,36 +31,84 @@
 
 <div id="infoContainer" *ngIf="status.files.length && !status.isAnalyzing && !status.isAnalyzed">
   <h1 id="worldName">{{ status.worldName }}</h1>
-  <mat-radio-group [(ngModel)]="selectedFolder" id="folderRadioButtonGroup">
+  <mat-radio-group
+    [(ngModel)]="selectedDimension"
+    (ngModelChange)="selectedDimensionChange($event)"
+    id="folderRadioButtonGroup"
+  >
     <mat-radio-button
-      [value]="OVERWORLD_FOLDER"
-      [disabled]="status.overworldFiles.length === 0"
-    >{{ 'minecraft.world_analyzer.overworld' | translate: {count: status.overworldFiles.length} }}</mat-radio-button>
-    <mat-radio-button
-      [value]="NETHER_FOLDER"
-      [disabled]="status.netherFiles.length === 0"
-    >{{ 'minecraft.world_analyzer.nether' | translate: {count: status.netherFiles.length} }}</mat-radio-button>
-    <mat-radio-button
-      [value]="END_FOLDER"
-      [disabled]="status.endFiles.length === 0"
-    >{{ 'minecraft.world_analyzer.end' | translate: {count: status.endFiles.length} }}</mat-radio-button>
+      *ngFor="let dimension of dimensions"
+      [value]="dimension"
+      [disabled]="status.dimensionFiles[dimension.name].length === 0"
+    >
+      {{ 'minecraft.world_analyzer.' + dimension.name | translate: {count: status.dimensionFiles[dimension.name].length} }}
+    </mat-radio-button>
   </mat-radio-group>
+
+  <ng-container *ngIf="shouldShowTable">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>NAME</th>
+        <td mat-cell *matCellDef="let file">{{file.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="path">
+        <th mat-header-cell *matHeaderCellDef>PATH</th>
+        <td mat-cell *matCellDef="let file">{{file.webkitRelativePath}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="size">
+        <th mat-header-cell *matHeaderCellDef>SIZE</th>
+        <td mat-cell *matCellDef="let file">{{file.size}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </ng-container>
+
 </div>
 
 
-<h1>{{ currentRegion?.name }}</h1>
-<div id="analyzeStatusContainer" *ngIf="status.isAnalyzing">
-  <div id="analyzeSquare">
-    <div
-      *ngFor="let chunk of currentRegionChunks"
-      class="chunk"
-      [class.empty]="!chunk.chunk"
-      [class.analyzed]="chunk.analyzed"
-      [class.skipped]="chunk.skipped"
-    ></div>
+<div id="analyzeStatus" *ngIf="status.isAnalyzing">
+  <div id="analyzeStatusContainer">
+    <div id="analyzeSquare">
+      <div
+        *ngFor="let chunk of currentRegion.chunks"
+        class="chunk"
+        [class.empty]="!chunk.chunk"
+        [class.analyzed]="chunk.analyzed"
+        [class.skipped]="chunk.skipped"
+        [class.error]="!!chunk.error"
+        [matTooltip]="chunk.error ?? ''"
+        [matTooltipDisabled]="!chunk.error"
+        [class.pointer]="chunk.error"
+      ></div>
+    </div>
+    <div id="analyzeInfo">
+      <app-chunk-details [region]="currentRegion" [chunk]="currentChunk?.chunk"></app-chunk-details>
+    </div>
+  </div>
+  <div id="analyzeLegend">
+    <ng-container *ngTemplateOutlet="legendItem; context: {name: 'empty', clazz: 'empty'}"></ng-container>
+    <ng-container *ngTemplateOutlet="legendItem; context: {name: 'skipped', clazz: 'skipped'}"></ng-container>
+    <ng-container *ngTemplateOutlet="legendItem; context: {name: 'analyzed', clazz: 'analyzed'}"></ng-container>
+    <ng-container *ngTemplateOutlet="legendItem; context: {name: 'error', clazz: 'error'}"></ng-container>
   </div>
 </div>
 
 <div id="analyzeResults" *ngIf="status.isAnalyzed">
   TODO
 </div>
+
+<ng-template #legendItem let-name="name" let-clazz="clazz">
+  <div class="">
+    <div [ngClass]="clazz" class="chunk d-inline-block"></div>
+    <span>&nbsp;{{ name }}</span>
+  </div>
+</ng-template>

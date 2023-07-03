@@ -1,4 +1,4 @@
-import {TagConverter} from './nbt/converters/converter';
+import {TagConverter, TagConverterResult} from './nbt/converters/converter';
 import {TagType} from './nbt/tag_type';
 import {EndTagConverter} from './nbt/converters/end_converter';
 import {ByteTagConverter} from './nbt/converters/byte_converter';
@@ -13,6 +13,8 @@ import {ListTagConverter} from './nbt/converters/list_converter';
 import {CompoundTagConverter} from './nbt/converters/compound_converter';
 import {IntArrayTagConverter} from './nbt/converters/int_array_converter';
 import {LongArrayTagConverter} from './nbt/converters/long_array_converter';
+import {TagEnd} from "./nbt/tag";
+import {TagTypeError} from "../../app/error";
 
 export const CONVERTERS = new Map<TagType, TagConverter<any>>;
 CONVERTERS.set(TagType.END, new EndTagConverter());
@@ -32,7 +34,9 @@ CONVERTERS.set(TagType.LONG_ARRAY, new LongArrayTagConverter());
 export function convertTag(buffer: Buffer, position: number, type: TagType) {
   const converter = CONVERTERS.get(type);
 
-  if (!converter) throw new Error(`Tag type not supported (type ${type})`);
+  if (!converter) {
+    throw new TagTypeError(type);
+  }
 
   return converter.convert(buffer, position);
 }

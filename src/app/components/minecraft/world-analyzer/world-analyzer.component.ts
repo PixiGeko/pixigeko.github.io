@@ -1,8 +1,19 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {FileUtils} from '../../../utils/FileUtils';
 import {WorldRegion} from '../../../../world-reader/src/world';
-import {WorldAnalyzerChunk} from '../../../models/minecraft/world-analyzer';
+import {
+  DIMENSIONS,
+  WorldAnalyzerChunk,
+  WorldAnalyzerDimension,
+  WorldAnalyzerRegion
+} from '../../../models/minecraft/world-analyzer';
 import {firstValueFrom} from 'rxjs';
+import {MiscUtils} from "../../../utils/MiscUtils";
+import {Chunk, ChunkStatus} from "../../../../world-reader/src/models/chunk";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {error} from "@angular/compiler-cli/src/transformers/util";
+import {NbtRegion} from "deepslate";
 
 @Component({
   selector: 'app-world-analyzer',
@@ -10,11 +21,16 @@ import {firstValueFrom} from 'rxjs';
   styleUrls: ['./world-analyzer.component.scss']
 })
 export class WorldAnalyzerComponent {
-  OVERWORLD_FOLDER = 'region';
-  END_FOLDER = 'DIM1/region';
-  NETHER_FOLDER = 'DIM-1/region';
+  @ViewChild(MatPaginator) set matPaginator(paginator: MatPaginator) {
+    this.dataSource.paginator = paginator;
+  }
 
-  selectedFolder: string = this.OVERWORLD_FOLDER;
+  displayedColumns = ['name', 'path', 'size'];
+
+  dataSource = new MatTableDataSource<File>;
+
+  dimensions = DIMENSIONS;
+  selectedDimension?: WorldAnalyzerDimension;
 
   status: Status = {
     isAnalyzing: false,
@@ -22,18 +38,18 @@ export class WorldAnalyzerComponent {
     files: [],
     fileUploadError: null,
     worldName: null,
-    overworldFiles: [],
-    netherFiles: [],
-    endFiles: []
+    dimensionFiles: {}
   };
 
-  currentRegion!: File;
-  currentRegionChunks: WorldAnalyzerChunk[] = [];
+  currentRegion!: WorldAnalyzerRegion;
+  currentChunk!: WorldAnalyzerChunk;
 
   filesSelected($event: Event) {
     const input = $event.target as HTMLInputElement;
 
-    if (!input.files) return;
+    if (!input.files || !input.files.length) return;
+
+    this.restart();
 
     const files: File[] = [];
     for (let i = 0; i < input.files.length; i++) {
@@ -42,21 +58,34 @@ export class WorldAnalyzerComponent {
     }
 
     this.status.files = files;
-    this.filesUpdated();
+    this.status.worldName = this.status.files[0].webkitRelativePath.split('/')[0];
+
+    this.status.dimensionFiles = {};
+    for (let dimension of this.dimensions) {
+      this.status.dimensionFiles[dimension.name] = this.status.files.filter(f => f.webkitRelativePath.match(`${this.status.worldName}/${dimension.path}/.*\.mca`))
+    }
+  }
+
+  selectedDimensionChange(dimension: WorldAnalyzerDimension) {
+    this.dataSource.data = this.status.dimensionFiles[dimension.name];
   }
 
   async startAnalyze() {
     this.status.isAnalyzing = true;
+    
+    if(!this.selectedDimension) return;
 
-    for (const r of this.status.overworldFiles) {
-      this.currentRegion = r;
-      if (r.name !== 'r.0.0.mca') continue;
+    for (const regionFile of this.status.dimensionFiles[this.selectedDimension.name]) {
+      this.currentRegion = {
+        file: regionFile
+      }
 
-      const buffer = await firstValueFrom(FileUtils.readFileAsBuffer(r));
+      const buffer = await firstValueFrom(FileUtils.readFileAsBuffer(regionFile));
+      const r = NbtRegion.read(buffer);
       if (buffer.length === 0) continue;
 
       const region = new WorldRegion(buffer);
-      this.currentRegionChunks = region.chunks.map(c => {
+      this.currentRegion.chunks = region.chunks.map(c => {
         return {
           chunk: c,
           skipped: false,
@@ -64,23 +93,83 @@ export class WorldAnalyzerComponent {
         };
       });
 
-      for (const worldChunk of this.currentRegionChunks) {
-        if (!worldChunk.chunk) {
-          worldChunk.skipped = true;
+      for (const regionChunk of this.currentRegion.chunks) {
+        if (!regionChunk.chunk) {
           continue;
         }
 
-        await worldChunk.chunk.initData();
-        await new Promise(resolve => setTimeout(resolve, 10));
+        if (regionChunk.chunk.header.sectorOffset === 0 && regionChunk.chunk.header.size === 0) {
+          regionChunk.skipped = true;
+          continue;
+        }
 
-        console.log(worldChunk.chunk.asObject());
+        this.currentChunk = regionChunk;
 
-        worldChunk.analyzed = true;
+        try {
+          await regionChunk.chunk.initData();
+
+          const chunk = regionChunk.chunk.asObject();
+
+          if (chunk.data.Level.Status !== ChunkStatus.FULL) {
+            regionChunk.skipped = true;
+            continue;
+          }
+          
+          await this.analyzeChunk(chunk);
+
+          regionChunk.analyzed = true;
+          await MiscUtils.sleep(1);
+        } catch (e) {
+          const error = `[R${this.currentSectionX}:${this.currentSectionZ} | C${this.currentChunk.chunk?.header.sectorOffset}] ${(e as Error).message}`;
+          console.warn(error);
+          regionChunk.error = error;
+        }
       }
     }
 
     this.status.isAnalyzing = false;
     this.status.isAnalyzed = true;
+  }
+  
+  get currentSectionX() {
+    return this.currentRegion.file.name.split('.')[1];
+  }
+
+  get currentSectionZ() {
+    return this.currentRegion.file.name.split('.')[2];
+  }
+
+  private async analyzeChunk(chunk: Chunk) {
+    for (let section of chunk.data.Level?.Sections ?? []) {
+      if (section.BlockStates) {
+        const indexes = this.extractPalette(section.BlockStates, section.Palette);
+        if(indexes.length > 4096) console.log(indexes.map(i => section.Palette[i]))
+      }
+    }
+  }
+
+  private extractPalette(data: bigint[], palette: any[]): number[] {
+    if (palette.length === 1) {
+      // "If only one block state is present in the palette, this field is not required and the block fills the whole section"
+      return Array(4096).fill(0);
+    }
+
+    const bitsPerIndex = Math.ceil(Math.log2(palette.length)); // Nombre de bits nécessaires pour représenter les indices
+    const mask = BigInt((1 << bitsPerIndex) - 1); // Masque de bits pour extraire les bits de l'indice
+
+    const indices: number[] = [];
+
+    for (const number of data) {
+      let remainingBits: bigint = BigInt(bitsPerIndex);
+
+      while (remainingBits !== 0n) {
+        const index = Number(remainingBits & BigInt(mask)); // Extraction de l'indice avec le masque de bits
+        indices.push(index);
+        remainingBits >>= BigInt(bitsPerIndex); // Décalage à droite pour passer à l'indice suivant
+      }
+    }
+
+    return indices;
   }
 
   get canUploadFiles() {
@@ -88,29 +177,21 @@ export class WorldAnalyzerComponent {
   }
 
   get canStartAnalyze() {
-    return !this.status.isAnalyzing && this.status.files.length;
+    return !this.status.isAnalyzing && this.status.files.length && this.selectedDimension;
   }
 
-  private filesUpdated() {
-    this.restart();
-
-    if (!this.status.files?.length) this.status.fileUploadError = 'minecraft.world_analyzer.no_files';
-
-    this.status.worldName = this.status.files[0].webkitRelativePath.split('/')[0];
-
-    this.status.overworldFiles = this.status.files.filter(f => f.webkitRelativePath.match(`${this.status.worldName}/${this.OVERWORLD_FOLDER}/.*\.mca`));
-    this.status.netherFiles = this.status.files.filter(f => f.webkitRelativePath.match(`${this.status.worldName}/${this.NETHER_FOLDER}/.*\.mca`));
-    this.status.endFiles = this.status.files.filter(f => f.webkitRelativePath.match(`${this.status.worldName}/${this.END_FOLDER}/.*\.mca`));
+  get shouldShowTable() {
+    return this.selectedDimension;
   }
 
   private restart() {
+    this.selectedDimension = undefined;
+    this.status.files = [];
     this.status.isAnalyzing = false;
     this.status.isAnalyzed = false;
     this.status.fileUploadError = null;
     this.status.worldName = null;
-    this.status.overworldFiles = [];
-    this.status.netherFiles = [];
-    this.status.endFiles = [];
+    this.status.dimensionFiles = {};
   }
 }
 
@@ -120,7 +201,7 @@ interface Status {
   files: File[],
   fileUploadError: string | null;
   worldName: string | null;
-  overworldFiles: File[];
-  netherFiles: File[];
-  endFiles: File[];
+  dimensionFiles: {
+    [key: string]: File[];
+  };
 }

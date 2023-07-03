@@ -1,35 +1,35 @@
 import {CompressionType} from '../nbt/compression_type';
+import {ChunkHeader} from "../world";
 
 export interface Chunk {
   compressionType: CompressionType;
   remainingData: number;
   data: ChunkData;
+  header: ChunkHeader;
 }
 
 export interface ChunkData {
   Level: {
-    DataVersion: number;
-    xPos: number;
-    zPos: number;
-    yPos: number;
-    Status: ChunkStatus;
-    LastUpdate: number;
-    sections: ChunkSection[];
-    block_entities: any[];
+    DataVersion?: number;
+    xPos?: number;
+    zPos?: number;
+    yPos?: number;
+    Status?: ChunkStatus;
+    LastUpdate?: number;
+    Sections?: ChunkSection[];
+    block_entities?: any[];
   }
 }
 
 export interface ChunkSection {
   Y: number;
-  block_states: {
-    palette: {
-      Name: string;
-      Properties: {
-        [key: string]: any;
-      }[];
+  BlockStates: bigint[];
+  Palette: {
+    Name: string;
+    Properties: {
+      [key: string]: any;
     }[];
-    data: number[];
-  };
+  }[];
   biomes: {
     palette: string[];
     data: number[];

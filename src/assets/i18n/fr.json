@@ -51,6 +51,14 @@
       }
     },
     "world_analyzer": {
+      "chunk_details": {
+        "last_update": "Dernière mise à jour",
+        "sector_offset": "Décalage du secteur",
+        "size": "Taille",
+        "status": "Statut",
+        "xPos": "xPos",
+        "zPos": "zPox"
+      },
       "chunk_empty": "Vide",
       "end": "Analyser l'End ({{count}} regions)",
       "nether": "Analyser le Nether ({{count}} regions)",

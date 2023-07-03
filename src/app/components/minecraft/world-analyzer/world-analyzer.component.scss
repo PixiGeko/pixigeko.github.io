@@ -29,29 +29,44 @@
   }
 }
 
-#analyzeSquare {
-  $size: 10px;
+#analyzeStatus {
+  #analyzeStatusContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
 
-  display: grid;
-  grid-template-columns: repeat(32, $size);
-  grid-template-rows: repeat(32, $size);
-  grid-gap: 2px;
-  border: 1px solid black;
-
-  .chunk {
-    width: $size;
-    height: $size;
-
-    &.empty {
-      background-color: gray;
-    }
-
-    &.skipped {
-      background-color: darkorange;
-    }
-
-    &.analyzed {
-      background-color: yellowgreen;
+    #analyzeSquare {
+      display: grid;
+      grid-template-columns: repeat(32, 10px);
+      grid-template-rows: repeat(32, 10px);
+      grid-gap: 2px;
+      border: 1px solid black;
     }
   }
+}
+
+.chunk {
+  width: 10px;
+  height: 10px;
+}
+
+.empty {
+  border: 1px solid darkorange;
+}
+
+.skipped {
+  border: 1px solid gray;
+}
+
+.analyzed {
+  background-color: yellowgreen;
+}
+
+.error {
+  background-color: red;
+}
+
+#analyzeLegend {
+  display: flex;
+  gap: 5px;
 }

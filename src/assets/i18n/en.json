@@ -51,6 +51,14 @@
       }
     },
     "world_analyzer": {
+      "chunk_details": {
+        "last_update": "Last update",
+        "sector_offset": "Sector offset",
+        "size": "Size",
+        "status": "Status",
+        "xPos": "xPos",
+        "zPos": "zPos"
+      },
       "chunk_empty": "Empty",
       "end": "Analyze End ({{count}} regions)",
       "nether": "Analyze Nether ({{count}} regions)",

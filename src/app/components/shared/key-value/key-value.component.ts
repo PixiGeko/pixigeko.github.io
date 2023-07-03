@@ -7,6 +7,6 @@ import {Component, Input} from '@angular/core';
 })
 export class KeyValueComponent {
   @Input() key!: string;
-  @Input() value!: string;
+  @Input() value: string | null | undefined;
   @Input() size = 16;
 }
