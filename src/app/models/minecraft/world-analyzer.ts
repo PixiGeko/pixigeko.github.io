@@ -1,15 +1,24 @@
-import {WorldChunk} from '../../../world-reader/src/world';
+import {FormArray, FormControl} from "@angular/forms";
+import {Chunk, NbtChunk} from "deepslate";
 
-export interface WorldAnalyzerRegion {
-  chunks?: WorldAnalyzerChunk[];
-  file: File;
+export interface WorldAnalyzerSettingsForm {
+  dimension: FormControl<WorldAnalyzerDimension | null>;
+  blockFilters: FormArray<FormControl<string | null>>;
+  minHeight: FormControl<number | null>;
+  maxHeight: FormControl<number | null>;
+  maxRegion: FormControl<number | null>;
+}
+
+export interface WorldAnalyzerBlockFilter {
+  name: string;
 }
 
 export interface WorldAnalyzerChunk {
-  chunk: WorldChunk | null;
+  chunk: NbtChunk | undefined;
   skipped: boolean;
+  empty: boolean;
+  error: boolean;
   analyzed: boolean;
-  error?: string;
 }
 
 export interface WorldAnalyzerDimension {
@@ -31,3 +40,11 @@ export const DIMENSIONS: WorldAnalyzerDimension[] = [
     path: 'DIM1/region'
   }
 ];
+
+// ----------------------------------------- //
+//                    STATS                  //
+// ----------------------------------------- //
+export interface WorldAnalyzeStats {
+  palette: string[];
+  blocksPerHeight: number[][];
+}

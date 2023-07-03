@@ -1,0 +1,32 @@
+<div id="regionInfo">
+  <div id="regionDetails">
+    <div id="regionGrid">
+      <div
+        *ngFor="let chunk of currentRegionChunks"
+        class="gridChunk"
+        [class.empty]="chunk.empty"
+        [class.skipped]="chunk.skipped"
+        [class.error]="chunk.error"
+        [class.analyzed]="chunk.analyzed"
+      ></div>
+    </div>
+    <div id="regionLegend">
+      <ng-container *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.empty', clazz: 'empty' }"></ng-container>
+      <ng-container *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.skipped', clazz: 'skipped' }"></ng-container>
+      <ng-container *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.analyzed', clazz: 'analyzed' }"></ng-container>
+      <ng-container *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.error', clazz: 'error' }"></ng-container>
+    </div>
+  </div>
+  <div id="chunkDetails">
+    <div *ngIf="currentChunk?.chunk">
+      <p>{{ currentChunk.chunk?.getRoot()?.toJson() | json }}</p>
+    </div>
+  </div>
+</div>
+
+<ng-template #regionLegendItem let-name="name" let-clazz="clazz">
+  <div>
+    <div class="gridChunk d-inline-block" [ngClass]="clazz"></div>
+    <span>&nbsp;{{ name | translate }}</span>
+  </div>
+</ng-template>

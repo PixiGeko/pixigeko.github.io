@@ -51,21 +51,33 @@
       }
     },
     "world_analyzer": {
-      "chunk_details": {
-        "last_update": "Last update",
-        "sector_offset": "Sector offset",
-        "size": "Size",
-        "status": "Status",
-        "xPos": "xPos",
-        "zPos": "zPos"
-      },
-      "chunk_empty": "Empty",
-      "end": "Analyze End ({{count}} regions)",
-      "nether": "Analyze Nether ({{count}} regions)",
-      "overworld": "Analyze Overworld ({{count}} regions)",
-      "start": "Start analyze",
-      "upload_world": "Upload world folder",
-      "world_name": "World name"
+      "steps": {
+        "analyze": {
+          "analyzed": "Analyzed",
+          "empty": "Empty",
+          "error": "Error",
+          "skipped": "Skipped",
+          "title": "Analyze"
+        },
+        "results": {
+          "title": "Results"
+        },
+        "settings": {
+          "add_block_filter": "Add block filter",
+          "block_filter_placeholder": "Block name",
+          "dimension": "Dimension",
+          "end": "End ({{count}} regions)",
+          "max_height": "Maximal height",
+          "max_regions": "Max regions",
+          "min_height": "Minimal height",
+          "nether": "Nether ({{count}} regions)",
+          "overworld": "Overworld ({{count}} regions)",
+          "start": "Start analyze",
+          "title": "Settings",
+          "upload_folder": "Upload world",
+          "uploaded_folder_empty": "The uploaded folder is empty"
+        }
+      }
     }
   },
   "navigation": {

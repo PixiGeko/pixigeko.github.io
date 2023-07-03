@@ -1,114 +1,16 @@
-<div id="buttonsContainer">
-  <div>
-    <button
-      mat-raised-button
-      (click)="uploadInput.click()"
-      [disabled]="!canUploadFiles"
-      class="w-100"
-      color="primary"
-    >{{ 'minecraft.world_analyzer.upload_world' | translate }}</button>
-    <input
-      #uploadInput
-      hidden
-      type="file"
-      webkitdirectory
-      multiple
-      (change)="filesSelected($event)"
-    />
-  </div>
-  <div>
-    <button
-      mat-raised-button
-      (click)="startAnalyze()"
-      [disabled]="!canStartAnalyze"
-      class="w-100"
-      color="primary"
-    >{{ 'minecraft.world_analyzer.start' | translate }}</button>
-  </div>
-</div>
-
-<mat-divider class="divider"></mat-divider>
-
-<div id="infoContainer" *ngIf="status.files.length && !status.isAnalyzing && !status.isAnalyzed">
-  <h1 id="worldName">{{ status.worldName }}</h1>
-  <mat-radio-group
-    [(ngModel)]="selectedDimension"
-    (ngModelChange)="selectedDimensionChange($event)"
-    id="folderRadioButtonGroup"
-  >
-    <mat-radio-button
-      *ngFor="let dimension of dimensions"
-      [value]="dimension"
-      [disabled]="status.dimensionFiles[dimension.name].length === 0"
-    >
-      {{ 'minecraft.world_analyzer.' + dimension.name | translate: {count: status.dimensionFiles[dimension.name].length} }}
-    </mat-radio-button>
-  </mat-radio-group>
-
-  <ng-container *ngIf="shouldShowTable">
-    <table
-      mat-table
-      [dataSource]="dataSource"
-      class="mat-elevation-z8"
-    >
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>NAME</th>
-        <td mat-cell *matCellDef="let file">{{file.name}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="path">
-        <th mat-header-cell *matHeaderCellDef>PATH</th>
-        <td mat-cell *matCellDef="let file">{{file.webkitRelativePath}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="size">
-        <th mat-header-cell *matHeaderCellDef>SIZE</th>
-        <td mat-cell *matCellDef="let file">{{file.size}} </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-  </ng-container>
-
-</div>
 
 
-<div id="analyzeStatus" *ngIf="status.isAnalyzing">
-  <div id="analyzeStatusContainer">
-    <div id="analyzeSquare">
-      <div
-        *ngFor="let chunk of currentRegion.chunks"
-        class="chunk"
-        [class.empty]="!chunk.chunk"
-        [class.analyzed]="chunk.analyzed"
-        [class.skipped]="chunk.skipped"
-        [class.error]="!!chunk.error"
-        [matTooltip]="chunk.error ?? ''"
-        [matTooltipDisabled]="!chunk.error"
-        [class.pointer]="chunk.error"
-      ></div>
-    </div>
-    <div id="analyzeInfo">
-      <app-chunk-details [region]="currentRegion" [chunk]="currentChunk?.chunk"></app-chunk-details>
-    </div>
-  </div>
-  <div id="analyzeLegend">
-    <ng-container *ngTemplateOutlet="legendItem; context: {name: 'empty', clazz: 'empty'}"></ng-container>
-    <ng-container *ngTemplateOutlet="legendItem; context: {name: 'skipped', clazz: 'skipped'}"></ng-container>
-    <ng-container *ngTemplateOutlet="legendItem; context: {name: 'analyzed', clazz: 'analyzed'}"></ng-container>
-    <ng-container *ngTemplateOutlet="legendItem; context: {name: 'error', clazz: 'error'}"></ng-container>
-  </div>
-</div>
-
-<div id="analyzeResults" *ngIf="status.isAnalyzed">
-  TODO
-</div>
-
-<ng-template #legendItem let-name="name" let-clazz="clazz">
-  <div class="">
-    <div [ngClass]="clazz" class="chunk d-inline-block"></div>
-    <span>&nbsp;{{ name }}</span>
-  </div>
-</ng-template>
+<mat-stepper [linear]="true"  #stepper>
+  <mat-step [completed]="worldAnalyzerService.settingsStepCompleted" [editable]="worldAnalyzerService.settingsStepEditable">
+    <ng-template matStepLabel>{{ 'minecraft.world_analyzer.steps.settings.title' | translate }}</ng-template>
+    <app-world-analyzer-settings-step [stepper]="stepper"></app-world-analyzer-settings-step>
+  </mat-step>
+  <mat-step [completed]="worldAnalyzerService.analyzeStepCompleted" [editable]="worldAnalyzerService.analyzeStepEditable">
+    <ng-template matStepLabel>{{ 'minecraft.world_analyzer.steps.analyze.title' | translate }}</ng-template>
+    <app-world-analyzer-analyze-step [stepper]="stepper"></app-world-analyzer-analyze-step>
+  </mat-step>
+  <mat-step [completed]="worldAnalyzerService.resultsStepCompleted" [editable]="worldAnalyzerService.resultsStepEditable">
+    <ng-template matStepLabel>{{ 'minecraft.world_analyzer.steps.results.title' | translate }}</ng-template>
+    <app-world-analyzer-results-step [stepper]="stepper"></app-world-analyzer-results-step>
+  </mat-step>
+</mat-stepper>

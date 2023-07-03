@@ -22,7 +22,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions} from '@angular/material/core';
+import {MAT_RIPPLE_GLOBAL_OPTIONS, MatRippleModule, RippleGlobalOptions} from '@angular/material/core';
 import {GoogleMapsModule} from '@angular/google-maps';
 import {HomeComponent} from './components/home/home.component';
 import {PageNotFoundComponent} from './components/shared/page-not-found/page-not-found.component';
@@ -53,7 +53,18 @@ import {BaseControlComponent} from './components/shared/form-controls/base-contr
 import {KeyValueComponent} from './components/shared/key-value/key-value.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatRadioModule} from '@angular/material/radio';
-import { ChunkDetailsComponent } from './components/minecraft/world-analyzer/chunk-details/chunk-details.component';
+import {
+  WorldAnalyzerSettingsStepComponent
+} from './components/minecraft/world-analyzer/world-analyzer-settings-step/world-analyzer-settings-step.component';
+import {
+  WorldAnalyzerAnalyzeStepComponent
+} from './components/minecraft/world-analyzer/world-analyzer-analyze-step/world-analyzer-analyze-step.component';
+import {
+  WorldAnalyzerResultsStepComponent
+} from './components/minecraft/world-analyzer/world-analyzer-results-step/world-analyzer-results-step.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -83,7 +94,9 @@ registerLocaleData(localeFr, 'fr');
     NavBarComponent,
     BaseControlComponent,
     KeyValueComponent,
-    ChunkDetailsComponent,
+    WorldAnalyzerSettingsStepComponent,
+    WorldAnalyzerAnalyzeStepComponent,
+    WorldAnalyzerResultsStepComponent,
   ],
   imports: [
     TranslateModule.forRoot({
@@ -123,12 +136,21 @@ registerLocaleData(localeFr, 'fr');
     MatExpansionModule,
     MatCardModule,
     MatTooltipModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule,
+    MatRippleModule,
+    MatAutocompleteModule
   ],
   providers: [
     {
       provide: MAT_RIPPLE_GLOBAL_OPTIONS,
       useValue: globalRippleConfig
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, 
+      useValue: {
+        appearance: 'outline'
+      }
     }
   ],
   bootstrap: [AppComponent]

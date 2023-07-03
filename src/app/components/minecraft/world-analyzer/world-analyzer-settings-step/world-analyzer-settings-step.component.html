@@ -1,0 +1,107 @@
+<div id="contentContainer">
+  <!-- BUTTONS -->
+  <div id="buttonsContainer">
+    <button
+      id="uploadWorldButton"
+      mat-raised-button
+      (click)="uploadInput.click()"
+      color="primary"
+    >
+      {{ 'minecraft.world_analyzer.steps.settings.upload_folder' | translate }}
+    </button>
+    <button
+      mat-raised-button
+      matStepperNext
+      id="startAnalyzeButton"
+      [disabled]="!worldAnalyzerService.settingsStepCompleted"
+      (click)="worldAnalyzerService.analyzing = true; worldAnalyzerService.analyzeStart.emit()"
+    >
+      {{ 'minecraft.world_analyzer.steps.settings.start' | translate }}
+    </button>
+  </div>
+
+  <!-- DIMENSIONS -->
+  <div *ngIf="worldAnalyzerService.files?.length" class="mt-2">
+    <mat-form-field appearance="outline" class="hideHintWrapper">
+      <mat-label>{{ 'minecraft.world_analyzer.steps.settings.dimension' | translate }}</mat-label>
+      <mat-select [formControl]="worldAnalyzerService.settingsForm.controls.dimension">
+        <mat-option *ngFor="let dimension of dimensions" [value]="dimension"
+                    [disabled]="worldAnalyzerService.dimensionFiles[dimension.name].length === 0">
+          {{ 'minecraft.world_analyzer.steps.settings.' + dimension.name | translate: {count: worldAnalyzerService.dimensionFiles[dimension.name].length} }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- FILTERS -->
+  <div *ngIf="worldAnalyzerService.files?.length" id="filters">
+    <!-- HEIGHT -->
+    <div id="minMaxFilters">
+      <mat-form-field class="hideHintWrapper">
+        <mat-icon matPrefix>arrow_downward</mat-icon>
+        <mat-label>{{ 'minecraft.world_analyzer.steps.settings.min_height' | translate }}</mat-label>
+        <input
+          matInput
+          type="number"
+          [formControl]="worldAnalyzerService.settingsForm.controls.minHeight"
+        >
+      </mat-form-field>
+      <mat-form-field class="hideHintWrapper">
+        <mat-icon matPrefix>arrow_upward</mat-icon>
+        <mat-label>{{ 'minecraft.world_analyzer.steps.settings.max_height' | translate }}</mat-label>
+        <input
+          matInput
+          type="number"
+          [formControl]="worldAnalyzerService.settingsForm.controls.maxHeight"
+        >
+      </mat-form-field>
+      <mat-form-field class="hideHintWrapper">
+        <mat-icon matPrefix>fullscreen</mat-icon>
+        <mat-label>{{ 'minecraft.world_analyzer.steps.settings.max_regions' | translate }}</mat-label>
+        <input
+          matInput
+          type="number"
+          [formControl]="worldAnalyzerService.settingsForm.controls.maxRegion"
+        >
+      </mat-form-field>
+    </div>
+    
+    <mat-divider></mat-divider>
+
+    <!-- BLOCKS -->
+    <div id="blockFilters">
+      <mat-form-field
+        *ngFor="let blockFilter of worldAnalyzerService.settingsForm.controls.blockFilters.controls"
+        class="hideHintWrapper"
+      >
+        <mat-label>{{ 'minecraft.world_analyzer.steps.settings.block_filter_placeholder' | translate }}</mat-label>
+        <input matInput [formControl]="blockFilter">
+        <mat-icon
+          *ngIf="worldAnalyzerService.settingsForm.controls.blockFilters.controls.length > 1"
+          matSuffix
+          (click)="worldAnalyzerService.removeBlockFilter(blockFilter)"
+          class="pointer"
+        >
+          delete_outline
+        </mat-icon>
+      </mat-form-field>
+      <button
+        *ngIf="worldAnalyzerService.canAddBlockFilter"
+        id="addBlockFilterButton"
+        mat-stroked-button
+        (click)="worldAnalyzerService.addBlockFilter()"
+      >
+        <mat-icon>add</mat-icon>
+        {{ 'minecraft.world_analyzer.steps.settings.add_block_filter' | translate }}</button>
+    </div>
+  </div>
+</div>
+
+<input
+  #uploadInput
+  hidden
+  type="file"
+  webkitdirectory
+  multiple
+  (change)="filesSelected($event)"
+/>

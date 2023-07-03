@@ -1,0 +1,56 @@
+#regionInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#regionDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  
+  #regionGrid {
+    display: grid;
+    gap: 2px;
+    grid-template-columns: repeat(32, 10px);
+    grid-template-rows: repeat(32, 10px);
+    width: fit-content;
+    height: fit-content;
+    padding: 2px;
+
+    border: 1px solid gray;
+  }
+
+  #regionLegend {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+}
+
+#chunkDetails {
+  
+}
+
+.gridChunk {
+  width: 10px;
+  height: 10px;
+
+  &.empty {
+    border: 1px solid darkorange;
+  }
+
+  &.skipped {
+    border: 1px solid gray;
+  }
+
+  &.analyzed {
+    background-color: yellowgreen;
+  }
+
+  &.error {
+    background-color: red;
+  }
+}

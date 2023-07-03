@@ -22,6 +22,12 @@ app-root {
   padding: 15px 10px;
 }
 
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .languages {
   :not(.isCurrentLanguage) > img {
     opacity: 0.45;
@@ -121,6 +127,10 @@ mat-form-field {
       display: none;
     }
   }
+}
+
+mat-stepper {
+  background-color: transparent !important;
 }
 
 // -------------------------------------- //

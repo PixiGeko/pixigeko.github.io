@@ -1,0 +1,46 @@
+#contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  
+  #uploadWorldButton {
+    flex-grow: 1;
+  }
+  
+  #startAnalyzeButton {
+    
+  }
+}
+
+#dimensionsButtonGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+#filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  #blockFilters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    
+    #addBlockFilterButton {
+      height: 56px;
+    }
+  }
+  
+  #minMaxFilters {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+}
