@@ -1,6 +1,7 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {WorldAnalyzerSettingsForm} from "../models/minecraft/world-analyzer";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {BlockState} from "deepslate";
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,7 @@ export class WorldAnalyzerService {
   }
 
   removeBlockFilter(filter: FormControl) {
-    const index = this.settingsForm.controls.blockFilters.controls.findIndex(f => f === filter)
+    const index = this.settingsForm.controls.blockFilters.controls.findIndex(f => f === filter);
     this.settingsForm.controls.blockFilters.removeAt(index);
   }
 
@@ -89,21 +90,26 @@ export class WorldAnalyzerService {
   get regionFilesToAnalyze() {
     const dimension = this.settingsForm.controls.dimension.value;
     if (!dimension) return [];
-    return this.dimensionFiles[dimension.name];
+    return this.dimensionFiles[dimension.name].sort((a, b) => a.webkitRelativePath.localeCompare(b.webkitRelativePath));
   }
 
-  addBlock(block: string, height: number) {
+  addBlock(block: BlockState, height: number) {
     if (!this.stats.blocksPerHeight.has(height)) this.stats.blocksPerHeight.set(height, new Map());
+
+    const minHeight = this.settingsForm.controls.minHeight.value;
+    const maxHeight = this.settingsForm.controls.minHeight.value;
+
+    if (minHeight !== null && height < minHeight) return;
+    if (maxHeight !== null && height > maxHeight) return;
 
     const blocksAtHeight = this.stats.blocksPerHeight.get(height);
 
-    if ((this.settingsForm.controls.blockFilters.controls.map(f => f.value) as string[]).some(filter => block.match(filter))) {
-      const blockIndex = this.stats.palette.indexOf(block);
-      if (!this.stats.palette.includes(block)) this.stats.palette.push(block);
-      // @ts-ignore
-      if (!blocksAtHeight.has(blockIndex)) blocksAtHeight.set(blockIndex, 0);
-      // @ts-ignore
-      blocksAtHeight.set(blockIndex, blocksAtHeight.get(blockIndex) + 1);
+    const fullBlockName = `${block.getName().namespace}:${block.getName().path}`;
+    if ((this.settingsForm.controls.blockFilters.controls.map(f => f.value) as string[]).some(filter => fullBlockName.match(filter))) {
+      const blockIndex = this.stats.palette.indexOf(fullBlockName);
+      if (!this.stats.palette.includes(fullBlockName)) this.stats.palette.push(fullBlockName);
+      if (!blocksAtHeight!.has(blockIndex)) blocksAtHeight!.set(blockIndex, 0);
+      blocksAtHeight!.set(blockIndex, blocksAtHeight!.get(blockIndex)! + 1);
     }
   }
 }

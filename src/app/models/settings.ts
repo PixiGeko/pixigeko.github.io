@@ -7,7 +7,7 @@ export interface Settings {
   events: {
     use_text_color: boolean;
     show_event_banner: boolean;
-  }
+  };
 }
 
 export enum SettingsClasses {

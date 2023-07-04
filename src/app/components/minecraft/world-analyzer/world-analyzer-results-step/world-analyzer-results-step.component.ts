@@ -15,6 +15,6 @@ export class WorldAnalyzerResultsStepComponent {
   }
 
   private initCharts() {
-
+    console.log(this.worldAnalyzerService.stats);
   }
 }

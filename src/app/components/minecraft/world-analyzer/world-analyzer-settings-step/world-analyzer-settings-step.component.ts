@@ -39,7 +39,7 @@ export class WorldAnalyzerSettingsStepComponent implements OnInit {
           duration: 5000,
           horizontalPosition: "right"
         }
-      )
+      );
       return;
     }
 
@@ -54,7 +54,7 @@ export class WorldAnalyzerSettingsStepComponent implements OnInit {
 
     this.worldAnalyzerService.dimensionFiles = {};
     for (let dimension of this.dimensions) {
-      this.worldAnalyzerService.dimensionFiles[dimension.name] = this.worldAnalyzerService.files.filter(f => f.webkitRelativePath.match(`${this.worldAnalyzerService.worldName}/${dimension.path}/.*\.mca`))
+      this.worldAnalyzerService.dimensionFiles[dimension.name] = this.worldAnalyzerService.files.filter(f => f.webkitRelativePath.match(`${this.worldAnalyzerService.worldName}/${dimension.path}/.*\.mca`));
     }
   }
 }
