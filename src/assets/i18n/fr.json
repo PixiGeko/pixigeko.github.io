@@ -69,7 +69,7 @@
           "end": "End ({{count}} régions)",
           "max_height": "Hauteur maximale",
           "max_regions": "Régions max",
-          "min_height": "Hauteur minimum",
+          "min_height": "Hauteur minimale",
           "nether": "Nether ({{count}} régions)",
           "overworld": "Overworld ({{count}} régions)",
           "start": "Commencer l'analyse",

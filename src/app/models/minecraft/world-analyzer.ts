@@ -1,5 +1,5 @@
 import {FormArray, FormControl} from "@angular/forms";
-import {Chunk, NbtChunk} from "deepslate";
+import {NbtChunk} from "deepslate";
 
 export interface WorldAnalyzerSettingsForm {
   dimension: FormControl<WorldAnalyzerDimension | null>;
@@ -40,11 +40,3 @@ export const DIMENSIONS: WorldAnalyzerDimension[] = [
     path: 'DIM1/region'
   }
 ];
-
-// ----------------------------------------- //
-//                    STATS                  //
-// ----------------------------------------- //
-export interface WorldAnalyzeStats {
-  palette: string[];
-  blocksPerHeight: number[][];
-}

@@ -1,14 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {
-  DIMENSIONS,
-  WorldAnalyzerBlockFilter,
-  WorldAnalyzerDimension, WorldAnalyzerSettingsForm
-} from "../../../../models/minecraft/world-analyzer";
+import {DIMENSIONS} from "../../../../models/minecraft/world-analyzer";
 import {WorldAnalyzerService} from "../../../../services/world-analyzer.service";
 import {MatStepper} from "@angular/material/stepper";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
-import {FormArray, FormBuilder, FormControl, Validators} from "@angular/forms";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-world-analyzer-settings-step[stepper]',
@@ -19,14 +15,15 @@ export class WorldAnalyzerSettingsStepComponent implements OnInit {
   @Input() stepper: MatStepper;
 
   dimensions = DIMENSIONS;
-  
+
   constructor(
-    public worldAnalyzerService: WorldAnalyzerService, 
+    public worldAnalyzerService: WorldAnalyzerService,
     public snackBar: MatSnackBar,
     public translateService: TranslateService,
     public fb: FormBuilder,
-  ) {}
-  
+  ) {
+  }
+
   ngOnInit() {
     this.worldAnalyzerService.reset();
   }

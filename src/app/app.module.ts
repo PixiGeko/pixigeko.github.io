@@ -65,6 +65,7 @@ import {
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {ChunkDetailsComponent} from './components/minecraft/world-analyzer/chunk-details/chunk-details.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -97,6 +98,7 @@ registerLocaleData(localeFr, 'fr');
     WorldAnalyzerSettingsStepComponent,
     WorldAnalyzerAnalyzeStepComponent,
     WorldAnalyzerResultsStepComponent,
+    ChunkDetailsComponent,
   ],
   imports: [
     TranslateModule.forRoot({
@@ -147,7 +149,7 @@ registerLocaleData(localeFr, 'fr');
       useValue: globalRippleConfig
     },
     {
-      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, 
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {
         appearance: 'outline'
       }

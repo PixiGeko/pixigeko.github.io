@@ -11,5 +11,10 @@ export class WorldAnalyzerResultsStepComponent {
   @Input() stepper: MatStepper;
 
   constructor(public worldAnalyzerService: WorldAnalyzerService) {
+    worldAnalyzerService.analyzeFinished.subscribe(() => this.initCharts());
+  }
+
+  private initCharts() {
+
   }
 }

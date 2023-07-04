@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WorldAnalyzerSettingsStepComponent } from './world-analyzer-settings-step.component';
+import {WorldAnalyzerSettingsStepComponent} from './world-analyzer-settings-step.component';
 
 describe('WorldAnalyzerSettingsStepComponent', () => {
   let component: WorldAnalyzerSettingsStepComponent;
@@ -8,9 +8,9 @@ describe('WorldAnalyzerSettingsStepComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WorldAnalyzerSettingsStepComponent ]
+      declarations: [WorldAnalyzerSettingsStepComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(WorldAnalyzerSettingsStepComponent);
     component = fixture.componentInstance;

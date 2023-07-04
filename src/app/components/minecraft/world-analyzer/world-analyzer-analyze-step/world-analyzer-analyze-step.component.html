@@ -11,15 +11,19 @@
       ></div>
     </div>
     <div id="regionLegend">
-      <ng-container *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.empty', clazz: 'empty' }"></ng-container>
-      <ng-container *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.skipped', clazz: 'skipped' }"></ng-container>
-      <ng-container *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.analyzed', clazz: 'analyzed' }"></ng-container>
-      <ng-container *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.error', clazz: 'error' }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.empty', clazz: 'empty' }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.skipped', clazz: 'skipped' }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.analyzed', clazz: 'analyzed' }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.error', clazz: 'error' }"></ng-container>
     </div>
   </div>
   <div id="chunkDetails">
     <div *ngIf="currentChunk?.chunk">
-      <p>{{ currentChunk.chunk?.getRoot()?.toJson() | json }}</p>
+      <app-chunk-details [chunk]="currentChunk.chunk!"></app-chunk-details>
     </div>
   </div>
 </div>

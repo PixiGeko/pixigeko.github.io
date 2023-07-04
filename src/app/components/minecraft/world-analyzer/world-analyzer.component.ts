@@ -9,7 +9,7 @@ import {WorldAnalyzerService} from "../../../services/world-analyzer.service";
 })
 export class WorldAnalyzerComponent {
   @ViewChild('stepper') private stepper: MatStepper;
-  
+
   constructor(public worldAnalyzerService: WorldAnalyzerService) {
   }
 }

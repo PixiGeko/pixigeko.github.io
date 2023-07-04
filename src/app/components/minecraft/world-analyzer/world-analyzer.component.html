@@ -1,15 +1,16 @@
-
-
-<mat-stepper [linear]="true"  #stepper>
-  <mat-step [completed]="worldAnalyzerService.settingsStepCompleted" [editable]="worldAnalyzerService.settingsStepEditable">
+<mat-stepper [linear]="true" #stepper>
+  <mat-step [completed]="worldAnalyzerService.settingsStepCompleted"
+            [editable]="worldAnalyzerService.settingsStepEditable">
     <ng-template matStepLabel>{{ 'minecraft.world_analyzer.steps.settings.title' | translate }}</ng-template>
     <app-world-analyzer-settings-step [stepper]="stepper"></app-world-analyzer-settings-step>
   </mat-step>
-  <mat-step [completed]="worldAnalyzerService.analyzeStepCompleted" [editable]="worldAnalyzerService.analyzeStepEditable">
+  <mat-step [completed]="worldAnalyzerService.analyzeStepCompleted"
+            [editable]="worldAnalyzerService.analyzeStepEditable">
     <ng-template matStepLabel>{{ 'minecraft.world_analyzer.steps.analyze.title' | translate }}</ng-template>
     <app-world-analyzer-analyze-step [stepper]="stepper"></app-world-analyzer-analyze-step>
   </mat-step>
-  <mat-step [completed]="worldAnalyzerService.resultsStepCompleted" [editable]="worldAnalyzerService.resultsStepEditable">
+  <mat-step [completed]="worldAnalyzerService.resultsStepCompleted"
+            [editable]="worldAnalyzerService.resultsStepEditable">
     <ng-template matStepLabel>{{ 'minecraft.world_analyzer.steps.results.title' | translate }}</ng-template>
     <app-world-analyzer-results-step [stepper]="stepper"></app-world-analyzer-results-step>
   </mat-step>

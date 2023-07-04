@@ -14,7 +14,7 @@
       matStepperNext
       id="startAnalyzeButton"
       [disabled]="!worldAnalyzerService.settingsStepCompleted"
-      (click)="worldAnalyzerService.analyzing = true; worldAnalyzerService.analyzeStart.emit()"
+      (click)="worldAnalyzerService.analyzing = true; worldAnalyzerService.analyzeStarted.emit()"
     >
       {{ 'minecraft.world_analyzer.steps.settings.start' | translate }}
     </button>
@@ -65,7 +65,7 @@
         >
       </mat-form-field>
     </div>
-    
+
     <mat-divider></mat-divider>
 
     <!-- BLOCKS -->

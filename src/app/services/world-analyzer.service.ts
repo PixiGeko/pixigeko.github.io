@@ -6,8 +6,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
   providedIn: 'root'
 })
 export class WorldAnalyzerService {
-  analyzeStart = new EventEmitter<void>();
-  
+  analyzeStarted = new EventEmitter<void>();
+  analyzeFinished = new EventEmitter<void>();
+
   analyzing: boolean = false;
   analyzed: boolean = false;
   files: File[] = [];
@@ -60,7 +61,7 @@ export class WorldAnalyzerService {
   get canAddBlockFilter() {
     return this.settingsForm.controls.blockFilters.length < 9;
   }
-  
+
   get settingsStepCompleted() {
     return !!this.files?.length && !!this.worldName && this.settingsForm.valid;
   }
@@ -90,17 +91,17 @@ export class WorldAnalyzerService {
     if (!dimension) return [];
     return this.dimensionFiles[dimension.name];
   }
-  
+
   addBlock(block: string, height: number) {
-    if(!this.stats.blocksPerHeight.has(height)) this.stats.blocksPerHeight.set(height, new Map());
-    
+    if (!this.stats.blocksPerHeight.has(height)) this.stats.blocksPerHeight.set(height, new Map());
+
     const blocksAtHeight = this.stats.blocksPerHeight.get(height);
-    
-    if((this.settingsForm.controls.blockFilters.controls.map(f => f.value) as string[]).some(filter => block.match(filter))) {
+
+    if ((this.settingsForm.controls.blockFilters.controls.map(f => f.value) as string[]).some(filter => block.match(filter))) {
       const blockIndex = this.stats.palette.indexOf(block);
-      if(!this.stats.palette.includes(block)) this.stats.palette.push(block);
+      if (!this.stats.palette.includes(block)) this.stats.palette.push(block);
       // @ts-ignore
-      if(!blocksAtHeight.has(blockIndex)) blocksAtHeight.set(blockIndex, 0);
+      if (!blocksAtHeight.has(blockIndex)) blocksAtHeight.set(blockIndex, 0);
       // @ts-ignore
       blocksAtHeight.set(blockIndex, blocksAtHeight.get(blockIndex) + 1);
     }
