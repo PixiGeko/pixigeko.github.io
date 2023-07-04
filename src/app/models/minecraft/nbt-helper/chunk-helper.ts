@@ -42,7 +42,7 @@ export class Pre21w43aChunkHelper extends ChunkHelper {
         continue;
       }
 
-      const yOffset = section.getNumber('Y') * 16 - minY;
+      const yOffset = section.getNumber('Y') * 16;
       const palette = states.getList('Palette', NbtType.Compound);
       const blockStates = states.getLongArray('BlockStates');
 
@@ -101,7 +101,7 @@ export class Post21w43aChunkHelper extends ChunkHelper {
         continue;
       }
 
-      const yOffset = section.getNumber('Y') * 16 - minY;
+      const yOffset = section.getNumber('Y') * 16;
       const palette = states.getList(K_palette, NbtType.Compound);
       const blockStates = states.getLongArray(K_data);
 

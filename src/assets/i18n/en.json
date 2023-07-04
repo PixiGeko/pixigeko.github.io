@@ -60,6 +60,11 @@
           "title": "Analyze"
         },
         "results": {
+          "": {
+            "blocks_per_height": {
+              "title": "Blocks per height"
+            }
+          },
           "title": "Results"
         },
         "settings": {

@@ -1,4 +1,4 @@
-<mat-stepper [linear]="true" #stepper>
+<mat-stepper [linear]="true" #stepper animationDuration="0">
   <mat-step [completed]="worldAnalyzerService.settingsStepCompleted"
             [editable]="worldAnalyzerService.settingsStepEditable">
     <ng-template matStepLabel>{{ 'minecraft.world_analyzer.steps.settings.title' | translate }}</ng-template>

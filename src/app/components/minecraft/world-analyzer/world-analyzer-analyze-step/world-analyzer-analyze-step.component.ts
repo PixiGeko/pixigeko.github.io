@@ -1,7 +1,7 @@
 import {Component, Input, NgZone} from '@angular/core';
 import {MatStepper} from "@angular/material/stepper";
 import {WorldAnalyzerService} from "../../../../services/world-analyzer.service";
-import {firstValueFrom} from "rxjs";
+import {defer, firstValueFrom, Observable} from "rxjs";
 import {FileUtils} from "../../../../utils/FileUtils";
 import {NbtRegion} from "deepslate";
 import {MiscUtils} from "../../../../utils/MiscUtils";
@@ -21,7 +21,7 @@ export class WorldAnalyzerAnalyzeStepComponent {
   currentRegionChunks: WorldAnalyzerChunk[];
   currentChunk: WorldAnalyzerChunk;
 
-  constructor(public worldAnalyzerService: WorldAnalyzerService, private ngZone: NgZone) {
+  constructor(public worldAnalyzerService: WorldAnalyzerService) {
     worldAnalyzerService.analyzeStarted.subscribe(() => {
       this.startAnalyse();
     });
@@ -29,7 +29,7 @@ export class WorldAnalyzerAnalyzeStepComponent {
 
   async startAnalyse() {
     this.worldAnalyzerService.analyzing = true;
-
+    
     const maxRegions = this.worldAnalyzerService.settingsForm.controls.maxRegion.value ?? this.worldAnalyzerService.regionFilesToAnalyze.length;
     for (let i = 0; i < maxRegions; i++) {
       let regionFile = this.worldAnalyzerService.regionFilesToAnalyze[i];
@@ -53,18 +53,21 @@ export class WorldAnalyzerAnalyzeStepComponent {
       for (const chunk of this.currentRegionChunks) {
         if (!chunk.chunk) continue;
         try {
-          this.analyzeChunk(chunk);
+          await firstValueFrom(defer(() => {
+            return new Observable(observer => {
+              this.analyzeChunk(chunk);
+              observer.next();
+              observer.complete();
+            })
+          }))
         } catch (e) {
           console.error(e);
           chunk.error = true;
         }
-
-        await MiscUtils.sleep(1); // avoid freeze
       }
     }
 
-    // @ts-ignore
-    this.stepper.selected.completed = true;
+    this.stepper.selected!.completed = true;
     this.stepper.next();
     this.worldAnalyzerService.analyzeFinished.emit();
   }
@@ -94,5 +97,7 @@ export class WorldAnalyzerAnalyzeStepComponent {
         c.error = true;
         break;
     }
+    
+    c.chunk = null;
   }
 }

@@ -9,12 +9,8 @@ export interface WorldAnalyzerSettingsForm {
   maxRegion: FormControl<number | null>;
 }
 
-export interface WorldAnalyzerBlockFilter {
-  name: string;
-}
-
 export interface WorldAnalyzerChunk {
-  chunk: NbtChunk | undefined;
+  chunk: NbtChunk | undefined | null;
   skipped: boolean;
   empty: boolean;
   error: boolean;
