@@ -35,8 +35,7 @@
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ],
-            "webWorkerTsConfig": "tsconfig.worker.json"
+            ]
           },
           "configurations": {
             "production": {
@@ -99,8 +98,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "webWorkerTsConfig": "tsconfig.worker.json"
+            "scripts": []
           }
         },
         "deploy": {

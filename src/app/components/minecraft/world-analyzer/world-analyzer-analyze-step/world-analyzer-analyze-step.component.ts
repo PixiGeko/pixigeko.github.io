@@ -53,13 +53,12 @@ export class WorldAnalyzerAnalyzeStepComponent {
       for (const chunk of this.currentRegionChunks) {
         if (!chunk.chunk) continue;
         try {
-          await firstValueFrom(defer(() => {
-            return new Observable(observer => {
+          await new Promise(resolve => {
+            setTimeout(() => {
               this.analyzeChunk(chunk);
-              observer.next();
-              observer.complete();
-            })
-          }))
+              resolve(null);
+            }, 1);
+          });
         } catch (e) {
           console.error(e);
           chunk.error = true;
