@@ -53,16 +53,14 @@ export class WorldAnalyzerAnalyzeStepComponent {
       for (const chunk of this.currentRegionChunks) {
         if (!chunk.chunk) continue;
         try {
-          await new Promise(resolve => {
-            setTimeout(() => {
-              this.analyzeChunk(chunk);
-              resolve(null);
-            }, 1);
-          });
+          this.analyzeChunk(chunk);
         } catch (e) {
           console.error(e);
           chunk.error = true;
         }
+        
+        // TODO: remove, memory leak :(
+        await MiscUtils.sleep(1);
       }
     }
 
