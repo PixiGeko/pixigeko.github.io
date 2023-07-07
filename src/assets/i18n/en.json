@@ -60,11 +60,11 @@
           "title": "Analyze"
         },
         "results": {
-          "": {
-            "blocks_per_height": {
-              "title": "Blocks per height"
-            }
+          "background_color": "Background color",
+          "blocks_per_height": {
+            "title": "Blocks per height"
           },
+          "legend_color": "Legend color",
           "title": "Results"
         },
         "settings": {

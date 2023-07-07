@@ -1,3 +1,23 @@
+<div id="chartsSettings">
+  <mat-form-field class="w-auto" appearance="outline">
+    <input matInput
+           type="color"
+           [value]="worldAnalyzerService.resultsForm.controls.backgroundColor.value"
+           [formControl]="worldAnalyzerService.resultsForm.controls.backgroundColor"
+    >
+    <mat-label>{{ 'minecraft.world_analyzer.steps.results.background_color' | translate }}</mat-label>
+  </mat-form-field>
+
+  <mat-form-field class="w-auto" appearance="outline">
+    <input matInput
+           type="color"
+           [value]="worldAnalyzerService.resultsForm.controls.legendColor.value"
+           [formControl]="worldAnalyzerService.resultsForm.controls.legendColor"
+    >
+    <mat-label>{{ 'minecraft.world_analyzer.steps.results.legend_color' | translate }}</mat-label>
+  </mat-form-field>
+</div>
+
 <div>
   <h1>{{ 'minecraft.world_analyzer.steps.results.blocks_per_height.title' | translate }}</h1>
   <canvas class="darkerBackground" #blocksPerHeightCanvas >{{ chart }}</canvas>

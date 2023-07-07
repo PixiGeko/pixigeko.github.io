@@ -50,7 +50,7 @@ export class WorldAnalyzerAnalyzeStepComponent {
       }
 
       // analyze chunks
-      for (const chunk of this.currentRegionChunks) {
+      for (let chunk of this.currentRegionChunks) {
         if (!chunk.chunk) continue;
         try {
           this.analyzeChunk(chunk);
@@ -60,7 +60,9 @@ export class WorldAnalyzerAnalyzeStepComponent {
         }
         
         // TODO: remove, memory leak :(
-        await MiscUtils.sleep(1);
+        if(chunk.analyzed) {
+          await MiscUtils.sleep(0);
+        }
       }
     }
 

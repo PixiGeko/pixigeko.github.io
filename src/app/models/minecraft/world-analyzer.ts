@@ -1,5 +1,6 @@
 import {FormArray, FormControl} from "@angular/forms";
 import {NbtChunk} from "deepslate";
+import {Color} from '@angular-material-components/color-picker';
 
 export interface WorldAnalyzerSettingsForm {
   dimension: FormControl<WorldAnalyzerDimension | null>;
@@ -7,6 +8,11 @@ export interface WorldAnalyzerSettingsForm {
   minHeight: FormControl<number | null>;
   maxHeight: FormControl<number | null>;
   maxRegion: FormControl<number | null>;
+}
+
+export interface WorldAnalyzerResultsForm {
+  backgroundColor: FormControl<string | null>;
+  legendColor: FormControl<string | null>;
 }
 
 export interface WorldAnalyzerChunk {

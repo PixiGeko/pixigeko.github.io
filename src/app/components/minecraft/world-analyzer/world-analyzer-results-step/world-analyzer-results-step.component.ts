@@ -3,7 +3,6 @@ import {MatStepper} from "@angular/material/stepper";
 import {WorldAnalyzerService} from "../../../../services/world-analyzer.service";
 import {Chart} from 'chart.js/auto';
 import {SettingsService} from '../../../../services/settings.service';
-import {NbtChunk} from 'deepslate';
 
 @Component({
   selector: 'app-world-analyzer-results-step[stepper]',
@@ -15,15 +14,22 @@ export class WorldAnalyzerResultsStepComponent {
 
   @ViewChild('blocksPerHeightCanvas') blocksPerHeightCanvas: ElementRef<HTMLCanvasElement>;
 
-  chart: any;
+  chart: Chart;
 
   constructor(public worldAnalyzerService: WorldAnalyzerService, public settings: SettingsService) {
-    worldAnalyzerService.analyzeFinished.subscribe(() => this.initCharts());
+    worldAnalyzerService.analyzeFinished.subscribe(() => {
+      this.initCharts();
+      this.worldAnalyzerService.resultsForm.valueChanges.subscribe(v => {
+        this.updateCharts();
+      })
+    });
   }
 
   private initCharts() {
-    console.log(this.worldAnalyzerService.stats);
-    
+    this.initBlocksPerHeightChart();
+  }
+
+  private initBlocksPerHeightChart() {
     let labels = Array.from(this.worldAnalyzerService.stats.blocksPerHeight.keys());
 
     let datasets = this.worldAnalyzerService.stats.palette.map((block, paletteIndex) => {
@@ -68,11 +74,41 @@ export class WorldAnalyzerResultsStepComponent {
       data: {
         labels: labels,
         datasets: datasets
-      }
+      },
+      options: {
+        layout: {
+          padding: 5
+        }
+      },
+      plugins: [
+        {
+          id: 'backgroundColor',
+          beforeDraw: (chart: any, args: any, options: any) => {
+            const {ctx} = chart;
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.fillStyle = this.worldAnalyzerService.resultsForm.value.backgroundColor;
+            ctx.fillRect(0, 0, chart.width, chart.height);
+            ctx.restore();
+          }
+        },
+        {
+          id: 'legendColor',
+          beforeDraw: (chart: any, args: any, options: any) => {
+            const legends = chart.legend.legendItems;
+
+            legends.forEach((e: any) => {
+              e.fontColor = this.worldAnalyzerService.resultsForm.value.legendColor;
+            });
+          }
+        }
+      ]
     });
+
+    this.chart.render();
   }
 
-  saveChart(canvas: HTMLCanvasElement, fileName: string) {
-    window.location.href = canvas.toDataURL('image/png');
+  updateCharts() {
+    this.chart.update();
   }
 }

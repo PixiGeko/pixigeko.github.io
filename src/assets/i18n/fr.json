@@ -60,11 +60,11 @@
           "title": "Analyse"
         },
         "results": {
-          "": {
-            "blocks_per_height": {
-              "title": "Blocs par couche"
-            }
+          "background_color": "Couleur de fond",
+          "blocks_per_height": {
+            "title": "Blocs par couche"
           },
+          "legend_color": "Couleur de la légende",
           "title": "Résultats"
         },
         "settings": {
