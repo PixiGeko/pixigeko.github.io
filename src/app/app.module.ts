@@ -61,11 +61,6 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {ChunkDetailsComponent} from './components/minecraft/world-analyzer/chunk-details/chunk-details.component';
-import {
-  MAT_COLOR_FORMATS,
-  NGX_MAT_COLOR_FORMATS,
-  NgxMatColorPickerModule
-} from '@angular-material-components/color-picker';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -137,7 +132,6 @@ registerLocaleData(localeFr, 'fr');
     MatSnackBarModule,
     MatRippleModule,
     MatAutocompleteModule,
-    NgxMatColorPickerModule
   ],
   providers: [
     {
@@ -149,10 +143,6 @@ registerLocaleData(localeFr, 'fr');
       useValue: {
         appearance: 'outline'
       }
-    },
-    {
-      provide: MAT_COLOR_FORMATS,
-      useValue: NGX_MAT_COLOR_FORMATS
     }
   ],
   bootstrap: [AppComponent]

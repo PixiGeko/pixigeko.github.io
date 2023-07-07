@@ -2,7 +2,6 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {WorldAnalyzerResultsForm, WorldAnalyzerSettingsForm} from "../models/minecraft/world-analyzer";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {BlockState} from "deepslate";
-import {Color} from '@angular-material-components/color-picker';
 
 @Injectable({
   providedIn: 'root'
