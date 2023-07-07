@@ -59,7 +59,7 @@ export class WorldAnalyzerAnalyzeStepComponent {
           chunk.error = true;
         }
         
-        // TODO: remove, memory leak :(
+        // TODO: memory leak :(
         if(chunk.analyzed) {
           await MiscUtils.sleep(0);
         }

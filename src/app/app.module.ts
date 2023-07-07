@@ -29,13 +29,9 @@ import {PageNotFoundComponent} from './components/shared/page-not-found/page-not
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {ToolbarComponent} from './components/shared/toolbar/toolbar.component';
-import {NavbarItemComponent} from './components/shared/navbar-item/navbar-item.component';
 import {MatStepperModule} from '@angular/material/stepper';
-import {PreviousNextComponent} from './components/shared/previous-next/previous-next.component';
-import {DropzoneComponent} from './components/shared/dropzone/dropzone.component';
 import {CdkDropList} from '@angular/cdk/drag-drop';
 import {DragAndDropDirective} from './directives/drag-and-drop.directive';
-import {StepperComponent} from './components/shared/stepper/stepper.component';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
@@ -49,7 +45,6 @@ import {SettingsComponent} from './components/others/settings/settings.component
 import {McProjects} from './components/minecraft/mgd-repositories/mc-projects';
 import {WorldAnalyzerComponent} from './components/minecraft/world-analyzer/world-analyzer.component';
 import {NavBarComponent} from './components/shared/nav-bar/nav-bar.component';
-import {BaseControlComponent} from './components/shared/form-controls/base-control/base-control.component';
 import {KeyValueComponent} from './components/shared/key-value/key-value.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatRadioModule} from '@angular/material/radio';
@@ -86,11 +81,7 @@ registerLocaleData(localeFr, 'fr');
     HomeComponent,
     PageNotFoundComponent,
     ToolbarComponent,
-    NavbarItemComponent,
-    PreviousNextComponent,
-    DropzoneComponent,
     DragAndDropDirective,
-    StepperComponent,
     DatassetsDownloadComponent,
     PageUnderConstructComponent,
     ContactsHomeComponent,
@@ -98,7 +89,6 @@ registerLocaleData(localeFr, 'fr');
     McProjects,
     WorldAnalyzerComponent,
     NavBarComponent,
-    BaseControlComponent,
     KeyValueComponent,
     WorldAnalyzerSettingsStepComponent,
     WorldAnalyzerAnalyzeStepComponent,
