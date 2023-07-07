@@ -53,6 +53,10 @@ export class SettingsService {
       events: {
         use_text_color: DefaultValues.USE_TEXT_COLOR,
         show_event_banner: DefaultValues.SHOW_EVENT_BANNER
+      },
+      world_analyzer: {
+        background_color: '#F5F5F5',
+        legend_color: '#1F1F1F'
       }
     };
   }

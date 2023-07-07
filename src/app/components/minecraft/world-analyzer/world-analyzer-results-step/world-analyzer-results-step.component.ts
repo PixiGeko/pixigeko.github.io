@@ -21,7 +21,17 @@ export class WorldAnalyzerResultsStepComponent {
       this.initCharts();
       this.worldAnalyzerService.resultsForm.valueChanges.subscribe(v => {
         this.updateCharts();
-      })
+      });
+      
+      this.worldAnalyzerService.resultsForm.controls.backgroundColor.valueChanges.subscribe(c => {
+        this.settings.settings.world_analyzer.background_color = c!;
+        settings.saveSettings();
+      });
+
+      this.worldAnalyzerService.resultsForm.controls.legendColor.valueChanges.subscribe(c => {
+        this.settings.settings.world_analyzer.legend_color = c!;
+        settings.saveSettings();
+      });
     });
   }
 
@@ -65,7 +75,7 @@ export class WorldAnalyzerResultsStepComponent {
       labels = labels.slice(minHeightIndex, maxHeightIndex + 1);
       datasets = datasets.map(d => ({
         label: d.label,
-        data: d.data.slice(minHeightIndex, maxHeightIndex + 1)
+        data: d.data.slice(minHeightIndex, maxHeightIndex + 1),
       }));
     }
 
@@ -73,7 +83,7 @@ export class WorldAnalyzerResultsStepComponent {
       type: 'bar',
       data: {
         labels: labels,
-        datasets: datasets
+        datasets: datasets,
       },
       options: {
         layout: {

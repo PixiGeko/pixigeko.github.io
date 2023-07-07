@@ -2,6 +2,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {WorldAnalyzerResultsForm, WorldAnalyzerSettingsForm} from "../models/minecraft/world-analyzer";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {BlockState} from "deepslate";
+import {SettingsService} from './settings.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class WorldAnalyzerService {
     blocksPerHeight: Map<number, Map<number, number>> // <height, <indice, count>>
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private settings: SettingsService) {
   }
 
   reset() {
@@ -44,8 +45,8 @@ export class WorldAnalyzerService {
     });
     
     this.resultsForm = this.fb.group<WorldAnalyzerResultsForm>({
-      backgroundColor: this.fb.control('#F5F5F5'),
-      legendColor: this.fb.control('#1F1F1F')
+      backgroundColor: this.fb.control(this.settings.settings.world_analyzer.background_color),
+      legendColor: this.fb.control(this.settings.settings.world_analyzer.legend_color)
     })
 
     this.addBlockFilter('^minecraft:.*diamond_ore$');

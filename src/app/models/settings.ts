@@ -8,6 +8,10 @@ export interface Settings {
     use_text_color: boolean;
     show_event_banner: boolean;
   };
+  world_analyzer: {
+    background_color: string;
+    legend_color: string;
+  }
 }
 
 export enum SettingsClasses {
