@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AppRoutes} from '../../../constants/routes';
-import {AppRoute} from '../../../models/route';
+import {AppRoute, NavBarElement, NavBarSection} from '../../../models/route';
+import {TAG_BETA} from '../tag/tag.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,20 +9,32 @@ import {AppRoute} from '../../../models/route';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
+  
   sections: NavBarSection[] = [
     {
       name: 'navigation.minecraft.title',
       elements: [
-        AppRoutes.MINECRAFT_DOWNLOAD,
-        AppRoutes.MINECRAFT_WORLD_ANALYZER,
-        AppRoutes.MINECRAFT_PROJECTS,
+        {
+          route: AppRoutes.MINECRAFT_DOWNLOAD
+        },
+        {
+          route: AppRoutes.MINECRAFT_WORLD_ANALYZER,
+          beta: true
+        },
+        {
+          route: AppRoutes.MINECRAFT_PROJECTS
+        },
       ]
     },
     {
       name: 'navigation.others.title',
       elements: [
-        AppRoutes.CONTACTS,
-        AppRoutes.SETTINGS
+        {
+          route: AppRoutes.CONTACTS
+        },
+        {
+          route: AppRoutes.SETTINGS
+        },
       ]
     }
   ];
@@ -29,9 +42,12 @@ export class NavBarComponent {
   getRoute(route: AppRoute) {
     return AppRoutes.routeArray(route);
   }
+  
+  getTags(element: NavBarElement) {
+    return [
+      TAG_BETA
+    ];
+  }
 }
 
-export interface NavBarSection {
-  name: string;
-  elements: AppRoute[];
-}
+

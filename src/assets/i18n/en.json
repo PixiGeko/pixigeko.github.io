@@ -7,6 +7,12 @@
     "page_not_found": {
       "go_home": "Go to home",
       "message": "This page doesn't exist"
+    },
+    "tags": {
+      "beta": {
+        "name": "beta",
+        "tooltip": "This feature is in beta"
+      }
     }
   },
   "contacts": {
@@ -51,6 +57,7 @@
       }
     },
     "world_analyzer": {
+      "memory_leak_warning": "This feature has a know memory leak.",
       "steps": {
         "analyze": {
           "analyzed": "Analyzed",
