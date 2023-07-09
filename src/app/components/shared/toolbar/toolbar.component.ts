@@ -6,6 +6,7 @@ import {Language} from '../../../constants/language';
 import {TranslateService} from '@ngx-translate/core';
 import {RoutesService} from '../../../services/routes.service';
 import {SettingsService} from '../../../services/settings.service';
+import {AppRoutes} from '../../../constants/routes';
 
 @Component({
   selector: 'app-toolbar',
@@ -63,4 +64,9 @@ export class ToolbarComponent implements AfterViewInit {
   get isDarkTheme() {
     return this.settingsService.settings.theme === Theme.DARK;
   }
+  
+  goToHome() {
+    this.routesService.navigate(AppRoutes.HOME);
+  }
+  
 }

@@ -57,7 +57,7 @@
       }
     },
     "world_analyzer": {
-      "memory_leak_warning": "Cette fonctionnalité contient une fuite de mémoire connue. Cela ne causera aucun problème long terme à votre pc, mais l'analyse peut prendre une grande quantité de mémoire RAM.",
+      "memory_leak_warning": "Cette fonctionnalité contient une fuite de mémoire connue. Cela ne causera aucun problème long terme à votre ordinateur, mais l'analyse peut prendre une grande quantité de mémoire RAM.",
       "steps": {
         "analyze": {
           "analyzed": "Analysé",

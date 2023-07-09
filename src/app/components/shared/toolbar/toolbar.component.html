@@ -15,6 +15,7 @@
 
   <!-- MIDDLE -->
   <div id="navbar">
+    <button mat-icon-button (click)="goToHome()"><mat-icon>home</mat-icon></button>
   </div>
 
   <!-- RIGHT -->
@@ -23,7 +24,8 @@
       id="themeSwitcher"
       #themeSwitcher
       disableRipple
-      [checked]="isDarkTheme"
+      [checked]="
+      isDarkTheme"
       (change)="changeTheme($event)"
     ></mat-slide-toggle>
   </div>
