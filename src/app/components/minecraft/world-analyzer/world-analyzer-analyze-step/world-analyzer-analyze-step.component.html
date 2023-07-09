@@ -1,5 +1,6 @@
 <div id="regionInfo">
   <div id="regionDetails">
+    <h2 id="regionName">{{ currentRegionFile?.name }}</h2>
     <div id="regionGrid">
       <div
         *ngFor="let chunk of currentRegionChunks"
@@ -21,9 +22,8 @@
         *ngTemplateOutlet="regionLegendItem; context: { name: 'minecraft.world_analyzer.steps.analyze.error', clazz: 'error' }"></ng-container>
     </div>
   </div>
-  <div id="chunkDetails">
-    <app-key-value key="minecraft.world_analyzer.steps.analyze.details.x" [value]="currentChunk?.chunk?.x?.toString()"></app-key-value>
-    <app-key-value key="minecraft.world_analyzer.steps.analyze.details.z" [value]="currentChunk?.chunk?.z?.toString()"></app-key-value>
+  <div id="details">
+    
   </div>
 </div>
 

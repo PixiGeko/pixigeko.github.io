@@ -11,6 +11,10 @@
   align-items: center;
   gap: 5px;
 
+  #regionName {
+    margin: 0;
+  }
+  
   #regionGrid {
     display: grid;
     gap: 2px;
@@ -30,7 +34,7 @@
   }
 }
 
-#chunkDetails {
+#details {
 
 }
 

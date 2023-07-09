@@ -20,7 +20,7 @@ export class WorldAnalyzerAnalyzeStepComponent {
 
   currentRegionChunks: WorldAnalyzerChunk[];
   currentChunk: WorldAnalyzerChunk;
-  currentRegion: NbtRegion;
+  currentRegionFile: File;
 
   constructor(public worldAnalyzerService: WorldAnalyzerService) {
     worldAnalyzerService.analyzeStarted.subscribe(() => {
@@ -33,14 +33,14 @@ export class WorldAnalyzerAnalyzeStepComponent {
     
     const maxRegions = this.worldAnalyzerService.settingsForm.controls.maxRegion.value ?? this.worldAnalyzerService.regionFilesToAnalyze.length;
     for (let i = 0; i < maxRegions; i++) {
-      let regionFile = this.worldAnalyzerService.regionFilesToAnalyze[i];
-      const buffer = await firstValueFrom(FileUtils.readFileAsBuffer(regionFile));
-      this.currentRegion = NbtRegion.read(buffer);
+      this.currentRegionFile = this.worldAnalyzerService.regionFilesToAnalyze[i];
+      const buffer = await firstValueFrom(FileUtils.readFileAsBuffer(this.currentRegionFile));
+      const region = NbtRegion.read(buffer);
 
       // init chunks
       this.currentRegionChunks = [];
       for (let iChunk = 0; iChunk < WorldAnalyzerAnalyzeStepComponent.CHUNKS_PER_REGION; iChunk++) {
-        const chunk = this.currentRegion.getChunk(iChunk);
+        const chunk = region.getChunk(iChunk);
         this.currentRegionChunks.push({
           chunk: chunk,
           skipped: false,
