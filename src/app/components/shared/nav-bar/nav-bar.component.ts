@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AppRoutes} from '../../../constants/routes';
 import {AppRoute, NavBarElement, NavBarSection} from '../../../models/route';
-import {TAG_BETA} from '../tag/tag.component';
+import {Tag, TAG_BETA} from '../tag/tag.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -44,9 +44,11 @@ export class NavBarComponent {
   }
   
   getTags(element: NavBarElement) {
-    return [
-      TAG_BETA
-    ];
+    const tags: Tag[] = [];
+    
+    if(element.beta) tags.push(TAG_BETA);
+    
+    return tags;
   }
 }
 
