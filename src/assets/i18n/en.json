@@ -57,7 +57,7 @@
       }
     },
     "world_analyzer": {
-      "memory_leak_warning": "This feature has a know memory leak.",
+      "memory_leak_warning": "This feature contains a known memory leak. It won't cause any long-term problems for your PC, but the analyze may take up a large amount of RAM memory.",
       "steps": {
         "analyze": {
           "analyzed": "Analyzed",

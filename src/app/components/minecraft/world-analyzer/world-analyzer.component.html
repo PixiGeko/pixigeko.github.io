@@ -1,3 +1,7 @@
+<div id="memoryLeakWarning">
+  <p>{{ 'minecraft.world_analyzer.memory_leak_warning' | translate }}</p>
+</div>
+
 <mat-stepper [linear]="true" #stepper animationDuration="0">
   <mat-step [completed]="worldAnalyzerService.settingsStepCompleted"
             [editable]="worldAnalyzerService.settingsStepEditable">

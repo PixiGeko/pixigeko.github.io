@@ -62,9 +62,11 @@ export class WorldAnalyzerAnalyzeStepComponent {
         
         // TODO: memory leak :(
         if(chunk.analyzed) {
-          await MiscUtils.sleep(0);
+          await MiscUtils.sleep(5);
         }
       }
+
+      await MiscUtils.sleep(250);
     }
 
     this.stepper.selected!.completed = true;
