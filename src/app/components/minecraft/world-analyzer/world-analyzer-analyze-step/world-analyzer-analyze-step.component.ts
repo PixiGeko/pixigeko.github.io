@@ -62,11 +62,17 @@ export class WorldAnalyzerAnalyzeStepComponent {
         
         // TODO: memory leak :(
         if(chunk.analyzed) {
-          await MiscUtils.sleep(5);
+          await MiscUtils.sleep(1);
         }
       }
 
-      await MiscUtils.sleep(250);
+      // trying to fix (a bit) the memory leak
+      const highestTimeoutId = setTimeout(";");
+      for (let i = 0 ; i < highestTimeoutId ; i++) {
+        clearTimeout(i);
+      }
+      
+      await MiscUtils.sleep(500);
     }
 
     this.stepper.selected!.completed = true;
