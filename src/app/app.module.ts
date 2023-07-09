@@ -62,6 +62,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {ChunkDetailsComponent} from './components/minecraft/world-analyzer/chunk-details/chunk-details.component';
 import { TagComponent } from './components/shared/tag/tag.component';
+import { NewsComponent } from './components/home/news/news.component';
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true
@@ -91,6 +92,7 @@ registerLocaleData(localeFr, 'fr');
     WorldAnalyzerResultsStepComponent,
     ChunkDetailsComponent,
     TagComponent,
+    NewsComponent,
   ],
   imports: [
     TranslateModule.forRoot({
