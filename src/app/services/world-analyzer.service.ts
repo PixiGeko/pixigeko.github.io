@@ -103,7 +103,7 @@ export class WorldAnalyzerService {
     if (!this.stats.blocksPerHeight.has(height)) this.stats.blocksPerHeight.set(height, new Map());
 
     const minHeight = this.settingsForm.controls.minHeight.value;
-    const maxHeight = this.settingsForm.controls.minHeight.value;
+    const maxHeight = this.settingsForm.controls.maxHeight.value;
 
     if (minHeight !== null && height < minHeight) return;
     if (maxHeight !== null && height > maxHeight) return;
