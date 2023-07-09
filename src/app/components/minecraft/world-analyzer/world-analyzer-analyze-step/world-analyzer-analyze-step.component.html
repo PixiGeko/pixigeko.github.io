@@ -22,9 +22,8 @@
     </div>
   </div>
   <div id="chunkDetails">
-    <div *ngIf="currentChunk?.chunk">
-      <app-chunk-details [chunk]="currentChunk.chunk!"></app-chunk-details>
-    </div>
+    <app-key-value key="minecraft.world_analyzer.steps.analyze.details.x" [value]="currentChunk?.chunk?.x?.toString()"></app-key-value>
+    <app-key-value key="minecraft.world_analyzer.steps.analyze.details.z" [value]="currentChunk?.chunk?.z?.toString()"></app-key-value>
   </div>
 </div>
 

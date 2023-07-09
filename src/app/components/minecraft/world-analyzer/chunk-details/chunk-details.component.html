@@ -1,3 +1,4 @@
-<div>
-
+<div *ngIf="chunk">
+  <app-key-value key="minecraft.world_analyzer.steps.analyze.details.x" [value]="chunk.x.toString()"></app-key-value>
+  <app-key-value key="minecraft.world_analyzer.steps.analyze.details.z" [value]="chunk.z.toString()"></app-key-value>
 </div>

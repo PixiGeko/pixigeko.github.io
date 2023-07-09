@@ -54,6 +54,10 @@
       "steps": {
         "analyze": {
           "analyzed": "Analysé",
+          "details": {
+            "x": "X",
+            "z": "Z"
+          },
           "empty": "Vide",
           "error": "Erreur",
           "skipped": "Ignoré",
