@@ -7,22 +7,29 @@
     "page_not_found": {
       "go_home": "Retourner à l'accueil",
       "message": "Cette page n'existe pas"
+    },
+    "tags": {
+      "beta": {
+        "name": "beta",
+        "tooltip": "Cette fonctionnalité est en beta"
+      }
     }
   },
-  "navigation": {
-    "home": {
-      "home": "Accueil"
+  "contacts": {
+    "discord": {
+      "pixigeko": {
+        "description": "Mon compte personnel.\nVous pouvez m'envoyer un message au besoin."
+      },
+      "title": "Discord"
     },
-    "minecraft": {
-      "home": "Minecraft",
-      "datassets_download": "Dossiers assets & data par défaut",
-      "projects": "Projets"
-    },
-    "contacts": {
-      "home": "Contacts"
-    },
-    "settings": {
-      "home": "Paramètres"
+    "twitter": {
+      "pixiexe": {
+        "description": "Un compte secondaire (mort) pour mes projets."
+      },
+      "pixigeko": {
+        "description": "Mon compte principal.\nSi vous voulez m'envoyer un message, utilisez ce compte."
+      },
+      "title": "Twitter"
     }
   },
   "minecraft": {
@@ -39,40 +46,75 @@
       "mcrelease": {
         "description": "Ce compte envoie un tweet à chaque fois qu'une nouvelle version de Minecraft sort."
       },
-      "mgd": {
-        "description": "Ce répertoire contient des données techniques de chaque version de Minecraft."
-      },
       "mda": {
         "description": "Ce répertoire contient le dossier assets (pack de ressources) par défaut de chaque version de Minecraft."
       },
       "mdd": {
         "description": "Ce répertoire contient le dossier data (pack de données) par défaut de chaque version de Minecraft."
+      },
+      "mgd": {
+        "description": "Ce répertoire contient des données techniques de chaque version de Minecraft."
+      }
+    },
+    "world_analyzer": {
+      "memory_leak_warning": "Cette fonctionnalité contient une fuite de mémoire connue. Cela ne causera aucun problème long terme à votre pc, mais l'analyse peut prendre une grande quantité de mémoire RAM.",
+      "steps": {
+        "analyze": {
+          "analyzed": "Analysé",
+          "details": {
+            "x": "X",
+            "z": "Z"
+          },
+          "empty": "Vide",
+          "error": "Erreur",
+          "skipped": "Ignoré",
+          "title": "Analyse"
+        },
+        "results": {
+          "background_color": "Couleur de fond",
+          "blocks_per_height": {
+            "title": "Blocs par couche"
+          },
+          "legend_color": "Couleur de la légende",
+          "title": "Résultats"
+        },
+        "settings": {
+          "add_block_filter": "Ajouter un filtre de bloc",
+          "block_filter_placeholder": "Nom du bloc",
+          "dimension": "Dimension",
+          "end": "End ({{count}} régions)",
+          "max_height": "Hauteur maximale",
+          "max_regions": "Régions max",
+          "min_height": "Hauteur minimale",
+          "nether": "Nether ({{count}} régions)",
+          "overworld": "Overworld ({{count}} régions)",
+          "start": "Commencer l'analyse",
+          "title": "Paramètres",
+          "upload_folder": "Charger un monde",
+          "uploaded_folder_empty": "Le dossier est vide"
+        }
       }
     }
   },
-  "contacts": {
-    "twitter": {
-      "title": "Twitter",
-      "pixigeko": {
-        "description": "Mon compte principal.\nSi vous voulez m'envoyer un message, utilisez ce compte."
-      },
-      "pixiexe": {
-        "description": "Un compte secondaire (mort) pour mes projets."
-      }
+  "navigation": {
+    "minecraft": {
+      "datassets_download": "Télécharger les assets & data par défaut",
+      "projects": "Projets",
+      "title": "Minecraft",
+      "world_analyzer": "Analyseur de monde"
     },
-    "discord": {
-      "title": "Discord",
-      "pixigeko": {
-        "description": "Mon compte personnel.\nVous pouvez m'envoyer un message au besoin."
-      }
+    "others": {
+      "contacts": "Contacts",
+      "settings": "Paramètres",
+      "title": "Divers"
     }
   },
   "settings": {
-    "theme": "Thème",
-    "language": "Langue",
     "events": {
-      "use_text_color": "Utiliser les couleurs de texte spéciales lors d'évènement",
-      "show_banner": "Afficher la bannière d'évènement"
-    }
+      "show_banner": "Afficher la bannière d'évènement",
+      "use_text_color": "Utiliser les couleurs de texte spéciales lors d'évènement"
+    },
+    "language": "Langue",
+    "theme": "Thème"
   }
 }

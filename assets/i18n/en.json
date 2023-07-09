@@ -7,22 +7,29 @@
     "page_not_found": {
       "go_home": "Go to home",
       "message": "This page doesn't exist"
+    },
+    "tags": {
+      "beta": {
+        "name": "beta",
+        "tooltip": "This feature is in beta"
+      }
     }
   },
-  "navigation": {
-    "home": {
-      "home": "Home"
+  "contacts": {
+    "discord": {
+      "pixigeko": {
+        "description": "My personal account.\nYou can send me a DM if needed."
+      },
+      "title": "Discord"
     },
-    "minecraft": {
-      "home": "Minecraft",
-      "datassets_download": "Default assets & data folder",
-      "projects": "Projects"
-    },
-    "contacts": {
-      "home": "Contacts"
-    },
-    "settings": {
-      "home": "Settings"
+    "twitter": {
+      "pixiexe": {
+        "description": "A (dead) side account for my projects."
+      },
+      "pixigeko": {
+        "description": "My main account.\nIf you want to send me a message on twitter, please use this account."
+      },
+      "title": "Twitter"
     }
   },
   "minecraft": {
@@ -39,40 +46,75 @@
       "mcrelease": {
         "description": "This account sends a tweet everytime a new Minecraft version is released."
       },
-      "mgd": {
-        "description": "This repository contains a lot of data about each version of the game."
-      },
       "mda": {
         "description": "This repository contains the default assets (resourcepack) for each version of the game."
       },
       "mdd": {
         "description": "This repository contains the default data (datapack) for each version of the game."
+      },
+      "mgd": {
+        "description": "This repository contains a lot of data about each version of the game."
+      }
+    },
+    "world_analyzer": {
+      "memory_leak_warning": "This feature contains a known memory leak. It won't cause any long-term problems for your PC, but the analyze may take up a large amount of RAM memory.",
+      "steps": {
+        "analyze": {
+          "analyzed": "Analyzed",
+          "details": {
+            "x": "X",
+            "z": "Z"
+          },
+          "empty": "Empty",
+          "error": "Error",
+          "skipped": "Skipped",
+          "title": "Analyze"
+        },
+        "results": {
+          "background_color": "Background color",
+          "blocks_per_height": {
+            "title": "Blocks per height"
+          },
+          "legend_color": "Legend color",
+          "title": "Results"
+        },
+        "settings": {
+          "add_block_filter": "Add block filter",
+          "block_filter_placeholder": "Block name",
+          "dimension": "Dimension",
+          "end": "End ({{count}} regions)",
+          "max_height": "Maximal height",
+          "max_regions": "Max regions",
+          "min_height": "Minimal height",
+          "nether": "Nether ({{count}} regions)",
+          "overworld": "Overworld ({{count}} regions)",
+          "start": "Start analyze",
+          "title": "Settings",
+          "upload_folder": "Upload world",
+          "uploaded_folder_empty": "The uploaded folder is empty"
+        }
       }
     }
   },
-  "contacts": {
-    "twitter": {
-      "title": "Twitter",
-      "pixigeko": {
-        "description": "My main account.\nIf you want to send me a message on twitter, please use this account."
-      },
-      "pixiexe": {
-        "description": "A (dead) side account for my projects."
-      }
+  "navigation": {
+    "minecraft": {
+      "datassets_download": "Default assets & data download",
+      "projects": "Projects",
+      "title": "Minecraft",
+      "world_analyzer": "World Analyzer"
     },
-    "discord": {
-      "title": "Discord",
-      "pixigeko": {
-        "description": "My personal account.\nYou can send me a DM if needed."
-      }
+    "others": {
+      "contacts": "Contacts",
+      "settings": "Settings",
+      "title": "Misc"
     }
   },
   "settings": {
-    "theme": "Theme",
-    "language": "Language",
     "events": {
-      "use_text_color": "Use event text color",
-      "show_banner": "Show event banner"
-    }
+      "show_banner": "Show event banner",
+      "use_text_color": "Use event text color"
+    },
+    "language": "Language",
+    "theme": "Theme"
   }
 }

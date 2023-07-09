@@ -15,19 +15,19 @@
   @include generatePaletteClass($warn-palette, 'warn');
   
   .darkerBackground {
-    background-color: darken(map-get($background-palette, background), 4%);
+    background-color: darken(map-get($background-palette, background), 4%) !important;
   }
-  
+
   .hoverBackground {
-    background-color: mat.get-color-from-palette($background-palette, hover);
+    background-color: mat.get-color-from-palette($background-palette, hover) !important;
   }
 
   .hoverEffect:hover {
-    background-color: mat.get-color-from-palette($background-palette, hover);
+    background-color: mat.get-color-from-palette($background-palette, hover) !important;
   }
-  
+
   .cardBackground {
-    background-color: map-get($background-palette, card);
+    background-color: map-get($background-palette, card) !important;
   }
 }
 
